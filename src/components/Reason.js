@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import BackgroundImage from "./../assets/AdobeStock_196152738.jpeg"
+import BackgroundImage from "./../assets/GPS_Smartphone.jpeg"
 
 const styles = theme => ({
     containerLeft: {
@@ -11,7 +11,6 @@ const styles = theme => ({
         padding: '0 32px',
         minHeight: "360px",
         marginTop: "12px"
-
     },
 
     button: {
@@ -28,7 +27,7 @@ function Reason(props) {
                 <picture>
                     <source srcSet={BackgroundImage} type="image/webp" />
                     <source srcSet={BackgroundImage} type="image/jpeg" />
-                    <img style={{ margin: "auto", maxWidth: "100%", marginBottom: "-4px" }} src={BackgroundImage} alt="Orientierung" />
+                    <img style={{ margin: "auto", maxWidth: "100%", maxHeight:"360px", marginBottom: "-4px" }} src={BackgroundImage} alt="Orientierung" />
                 </picture>
             </Grid>
             <Grid item xs={12} sm={6}>

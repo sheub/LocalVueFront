@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core";
 import { Input, Grid, Typography, Button } from "@material-ui/core";
 
-import BackgroundImage from "./../assets/AdobeStock_213772437.jpeg"
+import BackgroundImage from "./../assets/SEO_Background.jpeg"
 import axios from "axios";
 import { css } from 'react-emotion';
 import { ClipLoader } from 'react-spinners';
@@ -146,7 +146,7 @@ class Analysis extends Component {
 
             <div className={classes.root} ref={this.props.refProp}>
                 <div className={classes.heroContent}>
-                    <Grid container spacing={8}>
+                    <Grid container>
                         <MuiThemeProvider theme={materialTheme}>
                             <div style={{ marginBottom: "24px" }}>
                                 <Typography component="h2" variant="h6" align="center" color="secondary" gutterBottom>
@@ -196,7 +196,7 @@ class Analysis extends Component {
                                 />
                             </Grid>
                         </MuiThemeProvider>
-                        <div className={classes.button}>
+                        <div className={classes.button} style={{ margin: 6 }}>
                             <Grid container direction={'row'} justify={'space-between'} align={'flex-start'} spacing={32}>
                                 <Grid item>
                                     <Button onClick={this._onClick} disabled={this.state.isLoading} variant="contained" color="primary">
