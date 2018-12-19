@@ -3,12 +3,11 @@ import PropTypes from "prop-types";
 import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core";
 import { Input, Grid, Typography, Button } from "@material-ui/core";
 
-import BackgroundImage from "./../assets/planet-blue.png"
+import BackgroundImage from "./../assets/AdobeStock_213772437.jpeg"
 import axios from "axios";
-
 import { css } from 'react-emotion';
 import { ClipLoader } from 'react-spinners';
-// import CustomizedTable from "./Table"
+
 const CustomizedTable = React.lazy(() => import("./Table"));
 
 
@@ -121,8 +120,7 @@ class Analysis extends Component {
                     isLoading: false,
                     tableActive: true
                 });
-
-                console.log(response.data);
+                // console.log(response.data);
             })
             .catch((err) => {
                 this.setState({ data: err, isLoading: false });
@@ -148,7 +146,6 @@ class Analysis extends Component {
 
             <div className={classes.root} ref={this.props.refProp}>
                 <div className={classes.heroContent}>
-
                     <Grid container spacing={8}>
                         <MuiThemeProvider theme={materialTheme}>
                             <div style={{ marginBottom: "24px" }}>
@@ -201,8 +198,6 @@ class Analysis extends Component {
                         </MuiThemeProvider>
                         <div className={classes.button}>
                             <Grid container direction={'row'} justify={'space-between'} align={'flex-start'} spacing={32}>
-                                {/* <Grid container justify="center"> */}
-
                                 <Grid item>
                                     <Button onClick={this._onClick} disabled={this.state.isLoading} variant="contained" color="primary">
                                         Analyse Starten
@@ -217,7 +212,6 @@ class Analysis extends Component {
                                         loading={this.state.isLoading}
                                     />
                                 </div>
-
                             </Grid>
                         </div >
 

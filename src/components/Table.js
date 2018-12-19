@@ -67,11 +67,11 @@ class CustomizedTable extends Component {
                         <TableHead>
                             <TableRow>
                                 <CustomTableCell>Provider</CustomTableCell>
-                                <CustomTableCell >title</CustomTableCell>
-                                <CustomTableCell >address</CustomTableCell>
-                                <CustomTableCell >categories</CustomTableCell>                                
-                                <CustomTableCell >phone</CustomTableCell>
-                                <CustomTableCell >website</CustomTableCell>
+                                <CustomTableCell >Title</CustomTableCell>
+                                <CustomTableCell >Address</CustomTableCell>
+                                <CustomTableCell >Categories</CustomTableCell>                                
+                                <CustomTableCell >Phone</CustomTableCell>
+                                <CustomTableCell >Website</CustomTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
