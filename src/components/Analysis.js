@@ -1,19 +1,15 @@
-import  React, { Component } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core";
+import { Input, Grid, Typography, Button } from "@material-ui/core";
 
-import Input from "@material-ui/core/Input";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import BackgroundImage from "./../assets/planet-blue.png"
 import axios from "axios";
 
 import { css } from 'react-emotion';
-// First way to import
 import { ClipLoader } from 'react-spinners';
-
-import CustomizedTable from "./Table"
+// import CustomizedTable from "./Table"
+const CustomizedTable = React.lazy(() => import("./Table"));
 
 
 const override = css`
@@ -23,12 +19,11 @@ const override = css`
 `;
 
 const initialState = {
-    error: null, // you could put error messages here if you wanted
     place: {
         name: "",
         address: "",
-        city:"",
-        postcode:"",
+        city: "",
+        postcode: "",
     },
     isLoading: false,
 };
@@ -107,7 +102,6 @@ class Analysis extends Component {
         super(props);
         this.state = initialState;
         this.state.tableActive = false;
-
         this._onClick = this._onClick.bind(this);
         this._handleChange = this._handleChange.bind(this);
     }
@@ -116,18 +110,18 @@ class Analysis extends Component {
 
         this.setState({ isLoading: true });
 
-        let url = `http://localhost/LocalVue/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]}`;
+        let url = `https://localvue.de/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]}`;
         var res = encodeURI(url);
         axios.get(res, {
-            headers: {"Access-Control-Allow-Origin": "*"}
+            headers: { "Access-Control-Allow-Origin": "*" }
         })
             .then((response) => {
-                this.setState({ 
+                this.setState({
                     data: response.data,
-                     isLoading: false,
-                      tableActive: true
-                    });
-                
+                    isLoading: false,
+                    tableActive: true
+                });
+
                 console.log(response.data);
             })
             .catch((err) => {
@@ -139,7 +133,7 @@ class Analysis extends Component {
     _handleChange = (value, event) => {
 
         const { place } = this.state;
-        let newPlace  = place;        
+        let newPlace = place;
         newPlace[value] = event.currentTarget.value;
 
         this.setState({
@@ -152,14 +146,14 @@ class Analysis extends Component {
 
         return (
 
-            <div className={classes.root}>
+            <div className={classes.root} ref={this.props.refProp}>
                 <div className={classes.heroContent}>
 
                     <Grid container spacing={8}>
                         <MuiThemeProvider theme={materialTheme}>
-                        <div style={{marginBottom: "24px"}}>
-                            <Typography component="h2" variant="h6" align="center" color="secondary" gutterBottom>
-                                Analysieren Sie die Sichtbarkeit Ihres Unternehmens in 2 Minuten.
+                            <div style={{ marginBottom: "24px" }}>
+                                <Typography component="h2" variant="h6" align="center" color="secondary" gutterBottom>
+                                    Analysieren Sie die Sichtbarkeit Ihres Unternehmens in 2 Minuten.
                             </Typography>
                             </div>
 
@@ -182,7 +176,7 @@ class Analysis extends Component {
                                 inputProps={{ "aria-label": "Address", }}
                                 disableUnderline
                                 onChange={this._handleChange.bind(this, "address")}
-                                />
+                            />
                             <Grid item xs={6}>
                                 <Input
                                     id="city"
@@ -191,7 +185,7 @@ class Analysis extends Component {
                                     className={classes.input}
                                     inputProps={{ "aria-label": "city", }}
                                     disableUnderline
-                                    onChange={this._handleChange.bind(this, "city")} 
+                                    onChange={this._handleChange.bind(this, "city")}
                                 />
                             </Grid>
                             <Grid item xs={6}>
@@ -206,26 +200,33 @@ class Analysis extends Component {
                             </Grid>
                         </MuiThemeProvider>
                         <div className={classes.button}>
-                            <Grid container justify="center">
+                            <Grid container direction={'row'} justify={'space-between'} align={'flex-start'} spacing={32}>
+                                {/* <Grid container justify="center"> */}
+
                                 <Grid item>
                                     <Button onClick={this._onClick} disabled={this.state.isLoading} variant="contained" color="primary">
                                         Analyse Starten
                                     </Button>
-                                    <div className='sweet-loading'>
-                                        <ClipLoader
-                                            className={override}
-                                            sizeUnit={"px"}
-                                            size={150}
-                                            color={'#123abc'}
-                                            loading={this.state.isLoading}
-                                        />
-                                    </div> 
                                 </Grid>
+                                <div className='sweet-loading' style={{ verticalAlign: "bottom" }}>
+                                    <ClipLoader
+                                        className={override}
+                                        sizeUnit={"px"}
+                                        size={32}
+                                        color={'#123abc'}
+                                        loading={this.state.isLoading}
+                                    />
+                                </div>
+
                             </Grid>
                         </div >
 
-                        <CustomizedTable data={this.state.data} tableActive={this.state.tableActive}/>
-
+                        {(this.state.tableActive) ?
+                            <React.Suspense fallback={<div> </div>}>
+                                <CustomizedTable data={this.state.data} tableActive={this.state.tableActive} />
+                            </React.Suspense>
+                            : null
+                        }
                     </Grid>
                 </div >
             </div>

@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import BackgroundImage from "./../assets/01_accueil_02_1440px.jpg"
+import BackgroundImage from "./../assets/AdobeStock_196152738_Preview.jpeg"
 
 
 
 const styles = theme => ({
     containerLeft: {
         flexGrow: 1,
-        // margin: '48px',
-        // padding: '90px 10px',
+        padding: '0 32px',
         minHeight: "360px",
+        marginTop: "12px"
 
     },
     containerRight:{
@@ -27,15 +27,6 @@ const styles = theme => ({
     button: {
         marginTop: '48px'
     },
-    // paper: {
-    //     padding: theme.spacing.unit * 2,
-    //     textAlign: 'center',
-    //     color: theme.palette.text.secondary,
-    // },
-    //   container: {
-    //     display: 'flex',
-    //     flexWrap: 'wrap',
-    //   },
     input: {
         margin: theme.spacing.unit,
     },
@@ -44,7 +35,7 @@ const styles = theme => ({
 function Reason(props) {
     const { classes } = props;
     return (
-        <Grid container direction={'row'} justify={'space-between'} align={'flex-start'} spacing={32}>
+        <Grid container direction={'row'} justify={'space-between'} align={'flex-start'} spacing={0}>
             <Grid item xs={12} sm={6}>
                 <div className={classes.containerRight}>
                 </div>

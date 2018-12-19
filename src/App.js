@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Album from './components/Album';
+import "./App.css"
 
 class App extends Component {
   render() {
@@ -7,7 +8,7 @@ class App extends Component {
     return (
       
       <div className="App">
-      <Album />
+        <Album />
       </div>
     );
   }

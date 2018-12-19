@@ -1,6 +1,12 @@
 {
   "name": "frontlocalvue",
   "version": "0.1.0",
+  "homepage": "https://localvue.de",
+  "repository": {
+    "type": "git",
+    "url": "https://localvue.de"
+  },
+  "author": "sheub",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.6.2",
@@ -10,7 +16,9 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
+    "react-slick": "^0.23.2",
     "react-spinners": "^0.4.7"
   },
   "scripts": {
@@ -22,6 +30,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "description": "Check your local SEO in 2 minutes.",
   "browserslist": [
     ">0.2%",
     "not dead",

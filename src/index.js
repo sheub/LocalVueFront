@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import './index.css';
+
 
 const theme = createMuiTheme({
 
@@ -19,8 +21,7 @@ const theme = createMuiTheme({
 
     typography: {
       useNextVariants: true,
-      //   fontFamily: ["Open Sans", "sans-serif",
-      // ].join(","),
+
       // Use the system font instead of the default Roboto font.
       fontFamily: [
         "-apple-system",
@@ -35,12 +36,10 @@ const theme = createMuiTheme({
         '"Segoe UI Symbol"',
       ].join(","),
     },
-    // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   });
 
 ReactDOM.render(
-    <MuiThemeProvider theme={theme}>
-    {/* <Route path="/" component={App} /> */}
+  <MuiThemeProvider theme={theme}>
     <App />
   </MuiThemeProvider>, document.getElementById('root'));
 
