@@ -84,7 +84,7 @@ class CustomizedTable extends Component {
                                         <CustomTableCell >{row[1].title}</CustomTableCell>
                                         <CustomTableCell >{row[1].address}</CustomTableCell>
                                         <CustomTableCell >{row[1].categories}</CustomTableCell>
-                                        <CustomTableCell >{row[1].phone}</CustomTableCell>
+                                        <CustomTableCell style={{whiteSpace: "nowrap"}}>{row[1].phone}</CustomTableCell>
                                         <CustomTableCell >{row[1].website}</CustomTableCell>
                                     </TableRow>
                                 );

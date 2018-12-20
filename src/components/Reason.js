@@ -37,7 +37,7 @@ function Reason(props) {
                     </Typography>
 
                     <Typography variant="body1" align="left" gutterBottom>
-                        Heute ist jede dritte Internetsuche mit einer lokalen Aktivität verknüpft, z.B. wenn Sie nach Ihrer Aktivität bei Google suchen (z.B. "Restaurant Leipzig").
+                        Heute ist jede dritte Internetsuche mit einer lokalen Aktivität verknüpft, z.B. wenn Sie nach Ihrer Aktivität bei Google suchen (z.B. "Vegan Restaurant Leipzig").
                         Internetnutzer, die nach Einrichtungen wie Ihrer suchen, besuchen nicht unbedingt Ihre Website und verwenden häufig Informationen, die von Websites Dritter wie Google,
                         OpenStreetMap, Bing, Here, TomTom, Yelp, Foursquare veröffentlicht werden. Es ist daher unbedingt erforderlich, Sie auf diese Seiten zu verweisen!
                     </Typography>
