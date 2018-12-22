@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { MuiThemeProvider, Typography, createMuiTheme, withStyles } from "@material-ui/core";
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
     footer: {
@@ -37,7 +37,7 @@ class Footer extends Component {
             <footer className={classes.footer}>
                 <MuiThemeProvider theme={materialTheme}>
                     <div style={{ maxWidth: "1140px", margin: "auto" }}>
-                        <Grid container direction={'row'} justify={'space-between'} align={'flex-start'} spacing={32}>
+                        <Grid container direction={"row"} justify={"space-between"} align={"flex-start"} spacing={32}>
                             <Grid item xs={12} sm={3}>
                                 <Typography variant="overline" align="left" color="secondary" component="p" gutterBottom>
                                     Zoestha UG (haftungsbeschränkt)
@@ -55,7 +55,7 @@ class Footer extends Component {
                         </Grid>
                     </div>
                 </MuiThemeProvider>
-                <Grid container direction={'row'} justify={'space-between'} align={'flex-start'} spacing={32}>
+                <Grid container direction={"row"} justify={"space-between"} align={"flex-start"} spacing={32}>
                     <Grid item xs={6} sm={3}>
                     </Grid>
                         <Grid item xs={6} sm={3}>

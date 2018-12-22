@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "./../slick.min.css";
 import "./../slick-theme.min.css";
-import Typography from '@material-ui/core/Typography';
+import Typography from "@material-ui/core/Typography";
 import google from "./../assets/brands/google.svg"
 import here from "./../assets/brands/here.svg"
 import yelp from "./../assets/brands/yelp.svg"
@@ -47,9 +47,9 @@ export default class Responsive extends Component {
             ]
         };
         return (
-            <div style={{ backgroundColor: "#d9d9d9", padding: '42px' }}>
-                <div style={{ maxWidth: "1140px", margin: "auto", padding: '32px 0' }}>
-                    <div style={{ paddingBottom: '72px' }}>
+            <div style={{ backgroundColor: "#d9d9d9", padding: "42px" }}>
+                <div style={{ maxWidth: "1140px", margin: "auto", padding: "32px 0" }}>
+                    <div style={{ paddingBottom: "72px" }}>
                         <Typography component="h2" variant="h4" align="center" color="textPrimary" gutterBottom>
                             Wo gefunden werden?
                         </Typography>

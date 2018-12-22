@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 import MarkerIcon from "./../assets/marker.svg"
 
-import Analysis from './Analysis';
-import Reason from './Reason';
-import Footer from './Footer';
-import Slider from './Slider';
+import Analysis from "./Analysis";
+import Reason from "./Reason";
+import Footer from "./Footer";
+import Slider from "./Slider";
 
 const styles = theme => ({
   appBar: {
-    position: 'relative',
+    position: "relative",
   },
 
   heroUnit: {
@@ -26,7 +26,7 @@ const styles = theme => ({
   },
   containerLeft: {
     flexGrow: 1,
-    padding: '0 32px',
+    padding: "0 32px",
     minHeight: "150px",
     display: "flex",
   },
@@ -62,10 +62,10 @@ class Album extends Component {
           <CssBaseline />
           <main>
             <div className={classes.heroUnit}>
-              <Grid container direction={'row'} align={'center'} style={{ backgroundColor: "#f1f1f1" }}>
+              <Grid container direction={"row"} align={"center"} style={{ backgroundColor: "#f1f1f1" }}>
                 <Grid item xs={12} sm={6}>
                   <div className={classes.containerRight}>
-                    <Grid container direction={'row'} style={{ margin: "auto" }} spacing={32}>
+                    <Grid container direction={"row"} style={{ margin: "auto" }} spacing={32}>
                       <Grid item xs={12} sm={2}>
                         <div>
                           <img style={{ maxWidth: "52px", margin: "auto", paddingTop: "18px" }} src={MarkerIcon} alt="MarkerIcon" />

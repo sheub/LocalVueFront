@@ -5,8 +5,8 @@ import { Input, Grid, Typography, Button } from "@material-ui/core";
 
 import BackgroundImage from "./../assets/SEO_Background.jpeg"
 import axios from "axios";
-import { css } from 'react-emotion';
-import { ClipLoader } from 'react-spinners';
+import { css } from "react-emotion";
+import { ClipLoader } from "react-spinners";
 
 const CustomizedTable = React.lazy(() => import("./Table"));
 
@@ -109,9 +109,9 @@ class Analysis extends Component {
 
         this.setState({ isLoading: true });
 
-        let url = `https://localvue.de/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]}`;
-        var res = encodeURI(url);
-        axios.get(res, {
+        let url = `https://localvue.de/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
+        var query = encodeURI(url);
+        axios.get(query, {
             headers: { "Access-Control-Allow-Origin": "*" }
         })
             .then((response) => {
@@ -197,18 +197,18 @@ class Analysis extends Component {
                             </Grid>
                         </MuiThemeProvider>
                         <div className={classes.button} style={{ margin: 6 }}>
-                            <Grid container direction={'row'} justify={'space-between'} align={'flex-start'} spacing={32}>
+                            <Grid container direction={"row"} justify={"space-between"} align={"flex-start"} spacing={32}>
                                 <Grid item>
                                     <Button onClick={this._onClick} disabled={this.state.isLoading} variant="contained" color="primary">
                                         Analyse Starten
                                     </Button>
                                 </Grid>
-                                <div className='sweet-loading' style={{ verticalAlign: "bottom" }}>
+                                <div className="sweet-loading" style={{ verticalAlign: "bottom" }}>
                                     <ClipLoader
                                         className={override}
                                         sizeUnit={"px"}
                                         size={32}
-                                        color={'#123abc'}
+                                        color={"#123abc"}
                                         loading={this.state.isLoading}
                                     />
                                 </div>

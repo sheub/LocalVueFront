@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 import BackgroundImage from "./../assets/GPS_Smartphone.jpeg"
 
 const styles = theme => ({
     containerLeft: {
         flexGrow: 1,
-        padding: '0 32px',
+        padding: "0 32px",
         minHeight: "360px",
         marginTop: "12px"
     },
 
     button: {
-        marginTop: '48px'
+        marginTop: "48px"
     },
 
 });
@@ -22,7 +22,7 @@ const styles = theme => ({
 function Reason(props) {
     const { classes } = props;
     return (
-        <Grid container direction={'row'} align={'flex-start'} spacing={0}>
+        <Grid container direction={"row"} align={"flex-start"} spacing={0}>
             <Grid item xs={12} sm={6}>
                 <picture>
                     <source srcSet={BackgroundImage} type="image/webp" />
