@@ -41,8 +41,13 @@ const styles = theme => ({
         margin: "48px",
 
     },
-    heroContent: {
+    formContent: {
         maxWidth: 600,
+        margin: "0 auto",
+        padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
+    },
+    table: {
+        maxWidth: 800,
         margin: "0 auto",
         padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
     },
@@ -145,7 +150,7 @@ class Analysis extends Component {
         return (
 
             <div className={classes.root} ref={this.props.refProp}>
-                <div className={classes.heroContent}>
+                <div className={classes.formContent}>
                     <Grid container>
                         <MuiThemeProvider theme={materialTheme}>
                             <div style={{ marginBottom: "24px" }}>
@@ -213,16 +218,18 @@ class Analysis extends Component {
                                     />
                                 </div>
                             </Grid>
-                        </div >
-
-                        {(this.state.tableActive) ?
-                            <React.Suspense fallback={<div> </div>}>
-                                <CustomizedTable data={this.state.data} tableActive={this.state.tableActive} />
-                            </React.Suspense>
-                            : null
-                        }
+                        </div>
                     </Grid>
-                </div >
+                </div>
+                <div className={classes.table}>
+                {(this.state.tableActive) ?
+                    <React.Suspense fallback={<div> </div>}>
+                        <CustomizedTable data={this.state.data} tableActive={this.state.tableActive} />
+                    </React.Suspense>
+                    : null
+                }
+                </div>
+
             </div>
         );
     }

@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -9,29 +9,29 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 const CustomTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    body: {
+        fontSize: 14,
+    },
 }))(TableCell);
 
 const styles = theme => ({
-  root: {
-    width: "100%",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto",
-  },
-  table: {
-    minWidth: 700,
-  },
-  row: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.background.default,
+    root: {
+        width: "100%",
+        marginTop: theme.spacing.unit * 3,
+        overflowX: "auto",
     },
-  },
+    table: {
+        minWidth: 700,
+    },
+    row: {
+        "&:nth-of-type(odd)": {
+            backgroundColor: theme.palette.background.default,
+        },
+    },
 });
 
 
@@ -42,8 +42,8 @@ class CustomizedTable extends Component {
     }
     displayTable() {
         this.setState({ tableActive: true });
-      }
-    
+    }
+
     constructor(props) {
         super(props);
 
@@ -58,9 +58,8 @@ class CustomizedTable extends Component {
         let tableActive = this.props.tableActive;
         if (!tableActive) {
             return null;
-          }
-          else
-          {
+        }
+        else {
             return (
                 <Paper className={classes.root}>
                     <Table className={classes.table}>
@@ -69,9 +68,10 @@ class CustomizedTable extends Component {
                                 <CustomTableCell>Provider</CustomTableCell>
                                 <CustomTableCell >Title</CustomTableCell>
                                 <CustomTableCell >Address</CustomTableCell>
-                                <CustomTableCell >Categories</CustomTableCell>                                
+                                <CustomTableCell >Categories</CustomTableCell>
                                 <CustomTableCell >Phone</CustomTableCell>
                                 <CustomTableCell >Website</CustomTableCell>
+                                <CustomTableCell >url</CustomTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -84,8 +84,9 @@ class CustomizedTable extends Component {
                                         <CustomTableCell >{row[1].title}</CustomTableCell>
                                         <CustomTableCell >{row[1].address}</CustomTableCell>
                                         <CustomTableCell >{row[1].categories}</CustomTableCell>
-                                        <CustomTableCell style={{whiteSpace: "nowrap"}}>{row[1].phone}</CustomTableCell>
+                                        <CustomTableCell style={{ whiteSpace: "nowrap" }}>{row[1].phone}</CustomTableCell>
                                         <CustomTableCell >{row[1].website}</CustomTableCell>
+                                        <CustomTableCell dangerouslySetInnerHTML={{__html: row[1].url}}></CustomTableCell>
                                     </TableRow>
                                 );
                             })}
@@ -98,7 +99,7 @@ class CustomizedTable extends Component {
 }
 
 CustomizedTable.propTypes = {
-  classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(CustomizedTable);
