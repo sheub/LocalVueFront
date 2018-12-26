@@ -222,12 +222,12 @@ class Analysis extends Component {
                     </Grid>
                 </div>
                 <div className={classes.table}>
-                {(this.state.tableActive) ?
-                    <React.Suspense fallback={<div> </div>}>
-                        <CustomizedTable data={this.state.data} tableActive={this.state.tableActive} />
-                    </React.Suspense>
-                    : null
-                }
+                    {(this.state.tableActive) ?
+                        <React.Suspense fallback={<div> </div>}>
+                            <CustomizedTable data={this.state.data} tableActive={this.state.tableActive} />
+                        </React.Suspense>
+                        : null
+                    }
                 </div>
 
             </div>

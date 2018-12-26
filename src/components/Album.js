@@ -7,16 +7,41 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import MarkerIcon from "./../assets/marker.svg"
 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import MapIcon from '@material-ui/icons/Map';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import IconButton from '@material-ui/core/IconButton';
+import MoreIcon from '@material-ui/icons/MoreVert';
+
 import Analysis from "./Analysis";
 import Reason from "./Reason";
 import Footer from "./Footer";
 import Slider from "./Slider";
 
 const styles = theme => ({
-  appBar: {
-    position: "relative",
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+  title: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
   },
 
+  appBar: {
+    position: 'relative',
+  },
+  icon: {
+    marginRight: theme.spacing.unit * 2,
+  },
   heroUnit: {
     backgroundColor: theme.palette.background.paper,
   },
@@ -35,16 +60,32 @@ const styles = theme => ({
     margin: "auto",
     display: "flex",
   },
+  sectionDesktop: {
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+    },
+  },
+  sectionMobile: {
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+  },
 });
 
 
 class Album extends Component {
-
   constructor(props) {
     super(props);
 
     this.myRef = React.createRef() // create a ref object 
   }
+
+  state = {
+    anchorEl: null,
+    mobileMoreAnchorEl: null,
+  };
 
   scrollToMyRef = () => {
     window.scrollTo({
@@ -52,14 +93,95 @@ class Album extends Component {
       behavior: "smooth"
     })
   }
+
+  handleProfileMenuOpen = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleMenuClose = () => {
+    this.setState({ anchorEl: null });
+    this.handleMobileMenuClose();
+  };
+
+  handleMobileMenuOpen = event => {
+    this.setState({ mobileMoreAnchorEl: event.currentTarget });
+  };
+
+  handleMobileMenuClose = () => {
+    this.setState({ mobileMoreAnchorEl: null });
+  };
+
+
   render() {
 
+    const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
+    const isMenuOpen = Boolean(anchorEl);
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    const renderMenu = (
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={isMenuOpen}
+        onClose={this.handleMenuClose}
+      >
+        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+      </Menu>
+    );
+
+    const renderMobileMenu = (
+      <Menu
+        anchorEl={mobileMoreAnchorEl}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={isMobileMenuOpen}
+        onClose={this.handleMobileMenuClose}
+      >
+
+        <MenuItem onClick={this.handleProfileMenuOpen}>
+          <IconButton color="inherit">
+            <AccountCircle />
+          </IconButton>
+          <p>Profile</p>
+        </MenuItem>
+      </Menu>
+    );
+
 
     return (
       <React.Fragment>
         <div style={{ maxWidth: "1140px", margin: "auto" }}>
           <CssBaseline />
+          <AppBar position="static">
+            <Toolbar>
+              <MapIcon className={classes.icon} />
+              <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+                Local Vue
+          </Typography>
+              <div className={classes.grow} />
+              <div className={classes.sectionDesktop}>
+                <IconButton
+                  aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                  aria-haspopup="true"
+                  onClick={this.handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+              </div>
+              <div className={classes.sectionMobile}>
+                <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+                  <MoreIcon />
+                </IconButton>
+              </div>
+            </Toolbar>
+          </AppBar>
+          {renderMenu}
+          {renderMobileMenu}
+
           <main>
             <div className={classes.heroUnit}>
               <Grid container direction={"row"} align={"center"} style={{ backgroundColor: "#f1f1f1" }}>

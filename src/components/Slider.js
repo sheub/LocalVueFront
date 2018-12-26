@@ -57,19 +57,19 @@ export default class Responsive extends Component {
                     {/* <h2> Wo kann man gefunden werden? </h2> */}
                     <Slider {...settings}>
                         <div>
-                            <img style={{ maxWidth: "52px", margin:"auto"}} src={here} alt="here" />
+                            <img style={{ maxWidth: "52px", margin: "auto" }} src={here} alt="here" />
                         </div>
                         <div>
-                            <img style={{ maxWidth: "52px", margin:"auto" }} src={yelp} alt="yelp" />
+                            <img style={{ maxWidth: "52px", margin: "auto" }} src={yelp} alt="yelp" />
                         </div>
                         <div>
-                            <img style={{ maxWidth: "52px", margin:"auto" }} src={foursquare} alt="foursquare" />
+                            <img style={{ maxWidth: "52px", margin: "auto" }} src={foursquare} alt="foursquare" />
                         </div>
                         <div>
-                            <img style={{ maxWidth: "52px", margin:"auto" }} src={bing} alt="bing" />
+                            <img style={{ maxWidth: "52px", margin: "auto" }} src={bing} alt="bing" />
                         </div>
                         <div>
-                            <img style={{ maxWidth: "52px", margin:"auto" }} src={google} alt="Google" />
+                            <img style={{ maxWidth: "52px", margin: "auto" }} src={google} alt="Google" />
                         </div>
                     </Slider>
                 </div>

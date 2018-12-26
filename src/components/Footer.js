@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
     footer: {
-        backgroundColor: "#343a40",
+        backgroundColor: "#343A40",
         padding: theme.spacing.unit * 6,
     },
 });
@@ -58,9 +58,9 @@ class Footer extends Component {
                 <Grid container direction={"row"} justify={"space-between"} align={"flex-start"} spacing={32}>
                     <Grid item xs={6} sm={3}>
                     </Grid>
-                        <Grid item xs={6} sm={3}>
+                    <Grid item xs={6} sm={3}>
                         <Typography variant="subtitle1" align="right" color="secondary" component="p">
-                                Impressum
+                            Impressum
                             </Typography>
 
                         {/* <Typography variant="subtitle1" align="right" color="secondary" component="p">

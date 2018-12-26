@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
+
 import Paper from "@material-ui/core/Paper";
 
 const CustomTableCell = withStyles(theme => ({
@@ -86,7 +83,7 @@ class CustomizedTable extends Component {
                                         <CustomTableCell >{row[1].categories}</CustomTableCell>
                                         <CustomTableCell style={{ whiteSpace: "nowrap" }}>{row[1].phone}</CustomTableCell>
                                         <CustomTableCell >{row[1].website}</CustomTableCell>
-                                        <CustomTableCell dangerouslySetInnerHTML={{__html: row[1].url}}></CustomTableCell>
+                                        <CustomTableCell dangerouslySetInnerHTML={{ __html: row[1].url }}></CustomTableCell>
                                     </TableRow>
                                 );
                             })}
