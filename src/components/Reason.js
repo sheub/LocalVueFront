@@ -27,7 +27,7 @@ function Reason(props) {
                 <picture>
                     <source srcSet={BackgroundImage} type="image/webp" />
                     <source srcSet={BackgroundImage} type="image/jpeg" />
-                    <img style={{ margin: "auto", maxWidth: "100%", maxHeight: "360px", marginBottom: "-4px" }} src={BackgroundImage} alt="Orientierung" />
+                    <img style={{ margin: "auto", maxWidth: "100%", marginBottom: "-4px" }} src={BackgroundImage} alt="Orientierung" />
                 </picture>
             </Grid>
             <Grid item xs={12} sm={6}>

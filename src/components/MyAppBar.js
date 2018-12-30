@@ -3,29 +3,29 @@ import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
-import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import MapIcon from '@material-ui/icons/Map';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import IconButton from '@material-ui/core/IconButton';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+
+import IconButton from "@material-ui/core/IconButton";
+import MapIcon from "@material-ui/icons/Map";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import MoreIcon from "@material-ui/icons/MoreVert";
 
 
 const styles = theme => ({
 
     appBar: {
-        position: 'relative',
+        position: "relative",
     },
     icon: {
         marginRight: theme.spacing.unit * 2,
     },
     title: {
-        display: 'none',
-        [theme.breakpoints.up('sm')]: {
-            display: 'block',
+        display: "none",
+        [theme.breakpoints.up("sm")]: {
+            display: "block",
         },
     },
     grow: {
@@ -36,15 +36,15 @@ const styles = theme => ({
         marginRight: 20,
     },
     sectionMobile: {
-        display: 'flex',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
+        display: "flex",
+        [theme.breakpoints.up("md")]: {
+            display: "none",
         },
     },
     sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
+        display: "none",
+        [theme.breakpoints.up("md")]: {
+            display: "flex",
         },
     },
 });
@@ -84,8 +84,8 @@ class MyAppBar extends Component {
         const renderMenu = (
             <Menu
                 anchorEl={anchorEl}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                transformOrigin={{ vertical: "top", horizontal: "right" }}
                 open={isMenuOpen}
                 onClose={this.handleMenuClose}
             >
@@ -97,8 +97,8 @@ class MyAppBar extends Component {
         const renderMobileMenu = (
             <Menu
                 anchorEl={mobileMoreAnchorEl}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                transformOrigin={{ vertical: "top", horizontal: "right" }}
                 open={isMobileMenuOpen}
                 onClose={this.handleMobileMenuClose}
             >
@@ -114,7 +114,7 @@ class MyAppBar extends Component {
         return (
             <React.Fragment>
                 <div style={{ maxWidth: "1140px", margin: "auto" }}>
-                    <CssBaseline />
+                    {/* <CssBaseline /> */}
                     <AppBar position="static">
                         <Toolbar>
                             <MapIcon className={classes.icon} />
@@ -124,7 +124,7 @@ class MyAppBar extends Component {
                             <div className={classes.grow} />
                             <div className={classes.sectionDesktop}>
                                 <IconButton
-                                    aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                                    aria-owns={isMenuOpen ? "material-appbar" : undefined}
                                     aria-haspopup="true"
                                     onClick={this.handleProfileMenuOpen}
                                     color="inherit"
