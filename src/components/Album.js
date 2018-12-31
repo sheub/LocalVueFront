@@ -13,7 +13,7 @@ import Reason from "./Reason";
 import Footer from "./Footer";
 import Slider from "./Slider";
 
-const styles = theme => ({
+const styles = (theme) => ({
 
   heroUnit: {
     backgroundColor: theme.palette.background.paper,
@@ -51,10 +51,10 @@ class Album extends Component {
     window.scrollTo({
       top: this.myRef.current.offsetTop,
       behavior: "smooth"
-    })
+    });
   }
 
-  handleProfileMenuOpen = event => {
+  handleProfileMenuOpen = (event) => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -63,7 +63,7 @@ class Album extends Component {
     this.handleMobileMenuClose();
   };
 
-  handleMobileMenuOpen = event => {
+  handleMobileMenuOpen = (event) => {
     this.setState({ mobileMoreAnchorEl: event.currentTarget });
   };
 

@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import BackgroundImage from "./../assets/GPS_Smartphone.jpeg";
 
-const styles = theme => ({
+const styles = () => ({
     containerLeft: {
         flexGrow: 1,
         padding: "0 32px",

@@ -5,7 +5,7 @@ import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/cor
 
 import Paper from "@material-ui/core/Paper";
 
-const CustomTableCell = withStyles(theme => ({
+const CustomTableCell = withStyles((theme) => ({
     head: {
         backgroundColor: theme.palette.common.black,
         color: theme.palette.common.white,
@@ -15,7 +15,7 @@ const CustomTableCell = withStyles(theme => ({
     },
 }))(TableCell);
 
-const styles = theme => ({
+const styles = (theme) => ({
     root: {
         width: "100%",
         marginTop: theme.spacing.unit * 3,
@@ -72,7 +72,7 @@ class CustomizedTable extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {Object.entries(data).map(row => {
+                            {Object.entries(data).map((row) => {
                                 return (
                                     <TableRow className={classes.row} key={row[0]}>
                                         <CustomTableCell component="th" scope="row">
