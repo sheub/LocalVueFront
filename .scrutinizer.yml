@@ -6,3 +6,5 @@ build:
       tests:
         override:
           - js-scrutinizer-run
+          - command: eslint-run
+            use_website_config: true
