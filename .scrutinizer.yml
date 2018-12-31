@@ -1,10 +1,23 @@
 filter:
     excluded_paths: [node_modules/*, build/*, lib/*, test/*]
+checks:
+    javascript:
+        no_var: true
+        no_param_assign: true
+        no_loop_var_assign: true
+        no_implicit_undefined_return: true
+        no_else_return: true
+        no_alert: true
+        eqeqeq: true
 build:
-  nodes:
-    analysis:
-      tests:
-        override:
-          - js-scrutinizer-run
-          - command: eslint-run
-            use_website_config: true
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - js-scrutinizer-run
+                    -
+                        command: scss-lint-run
+                        use_website_config: true
+                    -
+                        command: csslint-run
+                        use_website_config: true            
