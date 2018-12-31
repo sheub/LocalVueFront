@@ -1,0 +1,8 @@
+filter:
+    excluded_paths: [node_modules/*, build/*, lib/*, test/*]
+build:
+  nodes:
+    analysis:
+      tests:
+        override:
+          - js-scrutinizer-run
