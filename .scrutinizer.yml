@@ -1,5 +1,5 @@
 filter:
-    excluded_paths: [node_modules/*, build/*, lib/*, test/*]
+    excluded_paths: [node_modules/*, build/*]
 checks:
     javascript:
         no_var: true
@@ -15,9 +15,6 @@ build:
             tests:
                 override:
                     - js-scrutinizer-run
-                    -
-                        command: scss-lint-run
-                        use_website_config: true
                     -
                         command: csslint-run
                         use_website_config: true            
