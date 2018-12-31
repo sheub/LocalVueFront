@@ -15,6 +15,4 @@ build:
             tests:
                 override:
                     - js-scrutinizer-run
-                    -
-                        command: csslint-run
-                        use_website_config: true            
+     
