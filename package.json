@@ -9,8 +9,8 @@
   "author": "sheub",
   "private": true,
   "engines": {
-    "node": ">=8.0.0",
-    "npm": ">=6.0.0"
+    "node": ">=11.2.0",
+    "npm": ">=6.4.1"
   },
   "dependencies": {
     "@material-ui/core": "^3.8.1",
