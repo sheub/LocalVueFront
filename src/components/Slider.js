@@ -3,11 +3,11 @@ import Slider from "react-slick";
 import "./../slick.min.css";
 import "./../slick-theme.min.css";
 import Typography from "@material-ui/core/Typography";
-import google from "./../assets/brands/google.svg"
-import here from "./../assets/brands/here.svg"
-import yelp from "./../assets/brands/yelp.svg"
-import foursquare from "./../assets/brands/foursquare.svg"
-import bing from "./../assets/brands/bing.svg"
+import google from "./../assets/brands/google.svg";
+import here from "./../assets/brands/here.svg";
+import yelp from "./../assets/brands/yelp.svg";
+import foursquare from "./../assets/brands/foursquare.svg";
+import bing from "./../assets/brands/bing.svg";
 
 
 export default class Responsive extends Component {

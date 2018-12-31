@@ -14,7 +14,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 
 
-const styles = theme => ({
+const styles = (theme) => ({
 
     appBar: {
         position: "relative",
@@ -56,7 +56,7 @@ class MyAppBar extends Component {
         mobileMoreAnchorEl: null,
     };
 
-    handleProfileMenuOpen = event => {
+    handleProfileMenuOpen = (event) => {
         this.setState({ anchorEl: event.currentTarget });
     };
 
@@ -65,7 +65,7 @@ class MyAppBar extends Component {
         this.handleMobileMenuClose();
     };
 
-    handleMobileMenuOpen = event => {
+    handleMobileMenuOpen = (event) => {
         this.setState({ mobileMoreAnchorEl: event.currentTarget });
     };
 

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import BackgroundImage from "./../assets/GPS_Smartphone.jpeg"
+import BackgroundImage from "./../assets/GPS_Smartphone.jpeg";
 
 const styles = theme => ({
     containerLeft: {

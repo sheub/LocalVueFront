@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { MuiThemeProvider, Typography, createMuiTheme, withStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
-const styles = theme => ({
+const styles = (theme) => ({
     footer: {
         backgroundColor: "#343A40",
         padding: theme.spacing.unit * 6,
@@ -61,7 +61,7 @@ class Footer extends Component {
                     <Grid item xs={6} sm={3}>
                         <Typography variant="subtitle1" align="right" color="secondary" component="p">
                             Impressum
-                            </Typography>
+                        </Typography>
 
                         {/* <Typography variant="subtitle1" align="right" color="secondary" component="p">
                         About

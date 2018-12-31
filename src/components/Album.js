@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-import MarkerIcon from "./../assets/marker.svg"
+import MarkerIcon from "./../assets/marker.svg";
 
 import MyAppBar from "./MyAppBar";
 import Analysis from "./Analysis";
@@ -39,7 +39,7 @@ class Album extends Component {
   constructor(props) {
     super(props);
 
-    this.myRef = React.createRef() // create a ref object 
+    this.myRef = React.createRef(); // create a ref object 
   }
 
   state = {
