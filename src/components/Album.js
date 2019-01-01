@@ -6,12 +6,22 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import MarkerIcon from "./../assets/marker.svg";
+import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import MyAppBar from "./MyAppBar";
 import Analysis from "./Analysis";
 import Reason from "./Reason";
 import Footer from "./Footer";
 import Slider from "./Slider";
+
+
+const config = {
+  issuer: 'https://dev-693892.oktapreview.com/oauth2/default',
+  redirect_uri: window.location.origin + '/implicit/callback',
+  client_id: '0oaimn7qwi4M2nNLu0h7'
+}
+
 
 const styles = (theme) => ({
 
@@ -82,6 +92,12 @@ class Album extends Component {
       <React.Fragment>
         <div style={{ maxWidth: "1140px", margin: "auto" }}>
           <CssBaseline />
+          <Router>
+            <Security issuer={config.issuer}
+                   client_id={config.client_id}
+                redirect_uri={config.redirect_uri}
+            >
+
           <MyAppBar />
 
           <main>
@@ -126,6 +142,17 @@ class Album extends Component {
               <Analysis refProp={this.myRef} />
             </div>
           </main>
+
+                      {/* <Navbar />
+            <Container text style={{ marginTop: '7em' }}>
+                <Route path="/" exact component={Home} />
+                <Route path="/implicit/callback" component={ImplicitCallback} />
+                <SecureRoute path="/trivia" component={Trivia} />
+            </Container> */}
+        </Security>
+      </Router>
+
+
         </div>
         <Slider />
         <Footer />

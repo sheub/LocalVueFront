@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
+import { withAuth } from '@okta/okta-react';
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -49,12 +50,47 @@ const styles = (theme) => ({
     },
 });
 
-class MyAppBar extends Component {
+ 
 
-    state = {
-        anchorEl: null,
-        mobileMoreAnchorEl: null,
-    };
+class MyAppBar extends Component {
+    // export default withAuth(class Navbar extends Component {
+        constructor(props) {
+          super(props);
+          this.state = { authenticated: null,
+                         anchorEl: null,
+                         mobileMoreAnchorEl: null, };
+          this.checkAuthentication = this.checkAuthentication.bind(this);
+          this.login = this.login.bind(this);
+          this.logout = this.logout.bind(this);
+        }
+          
+    // state = {
+    //     anchorEl: null,
+    //     mobileMoreAnchorEl: null,
+    // };
+
+    async componentDidMount() {
+        this.checkAuthentication();
+      }
+    
+      async componentDidUpdate() {
+        this.checkAuthentication();
+      }
+    
+      async login() {
+        this.props.auth.login('/');
+      }
+    
+      async logout() {
+        this.props.auth.logout('/');
+      }
+    
+      async checkAuthentication() {
+        const authenticated = await this.props.auth.isAuthenticated();
+        if (authenticated !== this.state.authenticated) {
+          this.setState({ authenticated });
+        }
+      }
 
     handleProfileMenuOpen = (event) => {
         this.setState({ anchorEl: event.currentTarget });
@@ -91,6 +127,10 @@ class MyAppBar extends Component {
             >
                 <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
                 <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+                {this.state.authenticated === true && <Menu.Item id="trivia-button" as="a" href="/trivia">Trivia Game</Menu.Item>}
+            {this.state.authenticated === true && <Menu.Item id="logout-button" as="a" onClick={this.logout}>Logout</Menu.Item>}
+            {this.state.authenticated === false && <Menu.Item as="a" onClick={this.login}>Login</Menu.Item>}
+  
             </Menu>
         );
 
