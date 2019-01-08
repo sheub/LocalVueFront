@@ -15,16 +15,22 @@
   "dependencies": {
     "@material-ui/core": "^3.8.1",
     "@material-ui/icons": "^3.0.1",
-    "@okta/okta-react": "^1.1.4",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "localforage": "^1.7.3",
+    "nprogress": "^0.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
+    "react-click-outside": "^3.0.1",
+    "react-document-title": "^2.0.3",
     "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.2",
     "react-slick": "^0.23.2",
-    "react-spinners": "^0.4.8"
+    "react-spinners": "^0.4.8",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,5 +48,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {}
+  "devDependencies": {
+    "lodash": "^4.17.11"
+  }
 }
