@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import DocumentTitle from 'react-document-title';
-import { signInUser, googleSignIn } from '../../actions/auth';
-import { getIntendedUrl } from '../../helpers/auth';
-import { destructServerErrors, hasError, getError } from '../../helpers/error';
-import GoogleSignIn from '../../GoogleSignIn';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+import { signInUser, googleSignIn } from "../../actions/auth";
+import { getIntendedUrl } from "../../helpers/auth";
+import { destructServerErrors, hasError, getError } from "../../helpers/error";
+
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import withMobileDialog from "@material-ui/core/withMobileDialog";
 
 const propTypes = {
   signInUser: PropTypes.func.isRequired,
@@ -15,126 +22,150 @@ const propTypes = {
 };
 
 class SignIn extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
-      errors: ''
+      email: "",
+      password: "",
+      errors: "",
+      open: true
     };
   }
 
-  signInSuccess () {
+  handleClose = () => {
+    this.props.handleClose();
+  };
+
+
+  signInSuccess() {
     getIntendedUrl().then(url => this.props.history.push(url));
+    this.setState({ open: false });
+    this.handleClose();
   }
 
-  handleSubmit (e) {
+  handleSubmit(e) {
     e.preventDefault();
-    this.props.signInUser(this.state)
+    this.props
+      .signInUser(this.state)
       .then(response => this.signInSuccess())
       .catch(error => this.setState({ errors: destructServerErrors(error) }));
   }
 
-  handleInputChange (e) {
+  handleInputChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
       errors: {
         ...this.state.errors,
-        ...{ [e.target.name]: '' }
+        ...{ [e.target.name]: "" }
       }
     });
   }
 
-  handleGoogleSignInSuccess (credentials) {
-    this.props.googleSignIn(credentials)
+  handleGoogleSignInSuccess(credentials) {
+    this.props
+      .googleSignIn(credentials)
       .then(response => this.signInSuccess())
-      .catch(error => this.setState({ errors: destructServerErrors(error) })); ;
+      .catch(error => this.setState({ errors: destructServerErrors(error) }));
+    this.setState({ open: false });
   }
 
-  render () {
+  render() {
+    const { fullScreen } = this.props;
+
     return (
-      <DocumentTitle title={`Sign in `}>
-        <div className="flex justify-center items-center w-full py-4 flex-col min-h-screen bg-grey-lightest">
+      <Dialog
+        fullScreen={fullScreen}
+        open={this.state.open}
+        onClose={this.handleClose}
+        aria-labelledby="form-dialog-title"
+      >
 
-          <div className="p-4">
-            <Link
-              to="/"
-              className="text-grey-darkest text-bold no-underline text-indigo text-2xl">Laravel React SPA
-            </Link>
-          </div>
+        <form onSubmit={e => this.handleSubmit(e)} method="POST">
+          <DialogTitle id="form-dialog-title">Sign In</DialogTitle>
+          <DialogContent>
+            {/* E-mail textfield */}
+            <TextField
+              value={this.state.email}
+              onChange={e => this.handleInputChange(e)}
+              id="email"
+              type="email"
+              name="email"
+              errorText = "Please Enter valid email"
+              required = {true}
+              autoFocus
+              margin="dense"
+              label="Email Address"
+              fullWidth
+            />
+            {hasError(this.state.errors, "email") && (
+              <p className="text-red text-xs pt-2">
+                {getError(this.state.errors, "email")}
+              </p>
+            )}
 
-          <div className="border rounded bg-white border-grey-light w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/4 px-8 py-4">
-            <form onSubmit={e => this.handleSubmit(e)}
-              method="POST">
-              <h2 className="text-center mt-4 mb-6 text-grey-darkest">Sign in to Level</h2>
-              <div className="mb-4">
-                <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="email">
-                  Email address
-                </label>
-                <input
-                  value={this.state.email}
-                  onChange={e => this.handleInputChange(e)}
-                  id="email"
-                  type="email"
-                  name="email"
-                  className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker ${hasError(this.state.errors, 'email') ? 'border-red' : ''}`}
-                  placeholder="jane@example.com"
-                  required
-                  autoFocus
-                />
+            {/* Password textfield */}
+            <TextField
+              value={this.state.password}
+              onChange={e => this.handleInputChange(e)}
+              type="password"
+              id="password"
+              name="password"
+              required = {true}
+              margin="dense"
+              label="Password"
+              fullWidth
+            />
+          </DialogContent>
 
-                {hasError(this.state.errors, 'email') &&
-                  <p className="text-red text-xs pt-2">{getError(this.state.errors, 'email')}</p>
-                }
+          <DialogActions>
+            <Button type="submit" color="primary">
+              Sign In
+            </Button>
+          </DialogActions>
+        </form>
 
-              </div>
 
-              <div className="mb-6">
-                <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password"> Password </label>
-                <input
-                  value={this.state.password}
-                  onChange={e => this.handleInputChange(e)}
-                  type="password"
-                  id="password"
-                  name="password"
-                  className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                  required />
-
-              </div>
-
-              <div className="mb-2">
-                <button type="submit"
-                  className="border rounded-full p-3 text-white bg-indigo w-full font-bold hover:bg-indigo-dark">Sign in</button>
-              </div>
-            </form>
-
-          </div>
-
-          <div className="p-4 text-grey-dark text-sm flex flex-col items-center">
+        {/* <div className="p-4 text-grey-dark text-sm flex flex-col items-center">
             <div>
               <span>Create a New Account? </span>
               <Link to="/register" className="no-underline text-grey-darker font-bold">Register</Link>
             </div>
 
             <div className="mt-2">
-              <strong>Help:</strong> <Link to="/forgot-password" className="no-underline text-grey-dark text-xs">Reset Password</Link>
+              <strong>Help:</strong>{" "}
+              <Link
+                to="/forgot-password"
+                className="no-underline text-grey-dark text-xs"
+              >
+                Reset Password
+              </Link>
             </div>
           </div>
 
           <div className="border rounded bg-white border-grey-light w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/4 px-8 py-4">
-            <GoogleSignIn googleSignInSuccess={(credentials) => this.handleGoogleSignInSuccess(credentials)} />
-          </div>
-        </div>
-      </DocumentTitle>
+            <GoogleSignIn
+              googleSignInSuccess={credentials =>
+                this.handleGoogleSignInSuccess(credentials)
+              }
+            />
+          </div> */}
+
+      </Dialog>
     );
   }
 }
 
 SignIn.propTypes = propTypes;
 
+SignIn.propTypes = {
+  fullScreen: PropTypes.bool.isRequired,
+};
 const mapDispatchToProps = {
   signInUser,
   googleSignIn
 };
 
-export default connect(null, mapDispatchToProps)(withRouter(SignIn));
+export default connect(
+  null,
+  mapDispatchToProps
+)(withRouter(withMobileDialog({ breakpoint: "xs" })(SignIn)));

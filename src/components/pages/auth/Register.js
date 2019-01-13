@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField';
+
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import DocumentTitle from 'react-document-title';
@@ -64,14 +66,16 @@ class Register extends Component {
           </div>
 
           <div className="bg-white border rounded border-grey-light w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/4 px-8 py-4">
-            <form onSubmit={e => this.handleSubmit(e)}
-              method="POST"
-            >
+            <form onSubmit={e => this.handleSubmit(e)} method="POST" >
+
               <h2 className="text-center mt-4 mb-6 text-grey-darker">Register</h2>
               <div className="mb-4">
-                <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="username">
+                {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="username">
                   Username
                 </label>
+                
+                password_confirmation
+
                 <input
                   value={this.state.name}
                   onChange={e => this.handleInputChange(e)}
@@ -85,14 +89,39 @@ class Register extends Component {
 
                 {hasError(this.state.errors, 'name') &&
                   <p className="text-red text-xs pt-2">{getError(this.state.errors, 'name')}</p>
-                }
+                } */}
+                <TextField
+                  value={this.state.name}
+                  onChange={e => this.handleInputChange(e)}
+                  id="username"
+                  name="name"
+                  type="text"
+                  margin="dense"
+                  label="name"
+                  required
+                  autoFocus
+                  
+                />
               </div>
 
               <div className="mb-4">
-                <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="email">
+                {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="email">
                   Email address
-                </label>
-                <input
+                </label> */}
+                <TextField
+                  value={this.state.email}
+                  onChange={e => this.handleInputChange(e)}
+                  id="email"
+                  name="email"
+                  type="email"
+                  // errorText = "Please Enter valid email"
+                  required
+                  autoFocus
+                  margin="dense"
+                  label="Email Address"
+                  
+                />
+                {/* <input
                   value={this.state.email}
                   onChange={e => this.handleInputChange(e)}
                   id="email"
@@ -100,16 +129,16 @@ class Register extends Component {
                   type="email"
                   className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, 'name') ? 'border-red' : ''}`}
                   placeholder="jane@example.com"
-                  required />
+                  required /> */}
 
-                {hasError(this.state.errors, 'email') &&
+                {/* {hasError(this.state.errors, 'email') &&
                   <p className="text-red text-xs pt-2">{getError(this.state.errors, 'email')}</p>
-                }
+                } */}
               </div>
 
               <div className="mb-4">
-                <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password"> Password </label>
-                <input
+                {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password"> Password </label> */}
+                {/* <input
                   value={this.state.password}
                   onChange={e => this.handleInputChange(e)}
                   type="password"
@@ -117,15 +146,39 @@ class Register extends Component {
                   name="password"
                   className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, 'password') ? 'border-red' : ''}`}
                   minLength={6}
-                  required />
+                  required /> */}
+                  <TextField
+                    value={this.state.password}
+                    onChange={e => this.handleInputChange(e)}
+                    type="password"
+                    id="password"
+                    name="password"
+                    required = {true}
+                    margin="dense"
+                    label="Password"
+                    minLength={6}
+                    
+                  />
 
-                {hasError(this.state.errors, 'password') &&
+                {/* {hasError(this.state.errors, 'password') &&
                   <p className="text-red text-xs pt-2">{getError(this.state.errors, 'password')}</p>
-                }
+                } */}
               </div>
 
               <div className="mb-4">
-                <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password-confirmation"> Password confirmation </label>
+              <TextField
+                    value={this.state.password_confirmation}
+                    onChange={e => this.handleInputChange(e)}
+                    type="password"
+                    id="password-confirmation"
+                    name="password-confirmation"
+                    required = {true}
+                    margin="dense"
+                    label="password-confirmation"
+                    minLength={6}
+                    
+                  />
+                {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password-confirmation"> Password confirmation </label>
                 <input
                   value={this.state.password_confirmation}
                   onChange={e => this.handleInputChange(e)}
@@ -133,7 +186,7 @@ class Register extends Component {
                   id="password-confirmation"
                   name="password_confirmation"
                   className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, 'password') ? 'border-red' : ''}`}
-                  required />
+                  required /> */}
               </div>
 
               <div className="mb-2">

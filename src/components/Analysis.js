@@ -116,7 +116,14 @@ class Analysis extends Component {
 
         this.setState({ isLoading: true });
 
-        let url = `https://localvue.de/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
+        let url = '';
+
+        if(process.env.NODE_ENV ==='development'){
+            url = `http://localhost:8000/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
+        }
+        else{
+            url = `https://localvue.de/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
+        }
         var query = encodeURI(url);
         axios.get(query, {
             headers: { "Access-Control-Allow-Origin": "*" }
@@ -127,7 +134,7 @@ class Analysis extends Component {
                     isLoading: false,
                     tableActive: true
                 });
-                // console.log(response.data);
+                console.log(response.data);
             })
             .catch((err) => {
                 this.setState({ data: err, isLoading: false });

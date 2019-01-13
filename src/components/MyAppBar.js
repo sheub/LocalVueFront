@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-import { withAuth } from '@okta/okta-react';
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,6 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MapIcon from "@material-ui/icons/Map";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
+const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
 
 
 const styles = (theme) => ({
@@ -50,57 +53,46 @@ const styles = (theme) => ({
     },
 });
 
- 
+// const propTypes = {
+//     authenticated: PropTypes.bool.isRequired
+//   };
 
 class MyAppBar extends Component {
-    // export default withAuth(class Navbar extends Component {
-        constructor(props) {
-          super(props);
-          this.state = { authenticated: null,
-                         anchorEl: null,
-                         mobileMoreAnchorEl: null, };
-          this.checkAuthentication = this.checkAuthentication.bind(this);
-          this.login = this.login.bind(this);
-          this.logout = this.logout.bind(this);
-        }
-          
-    // state = {
-    //     anchorEl: null,
-    //     mobileMoreAnchorEl: null,
-    // };
 
-    async componentDidMount() {
-        this.checkAuthentication();
-      }
-    
-      async componentDidUpdate() {
-        this.checkAuthentication();
-      }
-    
-      async login() {
-        this.props.auth.login('/');
-      }
-    
-      async logout() {
-        this.props.auth.logout('/');
-      }
-    
-      async checkAuthentication() {
-        const authenticated = await this.props.auth.isAuthenticated();
-        if (authenticated !== this.state.authenticated) {
-          this.setState({ authenticated });
-        }
-      }
+    constructor(props) {
+        super(props);
+        this.state = {
+            anchorEl: null,
+            mobileMoreAnchorEl: null,
+            SignInFormVisible: false,
+        };
+        this.handleMenuClose = this.handleMenuClose.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+    }
 
+    // OpenClose Menu
     handleProfileMenuOpen = (event) => {
         this.setState({ anchorEl: event.currentTarget });
     };
+
+
+    openSignIn = () => {
+        this.setState({ anchorEl: null, SignInFormVisible: true });
+        this.handleMobileMenuClose();
+    };
+
+    handleClose = () => {
+        this.setState({
+            SignInFormVisible: false
+        });
+    }
 
     handleMenuClose = () => {
         this.setState({ anchorEl: null });
         this.handleMobileMenuClose();
     };
 
+    // OpenClose mobile menu
     handleMobileMenuOpen = (event) => {
         this.setState({ mobileMoreAnchorEl: event.currentTarget });
     };
@@ -113,11 +105,12 @@ class MyAppBar extends Component {
     render() {
 
         const { anchorEl, mobileMoreAnchorEl } = this.state;
-        const { classes } = this.props;
+        const { classes, authenticated } = this.props;
         const isMenuOpen = Boolean(anchorEl);
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
         const renderMenu = (
+
             <Menu
                 anchorEl={anchorEl}
                 anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -125,13 +118,23 @@ class MyAppBar extends Component {
                 open={isMenuOpen}
                 onClose={this.handleMenuClose}
             >
-                <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-                <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
-                {this.state.authenticated === true && <Menu.Item id="trivia-button" as="a" href="/trivia">Trivia Game</Menu.Item>}
-            {this.state.authenticated === true && <Menu.Item id="logout-button" as="a" onClick={this.logout}>Logout</Menu.Item>}
-            {this.state.authenticated === false && <Menu.Item as="a" onClick={this.login}>Login</Menu.Item>}
-  
+                {authenticated ?
+                    <Link
+                        to={`/profile/${this.state.user.id}`}
+                        className="text-2xl font-bold lg:text-sm lg:font-light capitalize text-sm text-grey-darker underline lg:no-underline">
+                        {this.state.user.name}
+                    </Link>
+                    // <Link onClick={this.handleMenuClose}>Profile</Link>
+
+                    : <div>
+                        <MenuItem onClick={this.openSignIn}>Sign In</MenuItem>
+
+                        {/* <Link to="/signin" onClick={this.handleMenuClose}>Sign In</Link> */}
+                        <Link to="/register" onClick={this.handleMenuClose}>Register</Link>
+                    </div>
+                }
             </Menu>
+
         );
 
         const renderMobileMenu = (
@@ -158,9 +161,12 @@ class MyAppBar extends Component {
                     <AppBar position="static">
                         <Toolbar>
                             <MapIcon className={classes.icon} />
-                            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                                Local Vue
+                            <Link to="/" style={{ textDecoration: 'none', color: "white" }}>
+
+                                <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+                                    Local Vue
                             </Typography>
+                            </Link>
                             <div className={classes.grow} />
                             <div className={classes.sectionDesktop}>
                                 <IconButton
@@ -181,6 +187,12 @@ class MyAppBar extends Component {
                     </AppBar>
                     {renderMenu}
                     {renderMobileMenu}
+                    {this.state.SignInFormVisible ?
+                        <React.Suspense fallback={<div> </div>}>
+                            <SignIn handleClose={this.handleClose} />
+                        </React.Suspense>
+                        : null
+                    }
                 </div>
             </React.Fragment>
         );
@@ -190,5 +202,5 @@ class MyAppBar extends Component {
 MyAppBar.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-
-export default withStyles(styles)(MyAppBar);
+const mapStateToProps = ({ auth: { authenticated } }) => ({ authenticated });
+export default connect(mapStateToProps)(withStyles(styles)(MyAppBar));
