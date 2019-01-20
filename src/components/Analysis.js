@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core";
 import { Input, Grid, Typography, Button } from "@material-ui/core";
 
-// import BackgroundImage from "./../assets/SEO_Background.jpeg";
-import BackgroundImage from "./../assets/stars-1458847827jJb.jpg";
+import BackgroundImage from "./../assets/SEO_Background.jpeg";
+// import BackgroundImage from "./../assets/stars-1458847827jJb.jpg";
 
 import axios from "axios";
 import { css } from "react-emotion";
