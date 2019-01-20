@@ -61,9 +61,8 @@ class App extends Component {
             <AuthRoute path="/home" component={Album} />              
             <AuthRoute path="/profile/:id" component={Profile} />
             {/* <Route component={NotFound} /> */}
-            
           </Switch>
-        </div>  
+        </div>
         <Slider />
         <Footer />
         </div>

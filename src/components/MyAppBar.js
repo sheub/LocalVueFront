@@ -16,6 +16,7 @@ import MapIcon from "@material-ui/icons/Map";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
+const MyLink = props => <Link to="/register" {...props} />
 
 
 const styles = (theme) => ({
@@ -130,7 +131,10 @@ class MyAppBar extends Component {
                         <MenuItem onClick={this.openSignIn}>Sign In</MenuItem>
 
                         {/* <Link to="/signin" onClick={this.handleMenuClose}>Sign In</Link> */}
-                        <Link to="/register" onClick={this.handleMenuClose}>Register</Link>
+                        {/* <Link to="/register" onClick={this.handleMenuClose}>Register</Link> */}
+                        <MenuItem component={MyLink} onClick={this.handleMenuClose}>
+                            Register
+                        </MenuItem>
                     </div>
                 }
             </Menu>
