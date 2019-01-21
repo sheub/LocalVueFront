@@ -51,8 +51,8 @@ class App extends Component {
        <div className="App">
         <div style={{ maxWidth: "1140px", margin: "auto" }}>
         <MyAppBar />
+        
           <Switch>
-
             <GuestRoute exact path="/" component={Album} />            
             <GuestRoute path="/register" component={Register} />
             {/* <GuestRoute path="/signin" component={SignIn} /> */}

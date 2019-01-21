@@ -66,6 +66,7 @@ class MyAppBar extends Component {
             anchorEl: null,
             mobileMoreAnchorEl: null,
             SignInFormVisible: false,
+            user: this.props.auth.user,
         };
         this.handleMenuClose = this.handleMenuClose.bind(this);
         this.handleClose = this.handleClose.bind(this);
@@ -106,7 +107,7 @@ class MyAppBar extends Component {
     render() {
 
         const { anchorEl, mobileMoreAnchorEl } = this.state;
-        const { classes, authenticated } = this.props;
+        const { classes, auth } = this.props;
         const isMenuOpen = Boolean(anchorEl);
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -119,7 +120,7 @@ class MyAppBar extends Component {
                 open={isMenuOpen}
                 onClose={this.handleMenuClose}
             >
-                {authenticated ?
+                {auth.authenticated ?
                     <Link
                         to={`/profile/${this.state.user.id}`}
                         className="text-2xl font-bold lg:text-sm lg:font-light capitalize text-sm text-grey-darker underline lg:no-underline">
@@ -206,5 +207,6 @@ class MyAppBar extends Component {
 MyAppBar.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-const mapStateToProps = ({ auth: { authenticated } }) => ({ authenticated });
+const mapStateToProps = ({ auth }) => ({ auth });
+// const mapStateToProps = ({ auth: { authenticated } }) => ({ authenticated });
 export default connect(mapStateToProps)(withStyles(styles)(MyAppBar));
