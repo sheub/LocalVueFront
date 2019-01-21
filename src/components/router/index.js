@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
-// import SignIn from '../pages/auth/SignIn';
-import Register from '../pages/auth/Register';
-import ForgotPassword from '../pages/auth/ForgotPassword';
-import ResetPassword from '../pages/auth/ResetPassword';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+// import SignIn from "../pages/auth/SignIn";
+import Register from "../pages/auth/Register";
+import ForgotPassword from "../pages/auth/ForgotPassword";
+import ResetPassword from "../pages/auth/ResetPassword";
 
 
-// import NotFound from '../pages/404';
-import PropTypes from 'prop-types';
-// import Welcome from '../pages/Welcome';
-// import Home from '../pages/Home';
-import Profile from '../pages/Profile';
-import AuthRoute from './AuthRoute';
-import {connect} from 'react-redux';
-import {setLoading} from '../actions/loading';
-import {initAuthFromExistingToken} from '../actions/auth';
-import GuestRoute from './GuestRoute';
+// import NotFound from "../pages/404";
+import PropTypes from "prop-types";
+// import Welcome from "../pages/Welcome";
+// import Home from "../pages/Home";
+import Profile from "../pages/Profile";
+import AuthRoute from "./AuthRoute";
+import {connect} from "react-redux";
+import {setLoading} from "../actions/loading";
+import {initAuthFromExistingToken} from "../actions/auth";
+import GuestRoute from "./GuestRoute";
 
 import MyAppBar from "./../MyAppBar";
 import Album from "./../Album";

@@ -116,9 +116,9 @@ class Analysis extends Component {
 
         this.setState({ isLoading: true });
 
-        let url = '';
+        let url = "";
 
-        if(process.env.NODE_ENV ==='development'){
+        if(process.env.NODE_ENV ==="development"){
             url = `http://localhost:8000/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
         }
         else{

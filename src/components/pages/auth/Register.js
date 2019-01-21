@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import React, { Component } from "react";
+import TextField from "@material-ui/core/TextField";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import DocumentTitle from 'react-document-title';
-import PropTypes from 'prop-types';
-import { registerUser, googleSignIn } from '../../actions/auth';
-import { destructServerErrors, hasError, getError } from '../../helpers/error';
-import Button from '@material-ui/core/Button';
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import DocumentTitle from "react-document-title";
+import PropTypes from "prop-types";
+import { registerUser, googleSignIn } from "../../actions/auth";
+import { destructServerErrors, hasError, getError } from "../../helpers/error";
+import Button from "@material-ui/core/Button";
 // const SignIn = React.lazy(() => import("./SignIn"));
-// import GoogleSignIn from '../../GoogleSignIn';
+// import GoogleSignIn from "../../GoogleSignIn";
 
 const propTypes = {
   registerUser: PropTypes.func.isRequired,
@@ -31,7 +31,7 @@ const styles = theme => ({
   },
   paper: {
     padding: theme.spacing.unit * 2,
-    margin: 'auto',
+    margin: "auto",
     maxWidth: 500,
   },
   button: {
@@ -48,18 +48,18 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      password: '',
-      password_confirmation: '',
-      errors: '',
+      name: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+      errors: "",
       SignInFormVisible: false,
 
     };
   }
 
   registerSuccess() {
-    this.props.history.push('/home');
+    this.props.history.push("/home");
   }
 
   handleSubmit(e) {
@@ -74,7 +74,7 @@ class Register extends Component {
       [e.target.name]: e.target.value,
       errors: {
         ...this.state.errors,
-        ...{ [e.target.name]: '' }
+        ...{ [e.target.name]: "" }
       }
     });
   }
@@ -133,8 +133,8 @@ class Register extends Component {
                   required
                   autoFocus />
 
-                {hasError(this.state.errors, 'name') &&
-                  <p className="text-red text-xs pt-2">{getError(this.state.errors, 'name')}</p>
+                {hasError(this.state.errors, "name") &&
+                  <p className="text-red text-xs pt-2">{getError(this.state.errors, "name")}</p>
                 } */}
                     <TextField
                       value={this.state.name}
@@ -174,12 +174,12 @@ class Register extends Component {
                   id="email"
                   name="email"
                   type="email"
-                  className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, 'name') ? 'border-red' : ''}`}
+                  className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, "name") ? "border-red" : ""}`}
                   placeholder="jane@example.com"
                   required /> */}
 
-                    {/* {hasError(this.state.errors, 'email') &&
-                  <p className="text-red text-xs pt-2">{getError(this.state.errors, 'email')}</p>
+                    {/* {hasError(this.state.errors, "email") &&
+                  <p className="text-red text-xs pt-2">{getError(this.state.errors, "email")}</p>
                 } */}
                   </div>
 
@@ -191,7 +191,7 @@ class Register extends Component {
                   type="password"
                   id="password"
                   name="password"
-                  className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, 'password') ? 'border-red' : ''}`}
+                  className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, "password") ? "border-red" : ""}`}
                   minLength={6}
                   required /> */}
                     <TextField
@@ -208,8 +208,8 @@ class Register extends Component {
 
                     />
 
-                    {/* {hasError(this.state.errors, 'password') &&
-                  <p className="text-red text-xs pt-2">{getError(this.state.errors, 'password')}</p>
+                    {/* {hasError(this.state.errors, "password") &&
+                  <p className="text-red text-xs pt-2">{getError(this.state.errors, "password")}</p>
                 } */}
                   </div>
 
@@ -234,7 +234,7 @@ class Register extends Component {
                   type="password"
                   id="password-confirmation"
                   name="password_confirmation"
-                  className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, 'password') ? 'border-red' : ''}`}
+                  className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, "password") ? "border-red" : ""}`}
                   required /> */}
 
                   </div>

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { NavLink, Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { logoutUser } from './actions/auth';
+import React, { Component } from "react";
+import { NavLink, Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logoutUser } from "./actions/auth";
 
 const propTypes = {
   auth: PropTypes.object.isRequired,
@@ -34,7 +34,7 @@ class AuthNav extends Component {
   }
 
   handleLogout () {
-    this.props.logoutUser(() => this.props.history.push('/'));
+    this.props.logoutUser(() => this.props.history.push("/"));
   }
 
   render () {
@@ -55,9 +55,9 @@ class AuthNav extends Component {
             <div
               onClick={() => this.toggleMobileNav()}
               id="sidebar-open"
-              className='z-50 flex px-6 items-center lg:hidden text-grey-darker'>
+              className="z-50 flex px-6 items-center lg:hidden text-grey-darker">
 
-              <span className={`svg-full ${!this.state.hideMobileNav ? 'mobile-nav-show' : ''}`}>
+              <span className={`svg-full ${!this.state.hideMobileNav ? "mobile-nav-show" : ""}`}>
                 MENU &nbsp;
                 <svg className="fill-current" role="button" xmlns="http://www.w3.org/2000/svg" width="35" height="12" viewBox="0 0 35 12">
                   <rect width="35" height="2"></rect>
@@ -69,13 +69,13 @@ class AuthNav extends Component {
           </div>
 
           <div
-            className={`right lg:flex pt-8 lg:pt-0 right fixed lg:relative bg-white w-full lg:w-auto h-screen lg:h-auto ${this.state.hideMobileNav ? 'mobile-hidden' : ''}`}>
+            className={`right lg:flex pt-8 lg:pt-0 right fixed lg:relative bg-white w-full lg:w-auto h-screen lg:h-auto ${this.state.hideMobileNav ? "mobile-hidden" : ""}`}>
             <ul className="mt-8 py-8 lg:py-0 lg:mt-0 list-reset flex items-center flex-col lg:flex-row">
               <li
                 onClick={() => this.closeMobileNav()}
                 className="px-4 py-3 lg:py-0">
                 <NavLink
-                  to='/home'
+                  to="/home"
                   className="capitalize text-2xl font-bold lg:text-sm lg:font-light text-grey-darker underline lg:no-underline">
                   Home
                 </NavLink>
@@ -84,7 +84,7 @@ class AuthNav extends Component {
                 onClick={() => this.closeMobileNav()}
                 className="px-4 py-3 lg:py-0">
                 <NavLink
-                  to='/home'
+                  to="/home"
                   className="capitalize text-2xl font-bold lg:text-sm lg:font-light text-grey-darker underline lg:no-underline">
                   Messages
                 </NavLink>
@@ -94,7 +94,7 @@ class AuthNav extends Component {
                 onClick={() => this.closeMobileNav()}
                 className="px-4 py-3 lg:py-0">
                 <NavLink
-                  to='/home'
+                  to="/home"
                   className="capitalize text-2xl font-bold lg:text-sm lg:font-light text-grey-darker underline lg:no-underline">
                   Notifications
                 </NavLink>

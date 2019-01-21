@@ -128,7 +128,7 @@ class Album extends Component {
           </main>
 
                       {/* <Navbar />
-            <Container text style={{ marginTop: '7em' }}>
+            <Container text style={{ marginTop: "7em" }}>
                 <Route path="/" exact component={Home} />
                 <Route path="/implicit/callback" component={ImplicitCallback} />
                 <SecureRoute path="/trivia" component={Trivia} />

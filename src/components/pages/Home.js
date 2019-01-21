@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import DocumentTitle from 'react-document-title';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import DocumentTitle from "react-document-title";
 
 const propTypes = {
   auth: PropTypes.object.isRequired,
@@ -9,12 +9,12 @@ const propTypes = {
 };
 
 class Home extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = { user: this.props.auth.user };
   }
 
-  render () {
+  render() {
     return (
       // <DocumentTitle title={`Home - ${window.App.name}`}>
       <DocumentTitle title={`Home`}>

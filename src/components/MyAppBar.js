@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
@@ -166,7 +166,7 @@ class MyAppBar extends Component {
                     <AppBar position="static">
                         <Toolbar>
                             <MapIcon className={classes.icon} />
-                            <Link to="/" style={{ textDecoration: 'none', color: "white" }}>
+                            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
 
                                 <Typography className={classes.title} variant="h6" color="inherit" noWrap>
                                     Local Vue
