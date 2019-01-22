@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import DocumentTitle from 'react-document-title';
-import { destructServerErrors, hasError, getError } from '../../helpers/error';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import DocumentTitle from "react-document-title";
+import { destructServerErrors, hasError, getError } from "../../helpers/error";
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const propTypes = {
   match: PropTypes.object.isRequired,
@@ -14,26 +14,26 @@ class ResetPassword extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      'email': '',
-      'password': '',
-      'password_confirmation': '',
-      'token': '',
-      'errors': '',
-      'resetMessage': ''
+      "email": "",
+      "password": "",
+      "password_confirmation": "",
+      "token": "",
+      "errors": "",
+      "resetMessage": ""
     };
   }
 
   componentDidMount () {
     this.setState({
-      'token': this.props.match.params.token
+      "token": this.props.match.params.token
     });
   }
 
   handleSubmit (e) {
     e.preventDefault();
-    window.axios.post('/api/password/reset', this.state)
+    window.axios.post("/api/password/reset", this.state)
       .then(({ data: { status } }) => {
-        this.setState({ 'resetMessage': status });
+        this.setState({ "resetMessage": status });
       }).catch(error => {
         this.setState({ errors: destructServerErrors(error) });
       });
@@ -44,7 +44,7 @@ class ResetPassword extends Component {
       [e.target.name]: e.target.value,
       errors: {
         ...this.state.errors,
-        ...{ [e.target.name]: '' }
+        ...{ [e.target.name]: "" }
       }
     });
   }
@@ -54,7 +54,7 @@ class ResetPassword extends Component {
       <DocumentTitle title={`Reset password `}>
         <div className="flex justify-center items-center w-full py-4 flex-col min-h-screen bg-grey-lighter">
 
-          {this.state.resetMessage !== '' && (
+          {this.state.resetMessage !== "" && (
             <div className="bg-white border-l-4 border-blue text-sm text-grey-darker p-4 mb-4 w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/3" role="alert">
               <p> {this.state.resetMessage}
                 <span className="pl-2">
@@ -84,14 +84,14 @@ class ResetPassword extends Component {
                 id="email"
                 type="email"
                 name="email"
-                className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker ${hasError(this.state.errors, 'email') ? 'border-red' : ''}`}
+                className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker ${hasError(this.state.errors, "email") ? "border-red" : ""}`}
                 placeholder="e.g.jane@example.com"
                 required
                 autoFocus
               />
 
-              {hasError(this.state.errors, 'email') &&
-                                <p className="text-red text-xs pt-2">{getError(this.state.errors, 'email')}</p>
+              {hasError(this.state.errors, "email") &&
+                                <p className="text-red text-xs pt-2">{getError(this.state.errors, "email")}</p>
               }
 
             </div>
@@ -103,12 +103,12 @@ class ResetPassword extends Component {
                 type="password"
                 id="password"
                 name="password"
-                className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, 'password') ? 'border-red' : ''}`}
+                className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, "password") ? "border-red" : ""}`}
                 minLength={6}
                 required />
 
-              {hasError(this.state.errors, 'password') &&
-                                <p className="text-red text-xs pt-2">{getError(this.state.errors, 'password')}</p>
+              {hasError(this.state.errors, "password") &&
+                                <p className="text-red text-xs pt-2">{getError(this.state.errors, "password")}</p>
               }
             </div>
 
@@ -120,7 +120,7 @@ class ResetPassword extends Component {
                 type="password"
                 id="password-confirmation"
                 name="password_confirmation"
-                className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, 'password') ? 'border-red' : ''}`}
+                className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, "password") ? "border-red" : ""}`}
                 required />
             </div>
 

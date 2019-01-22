@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATED, SET_USER_DATA } from '../actions/auth';
+import { SET_AUTHENTICATED, SET_USER_DATA } from "../actions/auth";
 
 export default (state = { user: null, authenticated: false }, action) => {
   switch (action.type) {

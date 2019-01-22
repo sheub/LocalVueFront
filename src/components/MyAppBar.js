@@ -15,6 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MapIcon from "@material-ui/icons/Map";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
+
 const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
 const MyLink = props => <Link to="/register" {...props} />
 
@@ -121,8 +122,7 @@ class MyAppBar extends Component {
                 onClose={this.handleMenuClose}
             >
                 {auth.authenticated ?
-                    <Link
-                        to={`/profile/${this.state.user.id}`}
+                    <Link to={`/profile/${this.state.user.id}`}
                         className="text-2xl font-bold lg:text-sm lg:font-light capitalize text-sm text-grey-darker underline lg:no-underline">
                         {this.state.user.name}
                     </Link>

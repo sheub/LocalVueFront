@@ -1,4 +1,4 @@
-import { SET_LOADING } from '../actions/loading';
+import { SET_LOADING } from "../actions/loading";
 
 export default (state = true, action) => {
   switch (action.type) {

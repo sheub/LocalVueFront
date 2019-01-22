@@ -1,9 +1,9 @@
-import React from 'react';
-import store from '../store';
-import { Route, Redirect } from 'react-router-dom';
-import AppLayoutRoute from './AppLayoutRoute';
-import { setIntendedUrl } from '../helpers/auth';
-import PropTypes from 'prop-types';
+import React from "react";
+import store from "../store";
+import { Route, Redirect } from "react-router-dom";
+import AppLayoutRoute from "./AppLayoutRoute";
+import { setIntendedUrl } from "../helpers/auth";
+import PropTypes from "prop-types";
 
 const propTypes = {
   component: PropTypes.func.isRequired,
@@ -26,7 +26,7 @@ const AuthRoute = ({ component: Component, ...rest }) => (
       ) : (
         <Redirect
           to={{
-            pathname: '/signin',
+            pathname: "/signin",
             state: { from: props.location }
           }}
         />
@@ -37,6 +37,6 @@ const AuthRoute = ({ component: Component, ...rest }) => (
 );
 
 AuthRoute.propTypes = propTypes;
-AuthRoute.displayName = 'Auth Route';
+AuthRoute.displayName = "Auth Route";
 
 export default AuthRoute;

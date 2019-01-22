@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import AuthNav from '../AuthNav';
-import GuestNav from '../GuestNav';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import AuthNav from "../AuthNav";
+import GuestNav from "../GuestNav";
 
 const propTypes = {
   authenticated: PropTypes.bool.isRequired

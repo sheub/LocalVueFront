@@ -9,13 +9,10 @@ import MarkerIcon from "./../assets/marker.svg";
 
 import Analysis from "./Analysis";
 import Reason from "./Reason";
-// import Footer from "./Footer";
-// import Slider from "./Slider";
 
-const styles = (theme) => ({
-
+const styles = theme => ({
   heroUnit: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
   },
   heroButtons: {
     margin: "auto"
@@ -24,85 +21,79 @@ const styles = (theme) => ({
     flexGrow: 1,
     padding: "0 32px",
     minHeight: "150px",
-    display: "flex",
+    display: "flex"
   },
   containerRight: {
     minHeight: "360px",
     margin: "auto",
-    display: "flex",
-  },
+    display: "flex"
+  }
 });
-
 
 class Album extends Component {
   constructor(props) {
     super(props);
 
-    this.myRef = React.createRef(); // create a ref object 
+    this.myRef = React.createRef(); // create a ref object
   }
-
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null,
-  };
 
   scrollToMyRef = () => {
     window.scrollTo({
       top: this.myRef.current.offsetTop,
       behavior: "smooth"
     });
-  }
-
-  // handleProfileMenuOpen = (event) => {
-  //   this.setState({ anchorEl: event.currentTarget });
-  // };
-
-  // handleMenuClose = () => {
-  //   this.setState({ anchorEl: null });
-  //   this.handleMobileMenuClose();
-  // };
-
-  // handleMobileMenuOpen = (event) => {
-  //   this.setState({ mobileMoreAnchorEl: event.currentTarget });
-  // };
-
-  // handleMobileMenuClose = () => {
-  //   this.setState({ mobileMoreAnchorEl: null });
-  // };
-
+  };
 
   render() {
-
-    // const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
-
-
     return (
       <React.Fragment>
         <div style={{ maxWidth: "1140px", margin: "auto" }}>
           <CssBaseline />
-
-          
-
           <main>
             <div className={classes.heroUnit}>
-              <Grid container direction={"row"} align={"center"} style={{ backgroundColor: "#f1f1f1" }}>
+              <Grid
+                container
+                direction={"row"}
+                align={"center"}
+                style={{ backgroundColor: "#f1f1f1" }}
+              >
                 <Grid item xs={12} sm={6}>
                   <div className={classes.containerRight}>
-                    <Grid container direction={"row"} style={{ margin: "auto" }} spacing={32}>
+                    <Grid
+                      container
+                      direction={"row"}
+                      style={{ margin: "auto" }}
+                      spacing={32}
+                    >
                       <Grid item xs={12} sm={2}>
                         <div>
-                          <img style={{ maxWidth: "52px", margin: "auto", paddingTop: "18px" }} src={MarkerIcon} alt="MarkerIcon" />
+                          <img
+                            style={{
+                              maxWidth: "52px",
+                              margin: "auto",
+                              paddingTop: "18px"
+                            }}
+                            src={MarkerIcon}
+                            alt="MarkerIcon"
+                          />
                         </div>
                       </Grid>
                       <Grid item xs={12} sm={10}>
-                        <Typography component="h1" variant="h2" align="left" color="inherit" gutterBottom>
+                        <Typography
+                          component="h1"
+                          variant="h2"
+                          align="left"
+                          color="inherit"
+                          gutterBottom
+                        >
                           Local Vue
-                      </Typography>
+                        </Typography>
                         <Typography variant="h6" align="left" paragraph>
-                          Gewinnen Sie neue Kunden, indem Sie Ihr Unternehmen überall im Internet bewerben:
-                          Google, OpenStreetMap, Bing, Here, TomTom, Yelp und Foursquare.
-                      </Typography>
+                          Gewinnen Sie neue Kunden, indem Sie Ihr Unternehmen
+                          überall im Internet bewerben: Google, OpenStreetMap,
+                          Bing, Here, TomTom, Yelp und Foursquare.
+                        </Typography>
                       </Grid>
                     </Grid>
                   </div>
@@ -113,9 +104,13 @@ class Album extends Component {
                     <div className={classes.heroButtons}>
                       <Grid container spacing={16}>
                         <Grid item>
-                          <Button variant="contained" onClick={this.scrollToMyRef} color="primary">
+                          <Button
+                            variant="contained"
+                            onClick={this.scrollToMyRef}
+                            color="primary"
+                          >
                             Analysieren Sie Ihre Sichtbarkeit in 2 Minuten.
-                        </Button>
+                          </Button>
                         </Grid>
                       </Grid>
                     </div>
@@ -126,15 +121,6 @@ class Album extends Component {
               <Analysis refProp={this.myRef} />
             </div>
           </main>
-
-                      {/* <Navbar />
-            <Container text style={{ marginTop: "7em" }}>
-                <Route path="/" exact component={Home} />
-                <Route path="/implicit/callback" component={ImplicitCallback} />
-                <SecureRoute path="/trivia" component={Trivia} />
-            </Container> */}
-
-
         </div>
       </React.Fragment>
     );
@@ -142,7 +128,7 @@ class Album extends Component {
 }
 
 Album.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Album);
