@@ -3,7 +3,7 @@ export const destructServerErrors = error => {
     return error.response.data.errors;
   }
 
-  return '';
+  return "";
 };
 
 export const hasError = (errors, field) => {

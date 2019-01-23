@@ -93,7 +93,7 @@ class Register extends Component {
   handleGoogleSignInSuccess(credentials) {
     this.props.googleSignIn(credentials)
       .then(response => this.registerSuccess())
-      .catch(error => this.setState({ errors: destructServerErrors(error) }));;
+      .catch(error => this.setState({ errors: destructServerErrors(error) }));
   }
 
   render() {
