@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
-
 import Paper from "@material-ui/core/Paper";
+import "./table.css";
 
 const CustomTableCell = withStyles((theme) => ({
     head: {
@@ -16,6 +16,12 @@ const CustomTableCell = withStyles((theme) => ({
 }))(TableCell);
 
 const styles = (theme) => ({
+    webkitScrollbar: {
+        background: rgba(0, 0, 0, 0.1),
+        borderLeft: 0,
+        height: 3,
+        width: 3,
+      },
     root: {
         width: "100%",
         marginTop: theme.spacing.unit * 3,
