@@ -37,6 +37,7 @@ const styles = (theme) => ({
     grow: {
         flexGrow: 1,
     },
+
     menuButton: {
         marginLeft: -12,
         marginRight: 20,
@@ -114,7 +115,7 @@ class MyAppBar extends Component {
 
         const renderMenu = (
 
-            <Menu
+            <Menu 
                 anchorEl={anchorEl}
                 anchorOrigin={{ vertical: "top", horizontal: "right" }}
                 transformOrigin={{ vertical: "top", horizontal: "right" }}
@@ -128,12 +129,12 @@ class MyAppBar extends Component {
                     </Link>
                     // <Link onClick={this.handleMenuClose}>Profile</Link>
 
-                    : <div>
-                        <MenuItem onClick={this.openSignIn}>Sign In</MenuItem>
+                    : <div >
+                        <MenuItem className="menuButton" onClick={this.openSignIn}>Sign In</MenuItem>
 
                         {/* <Link to="/signin" onClick={this.handleMenuClose}>Sign In</Link> */}
                         {/* <Link to="/register" onClick={this.handleMenuClose}>Register</Link> */}
-                        <MenuItem component={MyLink} onClick={this.handleMenuClose}>
+                        <MenuItem className="menuButton" component={MyLink} onClick={this.handleMenuClose}>
                             Register
                         </MenuItem>
                     </div>
@@ -159,10 +160,10 @@ class MyAppBar extends Component {
                 </MenuItem>
             </Menu>
         );
+
         return (
             <React.Fragment>
                 <div style={{ maxWidth: "1140px", margin: "auto" }}>
-                    {/* <CssBaseline /> */}
                     <AppBar position="static">
                         <Toolbar>
                             <MapIcon className={classes.icon} />

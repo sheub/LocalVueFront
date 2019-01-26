@@ -17,7 +17,7 @@ const CustomTableCell = withStyles((theme) => ({
 
 const styles = (theme) => ({
     webkitScrollbar: {
-        background: rgba(0, 0, 0, 0.1),
+        background: "rgba(0, 0, 0, 0.1)",
         borderLeft: 0,
         height: 3,
         width: 3,
@@ -89,7 +89,7 @@ class CustomizedTable extends Component {
                                         <CustomTableCell >{row[1].categories}</CustomTableCell>
                                         <CustomTableCell style={{ whiteSpace: "nowrap" }}>{row[1].phone}</CustomTableCell>
                                         <CustomTableCell >{row[1].website}</CustomTableCell>
-                                        <CustomTableCell dangerouslySetInnerHTML={{ __html: row[1].url }}></CustomTableCell>
+                                        <CustomTableCell dangerouslySetInnerHTML={{ __html: row[1].link }}></CustomTableCell>
                                     </TableRow>
                                 );
                             })}
