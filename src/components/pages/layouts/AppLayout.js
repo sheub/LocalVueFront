@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthNav from '../../AuthNav';
-import Footer from '../../Footer';
+// import Footer from '../../Footer';
 
 import PropTypes from 'prop-types';
 
@@ -15,7 +15,7 @@ const AppLayout = ({ children, ...rest }) => {
       <div className="flex flex-1">
         {children}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
