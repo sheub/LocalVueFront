@@ -62,7 +62,9 @@ class CustomizedTable extends Component {
         if (!tableActive) {
             return null;
         }
+        
         else {
+
             return (
                 <Paper className={classes.root}>
                     <Table className={classes.table}>
@@ -79,6 +81,7 @@ class CustomizedTable extends Component {
                         </TableHead>
                         <TableBody>
                             {Object.entries(data).map((row) => {
+                                var isNotLink = row[1].link === "Please sign in" || row[1].link === " - ";
                                 return (
                                     <TableRow className={classes.row} key={row[0]}>
                                         <CustomTableCell component="th" scope="row">
@@ -89,7 +92,12 @@ class CustomizedTable extends Component {
                                         <CustomTableCell >{row[1].categories}</CustomTableCell>
                                         <CustomTableCell style={{ whiteSpace: "nowrap" }}>{row[1].phone}</CustomTableCell>
                                         <CustomTableCell >{row[1].website}</CustomTableCell>
-                                        <CustomTableCell dangerouslySetInnerHTML={{ __html: row[1].link }}></CustomTableCell>
+                                        {isNotLink ? (
+                                            <CustomTableCell> {row[1].link} </CustomTableCell>
+                                        ) : (
+                                            <CustomTableCell ><a href={row[1].link}>Link</a> </CustomTableCell>
+                                            )}
+                                        {/* dangerouslySetInnerHTML={{ __html: row[1].link }} */}
                                     </TableRow>
                                 );
                             })}

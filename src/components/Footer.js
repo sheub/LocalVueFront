@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { MuiThemeProvider, Typography, createMuiTheme, withStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
+
+
+const MyLinkToImpressum = props => <Link to="/impressum" {...props} style={{ textDecoration: 'none' }} />
 
 const styles = (theme) => ({
     footer: {
@@ -25,6 +29,9 @@ const materialTheme = createMuiTheme({
             main: "#fff",
         }
     },
+    impressum: {
+        textDecoration: "none",
+    }
 
 });
 
@@ -59,7 +66,7 @@ class Footer extends Component {
                     <Grid item xs={6} sm={3}>
                     </Grid>
                     <Grid item xs={6} sm={3}>
-                        <Typography variant="subtitle1" align="right" color="secondary" component="p">
+                        <Typography variant="subtitle1" align="right" color="secondary" component={MyLinkToImpressum}>
                             Impressum
                         </Typography>
 

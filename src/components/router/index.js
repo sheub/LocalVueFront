@@ -19,8 +19,9 @@ import GuestRoute from "./GuestRoute";
 
 import MyAppBar from "./../MyAppBar";
 import Album from "./../Album";
+import Impressum from "./../pages/layouts/Impressum"
 import Footer from "./../Footer";
-import Slider from "./../Slider";
+// import Slider from "./../Slider";
 
 import "../../App.css";
 
@@ -59,13 +60,15 @@ class App extends Component {
               {/* <GuestRoute path="/signin" component={SignIn} /> */}
               <GuestRoute path="/forgot-password" component={ForgotPassword} />
               <GuestRoute path="/password/reset/:token" component={ResetPassword} />
+              <GuestRoute path="/impressum" component={Impressum} />
+
               <AuthRoute path="/home" component={Album} />
               <AuthRoute path="/profile/:id" component={Profile} />
               {/* <Route component={NotFound} /> */}
             </Switch>
+            {/* <Slider /> */}
+            <Footer />
           </div>
-          <Slider />
-          <Footer />
         </div>
       </Router>
     );

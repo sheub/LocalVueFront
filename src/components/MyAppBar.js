@@ -17,7 +17,10 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 
 const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
-const MyLink = props => <Link to="/register" {...props} />
+const MyLinkToRegister = props => <Link to="/register" {...props} />
+const MyLinkToUserPage = props => <Link to="/profile/${this.state.user.id" {...props} />
+const MyLinkToLogout = props => <Link to="/logout" {...props} />
+
 
 
 const styles = (theme) => ({
@@ -123,10 +126,19 @@ class MyAppBar extends Component {
                 onClose={this.handleMenuClose}
             >
                 {auth.authenticated ?
-                    <Link to={`/profile/${this.state.user.id}`}
-                        className="text-2xl font-bold lg:text-sm lg:font-light capitalize text-sm text-grey-darker underline lg:no-underline">
-                        {this.state.user.name}
-                    </Link>
+                    // <Link to={`/profile/${this.state.user.id}`}
+                    //     className="text-2xl font-bold lg:text-sm lg:font-light capitalize text-sm text-grey-darker underline lg:no-underline">
+                    //     {this.state.user.name}
+                    // </Link>
+                    <div>
+                    <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
+                        My Profile
+                    </MenuItem>
+                    <MenuItem className="menuButton" component={MyLinkToLogout} onClick={this.handleMenuClose}>
+                        Logout
+                    </MenuItem>
+                    </div>
+
                     // <Link onClick={this.handleMenuClose}>Profile</Link>
 
                     : <div >
@@ -134,7 +146,7 @@ class MyAppBar extends Component {
 
                         {/* <Link to="/signin" onClick={this.handleMenuClose}>Sign In</Link> */}
                         {/* <Link to="/register" onClick={this.handleMenuClose}>Register</Link> */}
-                        <MenuItem className="menuButton" component={MyLink} onClick={this.handleMenuClose}>
+                        <MenuItem className="menuButton" component={MyLinkToRegister} onClick={this.handleMenuClose}>
                             Register
                         </MenuItem>
                     </div>
@@ -153,10 +165,18 @@ class MyAppBar extends Component {
             >
 
                 <MenuItem onClick={this.handleProfileMenuOpen}>
+                    <div>
                     <IconButton color="inherit">
                         <AccountCircle />
                     </IconButton>
-                    <p>Profile</p>
+                    <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
+                        My Profile
+                    </MenuItem>
+                    <MenuItem className="menuButton" component={MyLinkToLogout} onClick={this.handleMenuClose}>
+                        Logout
+                    </MenuItem>
+                    </div>
+                    {/* <p>Profile</p> */}
                 </MenuItem>
             </Menu>
         );

@@ -31,11 +31,13 @@
     "react-spinners": "^0.4.8",
     "redux": "^4.0.1",
     "redux-form": "^8.1.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sw-precache-cra": "^1.0.0-alpha.2"
   },
   "scripts": {
+    "analyze": "source-map-explorer build/static/js/main.*",
+    "build": "react-scripts build && sw-precache-cra --config sw-config.js",
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

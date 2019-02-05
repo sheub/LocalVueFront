@@ -15,11 +15,33 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Avatar from '@material-ui/core/Avatar';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import withStyles from '@material-ui/core/styles/withStyles';
+
 const propTypes = {
   signInUser: PropTypes.func.isRequired,
   googleSignIn: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };
+
+const styles = theme => ({
+  // paper: {
+  //   marginTop: theme.spacing.unit * 8,
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   alignItems: 'center',
+  //   padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+  // },
+  // avatar: {
+  //   margin: theme.spacing.unit,
+  //   backgroundColor: theme.palette.secondary.main,
+  // },
+    submit: {
+      marginTop: theme.spacing.unit * 3,
+    },
+  });
 
 class SignIn extends Component {
   constructor(props) {
@@ -70,18 +92,23 @@ class SignIn extends Component {
   }
 
   render() {
-    const { fullScreen } = this.props;
+    const { fullScreen, classes } = this.props;
 
     return (
+      
       <Dialog
         fullScreen={fullScreen}
         open={this.state.open}
         onClose={this.handleClose}
-        aria-labelledby="form-dialog-title"
+        aria-labelledby="form-dialog-title"        
       >
+      <CssBaseline />
 
-        <form onSubmit={e => this.handleSubmit(e)} method="POST">
-          <DialogTitle id="form-dialog-title">Sign In</DialogTitle>
+        <form onSubmit={e => this.handleSubmit(e)} method="POST" >      
+        {/* <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar> */}
+          <DialogTitle id="form-dialog-title">Please Sign In</DialogTitle>
           <DialogContent>
             {/* E-mail textfield */}
             <TextField
@@ -118,7 +145,11 @@ class SignIn extends Component {
           </DialogContent>
 
           <DialogActions>
-            <Button type="submit" color="primary">
+            <Button type="submit" 
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}>
               Sign In
             </Button>
           </DialogActions>
@@ -168,4 +199,4 @@ const mapDispatchToProps = {
 export default connect(
   null,
   mapDispatchToProps
-)(withRouter(withMobileDialog({ breakpoint: "xs" })(SignIn)));
+)(withRouter(withStyles(styles)(withMobileDialog({ breakpoint: "xs" })(SignIn))));
