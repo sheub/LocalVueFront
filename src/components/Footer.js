@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 
 
-const MyLinkToImpressum = props => <Link to="/impressum" {...props} style={{ textDecoration: 'none' }} />
+const MyLinkToImpressum = (props) => <Link to="/impressum" {...props} style={{ textDecoration: "none" }} />;
 
 const styles = (theme) => ({
     footer: {

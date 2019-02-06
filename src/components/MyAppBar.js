@@ -17,9 +17,9 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 
 const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
-const MyLinkToRegister = props => <Link to="/register" {...props} />
-const MyLinkToUserPage = props => <Link to="/profile/${this.state.user.id" {...props} />
-const MyLinkToLogout = props => <Link to="/logout" {...props} />
+const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
+const MyLinkToUserPage = (props) => <Link to="/profile/${this.state.user.id" {...props} />;
+const MyLinkToLogout = (props) => <Link to="/logout" {...props} />;
 
 
 

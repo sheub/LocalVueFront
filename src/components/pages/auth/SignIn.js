@@ -15,10 +15,10 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Avatar from '@material-ui/core/Avatar';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import withStyles from '@material-ui/core/styles/withStyles';
+import CssBaseline from "@material-ui/core/CssBaseline";
+// import Avatar from "@material-ui/core/Avatar";
+// import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const propTypes = {
   signInUser: PropTypes.func.isRequired,
