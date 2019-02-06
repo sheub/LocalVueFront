@@ -95,7 +95,7 @@ class CustomizedTable extends Component {
                                         {isNotLink ? (
                                             <CustomTableCell> {row[1].link} </CustomTableCell>
                                         ) : (
-                                            <CustomTableCell ><a href={row[1].link}>Link</a> </CustomTableCell>
+                                            <CustomTableCell ><a href={row[1].link} target="_blank" rel="noopener noreferrer">Link</a> </CustomTableCell>
                                             )}
                                         {/* dangerouslySetInnerHTML={{ __html: row[1].link }} */}
                                     </TableRow>
