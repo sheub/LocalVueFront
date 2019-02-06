@@ -75,13 +75,13 @@ class MyAppBar extends Component {
         };
         this.handleMenuClose = this.handleMenuClose.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     // OpenClose Menu
     handleProfileMenuOpen = (event) => {
         this.setState({ anchorEl: event.currentTarget });
     };
-
 
     openSignIn = () => {
         this.setState({ anchorEl: null, SignInFormVisible: true });
@@ -107,6 +107,12 @@ class MyAppBar extends Component {
     handleMobileMenuClose = () => {
         this.setState({ mobileMoreAnchorEl: null });
     };
+
+    handleLogout () {
+        this.props.logoutUser(() => this.props.history.push("/"));
+        this.setState({ anchorEl: null });
+        this.handleMobileMenuClose();
+      }
 
 
     render() {
@@ -172,7 +178,7 @@ class MyAppBar extends Component {
                     <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
                         My Profile
                     </MenuItem>
-                    <MenuItem className="menuButton" component={MyLinkToLogout} onClick={this.handleMenuClose}>
+                    <MenuItem className="menuButton" onClick={() => this.handleLogout()}>
                         Logout
                     </MenuItem>
                     </div>
