@@ -4,11 +4,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logoutUser } from "./actions/auth";
 
-const propTypes = {
-  auth: PropTypes.object.isRequired,
-  logoutUser: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
-};
 
 class AuthNav extends Component {
   constructor (props) {
@@ -124,6 +119,13 @@ class AuthNav extends Component {
     );
   }
 }
+
+
+const propTypes = {
+  auth: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
+};
 
 AuthNav.propTypes = propTypes;
 

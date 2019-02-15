@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core";
 import { Input, Grid, Typography, Button } from "@material-ui/core";
 
@@ -8,6 +9,8 @@ import BackgroundImage from "./../assets/SEO_Background_petit.jpg";
 // import BackgroundImage from "./../assets/stars-1458847827jJb.jpg";
 
 import axios from "axios";
+import { setStateValue } from "./actions/index";
+  
 import { css } from "react-emotion";
 import { ClipLoader } from "react-spinners";
 
@@ -117,6 +120,8 @@ class Analysis extends Component {
 
         this.setState({ isLoading: true });
 
+        this.props.setStateValue('placeInfo', this.state.place);
+
         let url = "";
 
         if(process.env.NODE_ENV ==="development"){
@@ -135,11 +140,11 @@ class Analysis extends Component {
                     isLoading: false,
                     tableActive: true
                 });
-                console.log(response.data);
+                // console.log(response.data);
             })
             .catch((err) => {
                 this.setState({ data: err, isLoading: false });
-                console.log(err); //<--- Go down one more stream
+                // console.log(err); //<--- Go down one more stream
             });
     }
 
@@ -247,6 +252,22 @@ class Analysis extends Component {
 
 Analysis.propTypes = {
     classes: PropTypes.object.isRequired,
+    placeInfo: PropTypes.object,
+    setStateValue: PropTypes.func,
+    // languageSet: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles)(Analysis);
+const mapDispatchToProps = (dispatch) => {
+    return {
+      setStateValue: (key, value) => dispatch(setStateValue(key, value)),
+    };
+  };
+
+var mapStateToProps = (state) => {
+    return {
+        placeInfo: state.appReducer.placeInfo,
+    }
+  }
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Analysis));
