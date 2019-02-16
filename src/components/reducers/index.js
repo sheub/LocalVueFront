@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import {appReducer, defaultAppState} from './appReducer';
+import {appReducer, defaultAppState} from "./appReducer";
 import auth from "./auth";
 import loading from "./loading";
 

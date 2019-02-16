@@ -119,7 +119,7 @@ class Analysis extends Component {
     _onClick() {
 
         this.setState({ isLoading: true });
-        this.props.setStateValue('placeInfo', this.state.place);
+        this.props.setStateValue("placeInfo", this.state.place);
         
         let url = "";
 
@@ -140,7 +140,7 @@ class Analysis extends Component {
                     tableActive: true,
                 });
                 // store resultData
-                this.props.setStateValue('resultData', this.state.data);
+                this.props.setStateValue("resultData", this.state.data);
                 // console.log(response.data);
             })
             .catch((err) => {
