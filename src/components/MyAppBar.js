@@ -71,7 +71,7 @@ class MyAppBar extends Component {
             anchorEl: null,
             mobileMoreAnchorEl: null,
             SignInFormVisible: false,
-            user: this.props.auth.user,
+            // user: this.props.auth.user,
         };
         this.handleMenuClose = this.handleMenuClose.bind(this);
         this.handleClose = this.handleClose.bind(this);

@@ -1,8 +1,8 @@
 const defaultAppState = {
     languageSet: 'en',
     placeInfo: null,
+    resultData: [],
     userFavoritePlaces:[]
-
 };
 
 const appReducer = (state = defaultAppState, action) => {

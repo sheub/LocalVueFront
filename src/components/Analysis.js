@@ -119,9 +119,8 @@ class Analysis extends Component {
     _onClick() {
 
         this.setState({ isLoading: true });
-
         this.props.setStateValue('placeInfo', this.state.place);
-
+        
         let url = "";
 
         if(process.env.NODE_ENV ==="development"){
@@ -138,13 +137,15 @@ class Analysis extends Component {
                 this.setState({
                     data: response.data,
                     isLoading: false,
-                    tableActive: true
+                    tableActive: true,
                 });
+                // store resultData
+                this.props.setStateValue('resultData', this.state.data);
                 // console.log(response.data);
             })
             .catch((err) => {
                 this.setState({ data: err, isLoading: false });
-                // console.log(err); //<--- Go down one more stream
+                console.log(err); //<--- Go down one more stream
             });
     }
 
@@ -253,6 +254,7 @@ class Analysis extends Component {
 Analysis.propTypes = {
     classes: PropTypes.object.isRequired,
     placeInfo: PropTypes.object,
+    resultData: PropTypes.array,
     setStateValue: PropTypes.func,
     // languageSet: PropTypes.string.isRequired,
 };
@@ -266,6 +268,7 @@ const mapDispatchToProps = (dispatch) => {
 var mapStateToProps = (state) => {
     return {
         placeInfo: state.appReducer.placeInfo,
+        data: state.appReducer.resultData,
     }
   }
 
