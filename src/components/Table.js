@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
-import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
+import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import "./table.css";
 
@@ -21,7 +22,7 @@ const styles = (theme) => ({
         borderLeft: 0,
         height: 3,
         width: 3,
-      },
+    },
     root: {
         width: "100%",
         marginTop: theme.spacing.unit * 3,
@@ -55,16 +56,22 @@ class CustomizedTable extends Component {
         };
     }
 
+    isset = (ref) => typeof ref !== 'undefined';
 
     render() {
         const { classes, data } = this.props;
+        const { resultData } = this.props;
         let tableActive = this.props.tableActive;
-        if (!tableActive) {
+        if (!this.isset(data) && this.isset(resultData)) {
+            data = resultData;
+            tableActive = true;
+        }
+
+        if (!tableActive || !this.isset(data)) {
             return null;
         }
-        
-        else {
 
+        else {
             return (
                 <Paper className={classes.root}>
                     <Table className={classes.table}>
@@ -95,7 +102,7 @@ class CustomizedTable extends Component {
                                         {isNotLink ? (
                                             <CustomTableCell> {row[1].link} </CustomTableCell>
                                         ) : (
-                                            <CustomTableCell ><a href={row[1].link} target="_blank" rel="noopener noreferrer">Link</a> </CustomTableCell>
+                                                <CustomTableCell ><a href={row[1].link} target="_blank" rel="noopener noreferrer">Link</a> </CustomTableCell>
                                             )}
                                         {/* dangerouslySetInnerHTML={{ __html: row[1].link }} */}
                                     </TableRow>
@@ -111,6 +118,16 @@ class CustomizedTable extends Component {
 
 CustomizedTable.propTypes = {
     classes: PropTypes.object.isRequired,
+    resultData: PropTypes.array,
 };
 
-export default withStyles(styles)(CustomizedTable);
+// const mapStateToProps = ({ resultData }) => ({ resultData });
+var mapStateToProps = (state) => {
+    return {
+        resultData: state.appReducer.resultData,
+    }
+}
+
+
+
+export default connect(mapStateToProps)(withStyles(styles)(CustomizedTable));
