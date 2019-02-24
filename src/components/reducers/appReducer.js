@@ -1,7 +1,7 @@
 const defaultAppState = {
     languageSet: "en",
     placeInfo: null,
-    resultData: [],
+    resultData: null,
     userFavoritePlaces:[]
 };
 

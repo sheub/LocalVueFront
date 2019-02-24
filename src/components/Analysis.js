@@ -122,7 +122,7 @@ class Analysis extends Component {
         this.props.setStateValue("placeInfo", this.state.place);
         
         let url = "";
-        url = `/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
+        url = `https://localvue.de/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
 
         var query = encodeURI(url);
         axios.get(query, {
@@ -130,16 +130,16 @@ class Analysis extends Component {
         })
             .then((response) => {
                 this.setState({
-                    data: response.data,
+                    resultData: response.data,
                     isLoading: false,
                     tableActive: true,
                 });
                 // store resultData
-                this.props.setStateValue("resultData", this.state.data);
+                this.props.setStateValue("resultData", this.state.resultData);
                 // console.log(response.data);
             })
             .catch((err) => {
-                this.setState({ data: err, isLoading: false });
+                this.setState({ resultData: err, isLoading: false });
                 console.log(err); //<--- Go down one more stream
             });
     }
@@ -157,9 +157,9 @@ class Analysis extends Component {
 
     render() {
         const { classes, resultData } = this.props;
-        if((resultData && resultData.length) && typeof(this.state.data) == 'undefined'){
+        if(!(!resultData || typeof(resultData) == 'undefined') && (typeof(this.state.resultData) == 'undefined')){
             this.setState({
-                data: resultData,
+                resultData: resultData,
                 isLoading: false,
                 tableActive: true,
             });
@@ -242,7 +242,7 @@ class Analysis extends Component {
                 <div className={classes.table}>
                     {(this.state.tableActive) ?
                         <React.Suspense fallback={<div> </div>}>
-                            <CustomizedTable data={this.state.data} tableActive={this.state.tableActive} />
+                            <CustomizedTable data={this.state.resultData} tableActive={this.state.tableActive} />
                         </React.Suspense>
                         : null
                     }
@@ -256,7 +256,7 @@ class Analysis extends Component {
 Analysis.propTypes = {
     classes: PropTypes.object.isRequired,
     placeInfo: PropTypes.object,
-    resultData: PropTypes.array,
+    resultData: PropTypes.object,
     setStateValue: PropTypes.func,
     // languageSet: PropTypes.string.isRequired,
 };

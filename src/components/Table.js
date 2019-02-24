@@ -60,14 +60,15 @@ class CustomizedTable extends Component {
 
     render() {
         const { classes, data } = this.props;
+        var tempData = data;
         const { resultData } = this.props;
         let tableActive = this.props.tableActive;
-        if (!this.isset(data) && this.isset(resultData)) {
-            data = resultData;
+        if (!this.isset(tempData) && this.isset(resultData)) {
+            tempData = resultData;
             tableActive = true;
         }
 
-        if (!tableActive || !this.isset(data)) {
+        if (!tableActive || !this.isset(tempData)) {
             return null;
         }
 
@@ -87,7 +88,7 @@ class CustomizedTable extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {Object.entries(data).map((row) => {
+                            {Object.entries(tempData).map((row) => {
                                 var isNotLink = row[1].link === "Please sign in" || row[1].link === " - ";
                                 return (
                                     <TableRow className={classes.row} key={row[0]}>
@@ -118,7 +119,7 @@ class CustomizedTable extends Component {
 
 CustomizedTable.propTypes = {
     classes: PropTypes.object.isRequired,
-    resultData: PropTypes.array,
+    resultData: PropTypes.object,
 };
 
 // const mapStateToProps = ({ resultData }) => ({ resultData });
