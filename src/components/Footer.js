@@ -11,6 +11,11 @@ const styles = (theme) => ({
     footer: {
         backgroundColor: "#343A40",
         padding: theme.spacing.unit * 6,
+        clear: "both",
+        position: "relative",
+        borderTop: `1px solid ${theme.palette.divider}`,
+        // height: "40px",
+        // marginTop: "-40px",
     },
 });
 
@@ -32,7 +37,6 @@ const materialTheme = createMuiTheme({
     impressum: {
         textDecoration: "none",
     }
-
 });
 
 class Footer extends Component {
@@ -69,17 +73,8 @@ class Footer extends Component {
                         <Typography variant="subtitle1" align="right" color="secondary" component={MyLinkToImpressum}>
                             Impressum
                         </Typography>
-
-                        {/* <Typography variant="subtitle1" align="right" color="secondary" component="p">
-                        About
-                            </Typography>                             */}
-
                     </Grid>
                 </Grid>
-
-                {/* <Typography variant="subtitle1" align="right" color="textSecondary" component="p">
-                    Copyright © 2018. Zoestha. All rights reserved.
-                </Typography> */}
             </footer>
         );
     }

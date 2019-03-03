@@ -23,7 +23,6 @@ const propTypes = {
 const styles = theme => ({
   root: {
     flexGrow: 1,
-
   },
   firstContainer: {
     marginTop: 48,
@@ -35,7 +34,8 @@ const styles = theme => ({
     maxWidth: 500,
   },
   button: {
-    margin: theme.spacing.unit,
+    // margin: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 3,
     float: "right"
   },
   signin: {

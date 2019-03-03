@@ -14,6 +14,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 // import Avatar from "@material-ui/core/Avatar";
@@ -34,12 +37,19 @@ const styles = theme => ({
   //   alignItems: 'center',
   //   padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
   // },
-  // avatar: {
-  //   margin: theme.spacing.unit,
-  //   backgroundColor: theme.palette.secondary.main,
-  // },
+  checkbox: {
+    marginTop: theme.spacing.unit,
+    marginLeft: theme.spacing.unit,
+  },
     submit: {
       marginTop: theme.spacing.unit * 3,
+      float: "right",
+      width: "48px",
+    },
+    submit: {
+      marginTop: theme.spacing.unit * 3,
+      float: "left",
+      width: "48px",
     },
   });
 
@@ -105,9 +115,7 @@ class SignIn extends Component {
       <CssBaseline />
 
         <form onSubmit={e => this.handleSubmit(e)} method="POST" >      
-        {/* <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar> */}
+
           <DialogTitle id="form-dialog-title">Please Sign In</DialogTitle>
           <DialogContent>
             {/* E-mail textfield */}
@@ -132,24 +140,38 @@ class SignIn extends Component {
 
             {/* Password textfield */}
             <TextField
-              value={this.state.password}
-              onChange={e => this.handleInputChange(e)}
-              type="password"
-              id="password"
-              name="password"
+              value = {this.state.password}
+              onChange = {e => this.handleInputChange(e)}
+              type = "password"
+              id = "password"
+              name = "password"
               required = {true}
-              margin="dense"
-              label="Password"
+              margin = "dense"
+              label = "Password"
               fullWidth
             />
           </DialogContent>
+          <FormControlLabel className={classes.checkbox}
+            control = {<Checkbox value = "remember" color = "primary" />}
+            label = "Remember me"
+          />
 
           <DialogActions>
-            <Button type="submit" 
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}>
+            <Button type = "submit"
+              variant = "contained"
+              color = "primary"
+              className = {classes.submit}
+            >
+              Sign In
+            </Button>
+          </DialogActions>
+          <DialogActions>
+            <Button type = "submit"
+              variant = "outlined"
+              color = "primary"
+              className = {classes.register}
+              component = {MyLinkToRegister}
+            >
               Sign In
             </Button>
           </DialogActions>

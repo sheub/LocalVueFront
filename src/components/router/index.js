@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-// import SignIn from "../pages/auth/SignIn";
 import Register from "../pages/auth/Register";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import ResetPassword from "../pages/auth/ResetPassword";
 
-
-// import NotFound from "../pages/404";
 import PropTypes from "prop-types";
-// import Welcome from "../pages/Welcome";
-// import Home from "../pages/Home";
 import Profile from "../pages/Profile";
+import Pricing from "../pages/Pricing";
+import Checkout from "../pages/Checkout";
+import SignIn from "../pages/auth/SignIn";
+// const SignIn = React.lazy(() => import("../pages/auth/SignIn"));
+
+
 import AuthRoute from "./AuthRoute";
 import { connect } from "react-redux";
 import { setLoading } from "../actions/loading";
@@ -52,24 +53,24 @@ class App extends Component {
 
       <Router>
         <div className="App">
-          <div style={{ maxWidth: "1140px", margin: "auto" }}>
             <MyAppBar />
             <Switch>
               <GuestRoute exact path="/" component={Album} />
               <GuestRoute path="/register" component={Register} />
-              {/* <GuestRoute path="/signin" component={SignIn} /> */}
+              <GuestRoute path="/pricing" component={Pricing} />
+
               <GuestRoute path="/forgot-password" component={ForgotPassword} />
               <GuestRoute path="/password/reset/:token" component={ResetPassword} />
               <GuestRoute path="/impressum" component={Impressum} />
+              <GuestRoute path="/signin" component={SignIn} />
 
               <AuthRoute path="/home" component={Album} />
               <AuthRoute path="/profile/:id" component={Profile} />
-              {/* <Route component={NotFound} /> */}
+              <AuthRoute path="/checkout" component={Checkout} />              
             </Switch>
             {/* <Slider /> */}
             <Footer />
           </div>
-        </div>
       </Router>
     );
   }

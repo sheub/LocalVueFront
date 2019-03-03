@@ -11,18 +11,20 @@ import IconEMail from "@material-ui/icons/Email";
 const styles = theme => ({
     root: {
         flexGrow: 1,
+        minWidth: "100vh",
+        marginTop: "24px",
+        marginBottom: "36px",
     },
     paper: {
         padding: theme.spacing.unit * 2,
-        
         color: theme.palette.text.primary,
-  },
-  icon: {
-    margin: 2,
-    fontSize: 16,
-    verticalAlign: "middle",
-  },
-    bold:{
+    },
+    icon: {
+        margin: 2,
+        fontSize: 16,
+        verticalAlign: "middle",
+    },
+    bold: {
         fontWeight: "bold",
         marginTop: "12px",
     }
@@ -38,26 +40,26 @@ class Impressum extends Component {
                     <Grid item xs={12} sm={6}>
                         <Paper className={classes.paper}>
                             <Typography variant="h6" gutterBottom>
-                                Zoestha UG (haftungsbeschränkt) 
+                                Zoestha UG (haftungsbeschränkt)
                             </Typography>
                             <div> <IconContactMail className={classes.icon} /> Fockestr. 23</div>
-                            <div style={{marginLeft: "26px"}}> 04275 Leipzig</div>
+                            <div style={{ marginLeft: "26px" }}> 04275 Leipzig</div>
                             <div><IconEMail className={classes.icon} /> info@zoestha.de</div>
-                            <div style={{marginTop: "12px"}}>Geschäftsführer: Sébastien Barré</div>
+                            <div style={{ marginTop: "12px" }}>Geschäftsführer: Sébastien Barré</div>
                             <div>Registergericht: Leipzig, HRB 32943</div>
                             <div>Ust-IdNr: DE308957906</div>
-                
+
                             <div className={classes.bold}>Website</div>
-                
+
                             <div>Verantwortlich für die Website: Sébastien Barré</div>
                             <p className={classes.bold}>Haftung für Inhalte</p>
-                
+
                             Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
                         </Paper>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Paper className={classes.paper}>
-                        <p className={classes.bold}>Datenschutz</p>
+                            <p className={classes.bold}>Datenschutz</p>
 
                             Die Nutzung unserer Webseite ist in der Regel ohne eine Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adresse) erhoben werden, erfolgt dies – soweit es möglich ist– immer auf freiwilliger Basis. Wir geben Ihre Daten ohne Ihre ausdrückliche Zustimmung nicht an Dritte weiter. Außerdem weisen wir Sie darauf hin, dass die Datenübertragung im Internet (wie beispielsweise bei der Kommunikation über E-Mail) Sicherheitslücken aufweisen kann. Denn ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. Wir widersprechen hiermit ausdrücklich der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien. Die Betreiber dieser Seiten behalten sich ausdrücklich vor, im Fall der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, rechtliche Schritte einzuleiten.
 

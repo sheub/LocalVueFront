@@ -1,6 +1,10 @@
 .App {
-  /* text-align: center; */
   background-color: white;
+  margin: auto;
+  /* display: flex; */
+  max-width: 1140px;
+  min-height: 100vh;
+  /* flex-direction: column; */
 }
 
 ::-webkit-scrollbar {

@@ -10,6 +10,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import Button from '@material-ui/core/Button';
 
 import IconButton from "@material-ui/core/IconButton";
 import MapIcon from "@material-ui/icons/Map";
@@ -20,6 +21,8 @@ const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
 const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
 const MyLinkToUserPage = (props) => <Link to="/profile/${this.state.user.id" {...props} />;
 const MyLinkToLogout = (props) => <Link to="/logout" {...props} />;
+const MyLinkToPricing = (props) => <Link to="/pricing" {...props} />;
+
 
 
 
@@ -37,6 +40,10 @@ const styles = (theme) => ({
             display: "block",
         },
     },
+    button: {
+        float: "right",
+    },
+
     grow: {
         flexGrow: 1,
     },
@@ -108,11 +115,11 @@ class MyAppBar extends Component {
         this.setState({ mobileMoreAnchorEl: null });
     };
 
-    handleLogout () {
+    handleLogout() {
         this.props.logoutUser(() => this.props.history.push("/"));
         this.setState({ anchorEl: null });
         this.handleMobileMenuClose();
-      }
+    }
 
 
     render() {
@@ -124,7 +131,7 @@ class MyAppBar extends Component {
 
         const renderMenu = (
 
-            <Menu 
+            <Menu
                 anchorEl={anchorEl}
                 anchorOrigin={{ vertical: "top", horizontal: "right" }}
                 transformOrigin={{ vertical: "top", horizontal: "right" }}
@@ -132,21 +139,14 @@ class MyAppBar extends Component {
                 onClose={this.handleMenuClose}
             >
                 {auth.authenticated ?
-                    // <Link to={`/profile/${this.state.user.id}`}
-                    //     className="text-2xl font-bold lg:text-sm lg:font-light capitalize text-sm text-grey-darker underline lg:no-underline">
-                    //     {this.state.user.name}
-                    // </Link>
-                    <div>
-                    <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
-                        My Profile
-                    </MenuItem>
-                    <MenuItem className="menuButton" component={MyLinkToLogout} onClick={this.handleMenuClose}>
-                        Logout
-                    </MenuItem>
-                    </div>
-
-                    // <Link onClick={this.handleMenuClose}>Profile</Link>
-
+                        <div>
+                            <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
+                                My Profile
+                            </MenuItem>
+                            <MenuItem className="menuButton" component={MyLinkToLogout} onClick={this.handleMenuClose}>
+                                Logout
+                            </MenuItem>
+                        </div>
                     : <div >
                         <MenuItem className="menuButton" onClick={this.openSignIn}>Sign In</MenuItem>
 
@@ -172,15 +172,15 @@ class MyAppBar extends Component {
 
                 <MenuItem onClick={this.handleProfileMenuOpen}>
                     <div>
-                    <IconButton color="inherit">
-                        <AccountCircle />
-                    </IconButton>
-                    <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
-                        My Profile
-                    </MenuItem>
-                    <MenuItem className="menuButton" onClick={() => this.handleLogout()}>
-                        Logout
-                    </MenuItem>
+                        <IconButton color="inherit">
+                            <AccountCircle />
+                        </IconButton>
+                        <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
+                            My Profile
+                        </MenuItem>
+                        <MenuItem className="menuButton" onClick={() => this.handleLogout()}>
+                            Logout
+                        </MenuItem>
                     </div>
                     {/* <p>Profile</p> */}
                 </MenuItem>
@@ -189,17 +189,19 @@ class MyAppBar extends Component {
 
         return (
             <React.Fragment>
-                <div style={{ maxWidth: "1140px", margin: "auto" }}>
+                <div className = {classes.appBar} >
                     <AppBar position="static">
                         <Toolbar>
                             <MapIcon className={classes.icon} />
-                            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
 
+                            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
                                 <Typography className={classes.title} variant="h6" color="inherit" noWrap>
                                     Local Vue
-                            </Typography>
+                                </Typography>
                             </Link>
                             <div className={classes.grow} />
+                            <Button className={classes.title} variant="text" color="inherit" component={MyLinkToPricing}>Pricing</Button>
+
                             <div className={classes.sectionDesktop}>
                                 <IconButton
                                     aria-owns={isMenuOpen ? "material-appbar" : undefined}
