@@ -33,7 +33,7 @@ const initialState = {
     isLoading: false,
 };
 
-const styles = theme => ({
+const styles = (theme) => ({
     root: {
         margin: 0,
         backgroundImage: `url("${BackgroundImage}")`,
@@ -157,7 +157,7 @@ class Analysis extends Component {
 
     render() {
         const { classes, resultData } = this.props;
-        if(!(!resultData || typeof(resultData) == 'undefined') && (typeof(this.state.resultData) == 'undefined')){
+        if(!(!resultData || typeof(resultData) == "undefined") && (typeof(this.state.resultData) == "undefined")){
             this.setState({
                 resultData: resultData,
                 isLoading: false,
@@ -271,8 +271,8 @@ var mapStateToProps = (state) => {
     return {
         placeInfo: state.appReducer.placeInfo,
         resultData: state.appReducer.resultData,
-    }
-  }
+    };
+  };
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Analysis));

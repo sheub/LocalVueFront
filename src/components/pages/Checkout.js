@@ -44,28 +44,26 @@ class Checkout extends Component {
 
     _onClick() {
 
-        this.setState({ isLoading: true });
-        this.props.setStateValue("placeInfo", this.state.place);
+        // this.props.setStateValue("placeInfo", this.state.place);
         
         let url = "";
-        url = `https://localvue.de/createplan/`;
+        url = `https://localvue.de/paypalredirect/`;
 
         var query = encodeURI(url);
         axios.get(query, {
             headers: { "Access-Control-Allow-Origin": "*" }
         })
             .then((response) => {
-                this.setState({
-                    user: response.data,
-                    isLoading: false,
-                    tableActive: true,
-                });
-                // store resultData
-                this.props.setStateValue("resultData", this.state.resultData);
+                // this.setState({
+                //     user: response.data,
+                //     tableActive: true,
+                // });
+                // // store resultData
+                // this.props.setStateValue("resultData", this.state.resultData);
                 // console.log(response.data);
             })
             .catch((err) => {
-                this.setState({ resultData: err, isLoading: false });
+                this.setState({ resultData: err});
                 console.log(err); //<--- Go down one more stream
             });
     }
@@ -81,16 +79,16 @@ class Checkout extends Component {
                 <div className="container p-2 mx-auto flex flex-col">
                 <h1>This is checkout page</h1>
                 {/* <h2>Welcome {auth.user.name}</h2> */}
-                <a href="{{ /createplan }}" >Abonnement anlegen</a>
+                <a href="{{ /paypalredirect }}" >Abonnement anlegen</a>
                 <Grid container direction={"row"} justify={"space-between"} align={"flex-start"} spacing={32}>
                     <Grid item>
-                        <Button onClick={this._onClick} disabled={this.state.isLoading} variant="contained" color="primary">
+                        <Button onClick={this._onClick} variant="contained" color="primary">
                             Abonnement anlegen
                         </Button>
                     </Grid>
                 </Grid>
 
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                {/* <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                     <input type="hidden" name="cmd" value="_xclick-subscriptions" />
                     <input type="hidden" name="business" value="barre@zoestha.de" />
                     <input type="hidden" name="lc" value="US" />
@@ -104,7 +102,7 @@ class Checkout extends Component {
                     <input type="hidden" name="bn" value="PP-SubscriptionsBF:btn_subscribeCC_LG.gif:NonHostedGuest" />
                     <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
                     <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-                </form>
+                </form> */}
 
             </div>
 
@@ -118,7 +116,7 @@ class Checkout extends Component {
 const propTypes = {
     auth: PropTypes.object.isRequired,
     resultData: PropTypes.array,
-    placeInfo: PropTypes.object,
+    // placeInfo: PropTypes.object,
 };
 
 

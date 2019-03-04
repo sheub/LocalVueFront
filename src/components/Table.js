@@ -56,7 +56,7 @@ class CustomizedTable extends Component {
         };
     }
 
-    isset = (ref) => typeof ref !== 'undefined';
+    isset = (ref) => typeof ref !== "undefined";
 
     render() {
         const { classes, data } = this.props;
@@ -127,7 +127,7 @@ var mapStateToProps = (state) => {
     return {
         resultData: state.appReducer.resultData,
     }
-}
+};
 
 
 

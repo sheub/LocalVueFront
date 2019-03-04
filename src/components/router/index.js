@@ -9,14 +9,14 @@ import Profile from "../pages/Profile";
 import Pricing from "../pages/Pricing";
 import Checkout from "../pages/Checkout";
 import SignIn from "../pages/auth/SignIn";
-// const SignIn = React.lazy(() => import("../pages/auth/SignIn"));
 
-
+import GuestRoute from "./GuestRoute";
 import AuthRoute from "./AuthRoute";
 import { connect } from "react-redux";
 import { setLoading } from "../actions/loading";
 import { initAuthFromExistingToken } from "../actions/auth";
-import GuestRoute from "./GuestRoute";
+import { Route } from "react-router-dom";
+
 
 import MyAppBar from "./../MyAppBar";
 import Album from "./../Album";
@@ -57,17 +57,20 @@ class App extends Component {
             <Switch>
               <GuestRoute exact path="/" component={Album} />
               <GuestRoute path="/register" component={Register} />
-              <GuestRoute path="/pricing" component={Pricing} />
 
               <GuestRoute path="/forgot-password" component={ForgotPassword} />
               <GuestRoute path="/password/reset/:token" component={ResetPassword} />
-              <GuestRoute path="/impressum" component={Impressum} />
               <GuestRoute path="/signin" component={SignIn} />
 
-              <AuthRoute path="/home" component={Album} />
-              <AuthRoute path="/profile/:id" component={Profile} />
+              {/* <AuthRoute path="/home" component={Album} /> */}
+              <AuthRoute path="/profile" component={Profile} />
               <AuthRoute path="/checkout" component={Checkout} />              
             </Switch>
+            
+            <Route exact path="/" component={Album} />
+            <Route path="/pricing" component={Pricing} />
+            <Route path="/impressum" component={Impressum} />
+
             {/* <Slider /> */}
             <Footer />
           </div>

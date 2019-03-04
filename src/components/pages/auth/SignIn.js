@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
+import PropTypes from "prop-types";
 import { signInUser, googleSignIn } from "../../actions/auth";
 import { getIntendedUrl } from "../../helpers/auth";
 import { destructServerErrors, hasError, getError } from "../../helpers/error";
@@ -14,14 +15,16 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 // import Avatar from "@material-ui/core/Avatar";
 // import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import withStyles from "@material-ui/core/styles/withStyles";
+const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
+
 
 const propTypes = {
   signInUser: PropTypes.func.isRequired,
@@ -30,13 +33,7 @@ const propTypes = {
 };
 
 const styles = theme => ({
-  // paper: {
-  //   marginTop: theme.spacing.unit * 8,
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   alignItems: 'center',
-  //   padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-  // },
+
   checkbox: {
     marginTop: theme.spacing.unit,
     marginLeft: theme.spacing.unit,
@@ -44,12 +41,12 @@ const styles = theme => ({
     submit: {
       marginTop: theme.spacing.unit * 3,
       float: "right",
-      width: "48px",
+      minWidth: "48px",
     },
-    submit: {
+    register: {
       marginTop: theme.spacing.unit * 3,
       float: "left",
-      width: "48px",
+      minWidth: "48px",
     },
   });
 
@@ -165,6 +162,8 @@ class SignIn extends Component {
               Sign In
             </Button>
           </DialogActions>
+
+          {/* Register */}
           <DialogActions>
             <Button type = "submit"
               variant = "outlined"
@@ -172,7 +171,7 @@ class SignIn extends Component {
               className = {classes.register}
               component = {MyLinkToRegister}
             >
-              Sign In
+              Register
             </Button>
           </DialogActions>
         </form>

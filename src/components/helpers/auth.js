@@ -1,7 +1,7 @@
 import localforage from 'localforage';
 
 const INTENDED_URL = 'intended_url';
-const DEFAULT_INTENDED_URL = '/home';
+const DEFAULT_INTENDED_URL = '/';
 
 const setLocalForageToken = token => {
   if (window._.isEmpty(token)) {

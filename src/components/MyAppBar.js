@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter} from "react-router-dom";
 
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
@@ -10,12 +10,14 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 import IconButton from "@material-ui/core/IconButton";
 import MapIcon from "@material-ui/icons/Map";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import { logoutUser } from "./actions/auth";
+
 
 const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
 const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
@@ -143,7 +145,7 @@ class MyAppBar extends Component {
                             <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
                                 My Profile
                             </MenuItem>
-                            <MenuItem className="menuButton" component={MyLinkToLogout} onClick={this.handleMenuClose}>
+                            <MenuItem className="menuButton" component={MyLinkToLogout} onClick={this.handleLogout}>
                                 Logout
                             </MenuItem>
                         </div>
@@ -233,9 +235,17 @@ class MyAppBar extends Component {
     }
 }
 
-MyAppBar.propTypes = {
+const propTypes = {
+    auth: PropTypes.object.isRequired,
+    logoutUser: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
-};
+  };
+  
+MyAppBar.propTypes = propTypes;
+
+const mapDispatchToProps = { logoutUser };
 const mapStateToProps = ({ auth }) => ({ auth });
 // const mapStateToProps = ({ auth: { authenticated } }) => ({ authenticated });
-export default connect(mapStateToProps)(withStyles(styles)(MyAppBar));
+export default connect(mapStateToProps, mapDispatchToProps, null,
+    { pure: false })(withRouter(withStyles(styles)(MyAppBar)));

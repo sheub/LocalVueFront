@@ -59,7 +59,7 @@ class Register extends Component {
   }
 
   registerSuccess() {
-    this.props.history.push("/home");
+    this.props.history.push("/");
   }
 
   handleSubmit(e) {
