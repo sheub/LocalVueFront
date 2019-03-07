@@ -55,7 +55,7 @@ class App extends Component {
         <div className="App">
             <MyAppBar />
             <Switch>
-              <GuestRoute exact path="/" component={Album} />
+              {/* <GuestRoute exact path="/" component={Album} /> */}
               <GuestRoute path="/register" component={Register} />
 
               <GuestRoute path="/forgot-password" component={ForgotPassword} />

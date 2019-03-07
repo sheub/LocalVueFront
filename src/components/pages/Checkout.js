@@ -53,14 +53,16 @@ class Checkout extends Component {
         axios.get(query, {
             headers: { "Access-Control-Allow-Origin": "*" }
         })
-            .then((response) => {
+            .then((approvalUrl) => {
+                // similar behavior as an HTTP redirect
+                window.location.replace(approvalUrl.data);
                 // this.setState({
                 //     user: response.data,
                 //     tableActive: true,
                 // });
                 // // store resultData
                 // this.props.setStateValue("resultData", this.state.resultData);
-                // console.log(response.data);
+                console.log(approvalUrl.data);
             })
             .catch((err) => {
                 this.setState({ resultData: err});
@@ -79,11 +81,11 @@ class Checkout extends Component {
                 <div className="container p-2 mx-auto flex flex-col">
                 <h1>This is checkout page</h1>
                 {/* <h2>Welcome {auth.user.name}</h2> */}
-                <a href="{{ /paypalredirect }}" >Abonnement anlegen</a>
+                {/* <a href="{{ /paypalredirect }}" >Abonnement anlegen</a> */}
                 <Grid container direction={"row"} justify={"space-between"} align={"flex-start"} spacing={32}>
                     <Grid item>
                         <Button onClick={this._onClick} variant="contained" color="primary">
-                            Abonnement anlegen
+                            Pay with PayPal
                         </Button>
                     </Grid>
                 </Grid>
