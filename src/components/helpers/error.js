@@ -1,4 +1,4 @@
-export const destructServerErrors = error => {
+export const destructServerErrors = (error) => {
   if (error.response && error.response.data && error.response.data.errors) {
     return error.response.data.errors;
   }

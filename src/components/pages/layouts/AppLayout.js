@@ -1,7 +1,7 @@
-import React from 'react';
-import AuthNav from '../../AuthNav';
+import React from "react";
+import AuthNav from "../../AuthNav";
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const propTypes = {
   children: PropTypes.element.isRequired

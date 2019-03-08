@@ -20,7 +20,7 @@ import { Route } from "react-router-dom";
 
 import MyAppBar from "./../MyAppBar";
 import Album from "./../Album";
-import Impressum from "./../pages/layouts/Impressum"
+import Impressum from "./../pages/layouts/Impressum";
 import Footer from "./../Footer";
 // import Slider from "./../Slider";
 
