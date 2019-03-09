@@ -1,0 +1,51 @@
+{
+    "title": "Local vue",
+    "appbar": {
+        "pricing": "Pricing",
+        "myProfile": "Mein Profil",
+        "register": "Register",
+        "logout": "Logout",
+        "signIn": "Sign In"
+    },
+    "home": {
+        "starter": "Gewinnen Sie neue Kunden, indem Sie Ihr Unternehmen überall im Internet bewerben: Google, OpenStreetMap, Bing, Here, TomTom, Yelp und Foursquare.",
+        "ButtonCallToAction": "Analysieren Ihre Sichtbarkeit in 2 Minuten.",
+        "reasonTitle": "Warum sollten Sie Ihr Unternehmen lokal weiterempfehlen?",
+        "reasonText": "Heute ist jede dritte Internetsuche mit einer lokalen Aktivität verknüpft, z.B. wenn Sie nach Ihrer Aktivität bei Google suchen (z.B. `Vegan Restaurant Leipzig`). Internetnutzer, die nach Einrichtungen wie Ihrer suchen, besuchen nicht unbedingt Ihre Website und verwenden häufig Informationen, die von Websites Dritter wie Google, OpenStreetMap, Bing, Here, TomTom, Yelp, Foursquare veröffentlicht werden. Es ist daher unbedingt erforderlich, Sie auf diese Seiten zu verweisen!",
+        "analysisTitle": "Analysieren Sie die Sichtbarkeit Ihres Unternehmens in 2 Minuten.",
+        "inputName": "Name Ihres Unternahmens",
+        "inputAddress": "Ihres Unternehmens",
+        "city": "Stadt",
+        "postCode": "Postleitzahl",
+        "buttonStartAnalysysis": "Analyse Starten"
+    },
+    "Footer":{
+        "zoestha": "ZOESTHA UG",
+        "HAFTUNGSBESCHRÄNKT": "HAFTUNGSBESCHRÄNKT",
+        "address": "Fockestr. 23, 04275 Leipzig.",
+        "amtsgericht": "Amtsgericht Leipzig",
+        "HRN": "Handelsregisternummer hrb 32943",
+        "impressum": "impressum"
+    },
+    "Pricing":{
+        "title": "Pricing",
+        "titleText": "Korrigieren Sie Ihre digitale Sichtbarkeit schnell mit LocalVue. Die zusätzlichen Links zu den Partnern ermöglichen es, neue Funktionen hinzuzufügen oder ihre Einträge zu korrigieren, wenn sie ungenau sind.",
+        "free": "Free",
+        "freeText1": "Überprüfen Sie Ihre Online-Präsenz",
+        "freeText2": "Begrenzte Anzahl von Suchanfragen",
+        "freeText3": "E-Mail-Support",
+        "buttonSignUp": "kostenlos registrieren",
+        "mostPopular": "Am beliebtesten",
+        "proText1": "Korrigieren Sie Ihre Online-Präsenz",
+        "proText2": "Zwei Wochen Unbegrenzte Nutzung",
+        "proText3": "Bevorzugter E-Mail-Support",
+        "buttonGetStarted": "Get Started",
+        "Enterprise": "Enterprise",
+        "Enterprise1": "Correct your online presence",
+        "Enterprise2": "Unlimited usage",
+        "Enterprise3": "Priority email support",
+        "buttonContact": "Contact Us"
+
+    }
+
+}

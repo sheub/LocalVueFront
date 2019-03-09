@@ -4,15 +4,13 @@ import { connect } from "react-redux";
 import { MuiThemeProvider, createMuiTheme, withStyles } from "@material-ui/core";
 import { Input, Grid, Typography, Button } from "@material-ui/core";
 
-// import BackgroundImage from "./../assets/Himel_gross.png";
 import BackgroundImage from "./../assets/SEO_Background_petit.jpg";
-// import BackgroundImage from "./../assets/stars-1458847827jJb.jpg";
 
 import axios from "axios";
-import { setStateValue } from "./actions/index";
-  
+import { setStateValue } from "./actions/index";  
 import { css } from "react-emotion";
 import { ClipLoader } from "react-spinners";
+import { withTranslation } from "react-i18next";
 
 const CustomizedTable = React.lazy(() => import("./Table"));
 
@@ -156,7 +154,7 @@ class Analysis extends Component {
     }
 
     render() {
-        const { classes, resultData } = this.props;
+        const { t, classes, resultData } = this.props;
         if(!(!resultData || typeof(resultData) == "undefined") && (typeof(this.state.resultData) == "undefined")){
             this.setState({
                 resultData: resultData,
@@ -173,7 +171,7 @@ class Analysis extends Component {
                         <MuiThemeProvider theme={materialTheme}>
                             <div style={{ marginBottom: "24px" }}>
                                 <Typography component="h2" variant="h6" align="center" color="secondary" gutterBottom>
-                                    Analysieren Sie die Sichtbarkeit Ihres Unternehmens in 2 Minuten.
+                                {t("home.analysisTitle")}
                             </Typography>
                             </div>
 
@@ -223,7 +221,7 @@ class Analysis extends Component {
                             <Grid container direction={"row"} justify={"space-between"} align={"flex-start"} spacing={32}>
                                 <Grid item>
                                     <Button onClick={this._onClick} disabled={this.state.isLoading} variant="contained" color="primary">
-                                        Analyse Starten
+                                    {t("home.buttonStartAnalysysis")}
                                     </Button>
                                 </Grid>
                                 <div className="sweet-loading" style={{ verticalAlign: "bottom" }}>
@@ -275,4 +273,4 @@ var mapStateToProps = (state) => {
   };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Analysis));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withTranslation()(Analysis)));

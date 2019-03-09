@@ -1,0 +1,53 @@
+{
+    "title": "Local vue",
+    "appbar": {
+        "pricing": "Pricing",
+        "myProfile": "My Profil",
+        "register": "Register",
+        "logout": "Logout",
+        "signIn": "Sign In"
+
+    },
+    "home": {
+        "starter": "Attract new customers by promoting your business anywhere on the Internet: Google, OpenStreetMap, Bing, Here, TomTom, Yelp and Foursquare.",
+        "ButtonCallToAction": "Analyze your visibility in 2 minutes.",
+        "reasonTitle": "Why recommend your company locally?",
+        "reasonText": "Today every third internet search is linked to a local activity, e.g. if you search for your activity on Google (e.g. `Vegan Restaurant Leipzig`). Internet users searching for facilities like yours do not necessarily visit your site and often use information published by third-party sites such as Google, OpenStreetMap, Bing, Here, TomTom, Yelp, Foursquare. It is therefore imperative to refer you to these sites!",
+        "analysisTitle": "Analyze the visibility of your business in 2 minutes.",
+        "inputName": "Name of your company",
+        "inputAddress": "Address of your company",
+        "city": "City",
+        "postCode": "postcode",
+        "buttonStartAnalysysis": "Start Analysis"
+    },
+    "Footer":{
+        "zoestha": "ZOESTHA UG",
+        "HAFTUNGSBESCHRÄNKT": "HAFTUNGSBESCHRÄNKT",
+        "address": "Fockestr. 23, 04275 Leipzig.",
+        "amtsgericht": "Amtsgericht Leipzig",
+        "HRN": "Handelsregisternummer hrb 32943",
+        "impressum": "impressum"
+    },
+    "Pricing":{
+        "title": "Pricing",
+        "titleText": "Quickly correct you Digital visibility with LocalVue.",
+        "titleText2": "The additional links to the partners allow to add new features or correct their entries if they are inexact.",
+        "free": "Free",
+        "freeText1": "Check your online visibility",
+        "freeText2": "Begrenzte Anzahl von Suchanfragen",
+        "freeText3": "E-Mail-Support",
+        "buttonSignUp": "kostenlos registrieren",
+        "mostPopular": "Am beliebtesten",
+        "proText1": "Korrigieren Sie Ihre Online-Präsenz",
+        "proText2": "Zwei Wochen Unbegrenzte Nutzung",
+        "proText3": "Bevorzugter E-Mail-Support",
+        "buttonGetStarted": "Get Started",
+        "Enterprise": "Enterprise",
+        "Enterprise1": "Correct your online presence",
+        "Enterprise2": "Unlimited usage",
+        "Enterprise3": "Priority email support",
+        "buttonContact": "Contact Us"
+
+    }
+
+}

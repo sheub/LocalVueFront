@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import PropTypes from "prop-types";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import MarkerIcon from "./../assets/marker.svg";
+import { withTranslation } from "react-i18next";
+
 
 import Analysis from "./Analysis";
 import Reason from "./Reason";
@@ -45,8 +47,17 @@ class Album extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+        // loading component for suspence fallback
+const Loader = () => (
+  <div className="App">
+    {/* <img src={logo} className="App-logo" alt="logo" /> */}
+    <div>loading...</div>
+  </div>
+);
+
+    const { t, classes } = this.props;
     return (
+      <Suspense fallback={<Loader />}>
       <React.Fragment>
         <div style={{ maxWidth: "1140px", margin: "auto" }}>
           <CssBaseline />
@@ -90,9 +101,7 @@ class Album extends Component {
                           Local Vue
                         </Typography>
                         <Typography variant="h6" align="left" paragraph>
-                          Gewinnen Sie neue Kunden, indem Sie Ihr Unternehmen
-                          überall im Internet bewerben: Google, OpenStreetMap,
-                          Bing, Here, TomTom, Yelp und Foursquare.
+                        {t("home.starter")}
                         </Typography>
                       </Grid>
                     </Grid>
@@ -109,7 +118,7 @@ class Album extends Component {
                             onClick={this.scrollToMyRef}
                             color="primary"
                           >
-                            Analysieren Sie Ihre Sichtbarkeit in 2 Minuten.
+                            {t("home.ButtonCallToAction")}
                           </Button>
                         </Grid>
                       </Grid>
@@ -123,6 +132,7 @@ class Album extends Component {
           </main>
         </div>
       </React.Fragment>
+      </Suspense>
     );
   }
 }
@@ -131,4 +141,4 @@ Album.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Album);
+export default withStyles(styles)(withTranslation()(Album));

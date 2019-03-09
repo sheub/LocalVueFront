@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link, withRouter} from "react-router-dom";
+import { withTranslation } from "react-i18next";
+
 
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
@@ -15,9 +17,10 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MapIcon from "@material-ui/icons/Map";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import LanguageIcon from "@material-ui/icons/Language";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { logoutUser } from "./actions/auth";
-
+import {  setStateValues } from "./actions/index";
 
 const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
 const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
@@ -68,9 +71,6 @@ const styles = (theme) => ({
     },
 });
 
-// const propTypes = {
-//     authenticated: PropTypes.bool.isRequired
-//   };
 
 class MyAppBar extends Component {
 
@@ -78,6 +78,8 @@ class MyAppBar extends Component {
         super(props);
         this.state = {
             anchorEl: null,
+            anchorElanguage: null,
+            languageSet: 'en',
             mobileMoreAnchorEl: null,
             SignInFormVisible: false,
             // user: this.props.auth.user,
@@ -121,18 +123,27 @@ class MyAppBar extends Component {
         this.props.logoutUser(() => this.props.history.push("/"));
         this.setState({ anchorEl: null });
         this.handleMobileMenuClose();
-    }
+    };
+
+    handleMenuLanguage = event => {
+        this.setState({ anchorElanguage: event.currentTarget });
+    };
+
+    handleCloseLanguage = () => {
+        this.setState({ anchorElanguage: null });
+    };
+
 
 
     render() {
 
-        const { anchorEl, mobileMoreAnchorEl } = this.state;
-        const { classes, auth } = this.props;
+        const { open, classes, auth, t, i18n } = this.props;
+        const { anchorEl, mobileMoreAnchorEl, anchorElanguage } = this.state;
         const isMenuOpen = Boolean(anchorEl);
+        const openMenuLanguage = Boolean(anchorElanguage);
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
         const renderMenu = (
-
             <Menu
                 anchorEl={anchorEl}
                 anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -155,12 +166,11 @@ class MyAppBar extends Component {
                         {/* <Link to="/signin" onClick={this.handleMenuClose}>Sign In</Link> */}
                         {/* <Link to="/register" onClick={this.handleMenuClose}>Register</Link> */}
                         <MenuItem className="menuButton" component={MyLinkToRegister} onClick={this.handleMenuClose}>
-                            Register
+                        {t("appbar.register")}
                         </MenuItem>
                     </div>
                 }
             </Menu>
-
         );
 
         const renderMobileMenu = (
@@ -178,16 +188,25 @@ class MyAppBar extends Component {
                             <AccountCircle />
                         </IconButton>
                         <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
-                            My Profile
+                            {t("appbar.myProfile")}
                         </MenuItem>
                         <MenuItem className="menuButton" onClick={() => this.handleLogout()}>
-                            Logout
+                            {t("appbar.logout")}
                         </MenuItem>
                     </div>
                     {/* <p>Profile</p> */}
                 </MenuItem>
             </Menu>
         );
+
+        const changeLanguage = (lng) => {
+            this.setState({ anchorElanguage: null, languageSet: lng });
+
+            this.props.setStateValues({
+                languageSet: lng
+            });
+            i18n.changeLanguage(lng);
+        }
 
         return (
             <React.Fragment>
@@ -198,7 +217,7 @@ class MyAppBar extends Component {
 
                             <Link to="/" style={{ textDecoration: "none", color: "white" }}>
                                 <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                                    Local Vue
+                                    {/* {t("title")} */} Local Vue
                                 </Typography>
                             </Link>
                             <div className={classes.grow} />
@@ -214,6 +233,35 @@ class MyAppBar extends Component {
                                     <AccountCircle />
                                 </IconButton>
                             </div>
+                            <div>
+                            <IconButton
+                                aria-owns={open ? "menu-appbar" : null}
+                                aria-haspopup="true"
+                                onClick={this.handleMenuLanguage}
+                                color="inherit"
+                                aria-label="Select Language"
+                            >
+                                <LanguageIcon />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorElanguage}
+                                anchorOrigin={{
+                                    vertical: "top",
+                                    horizontal: "right",
+                                }}
+                                transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "right",
+                                }}
+                                open={openMenuLanguage}
+                                onClose={this.handleCloseLanguage}
+                            >
+                                <MenuItem onClick={() => changeLanguage("en")}>en</MenuItem>
+                                <MenuItem onClick={() => changeLanguage("de")}>de</MenuItem>
+                                <MenuItem onClick={() => changeLanguage("fr")}>fr</MenuItem>
+                            </Menu>
+                        </div>
                             <div className={classes.sectionMobile}>
                                 <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
                                     <MoreIcon />
@@ -240,12 +288,28 @@ const propTypes = {
     logoutUser: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
+    languageSet: PropTypes.string,
+    setStateValues: PropTypes.func,
+
   };
   
 MyAppBar.propTypes = propTypes;
 
-const mapDispatchToProps = { logoutUser };
-const mapStateToProps = ({ auth }) => ({ auth });
-// const mapStateToProps = ({ auth: { authenticated } }) => ({ authenticated });
-export default connect(mapStateToProps, mapDispatchToProps, null,
-    { pure: false })(withRouter(withStyles(styles)(MyAppBar)));
+// const mapDispatchToProps = { logoutUser };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setStateValues: (obj) => dispatch(setStateValues(obj)),
+        logoutUser: dispatch(logoutUser)
+    };
+};
+
+// const mapStateToProps = ({ auth, languageSet }) => ({ auth, languageSet });
+const mapStateToProps = (state) => {
+    return {
+        languageSet: state.appReducer.languageSet,
+        auth: state.auth
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, 
+    { pure: false })(withRouter(withStyles(styles)(withTranslation()(MyAppBar))));

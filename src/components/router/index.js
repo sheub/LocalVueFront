@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Register from "../pages/auth/Register";
 import ForgotPassword from "../pages/auth/ForgotPassword";
@@ -34,6 +34,8 @@ const propTypes = {
   initAuthFromExistingToken: PropTypes.func.isRequired
 };
 class App extends Component {
+
+  
   componentDidMount() {
     this.props.initAuthFromExistingToken(() => this.props.setLoading(false));
     window.App = {
@@ -43,26 +45,33 @@ class App extends Component {
   }
 
   render() {
+    // loading component for suspence fallback
+const Loader = () => (
+  <div className="App">
+    {/* <img src={logo} className="App-logo" alt="logo" /> */}
+    <div>loading...</div>
+  </div>
+);
+
     if (this.props.loading) {
       return (
-        <div className="p-2">loading...</div>
+        <Loader />
       );
     }
 
     return (
 
+      <Suspense fallback={<Loader />}>
       <Router>
         <div className="App">
             <MyAppBar />
-            <Switch>
-              {/* <GuestRoute exact path="/" component={Album} /> */}
-              <GuestRoute path="/register" component={Register} />
 
+            <Switch>
+              <GuestRoute path="/register" component={Register} />
               <GuestRoute path="/forgot-password" component={ForgotPassword} />
               <GuestRoute path="/password/reset/:token" component={ResetPassword} />
               <GuestRoute path="/signin" component={SignIn} />
 
-              {/* <AuthRoute path="/home" component={Album} /> */}
               <AuthRoute path="/profile" component={Profile} />
               <AuthRoute path="/checkout" component={Checkout} />              
             </Switch>
@@ -75,6 +84,7 @@ class App extends Component {
             <Footer />
           </div>
       </Router>
+      </Suspense>
     );
   }
 }

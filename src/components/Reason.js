@@ -4,6 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import BackgroundImage from "./../assets/GPS_Smartphone_570x381.jpg";
+import { withTranslation } from "react-i18next";
+
 
 const styles = () => ({
     containerLeft: {
@@ -20,7 +22,7 @@ const styles = () => ({
 });
 
 function Reason(props) {
-    const { classes } = props;
+    const { t, classes } = props;
     return (
         <Grid container direction={"row"} align={"flex-start"} spacing={0}>
             <Grid item xs={12} sm={6}>
@@ -33,13 +35,12 @@ function Reason(props) {
             <Grid item xs={12} sm={6}>
                 <div className={classes.containerLeft}>
                     <Typography component="h2" variant="h4" align="left" color="textPrimary" gutterBottom>
-                        Warum sollten Sie Ihr Unternehmen lokal weiterempfehlen?
+                        {t("home.reasonTitle")}
+
                     </Typography>
 
                     <Typography variant="body1" align="left" gutterBottom>
-                        Heute ist jede dritte Internetsuche mit einer lokalen Aktivität verknüpft, z.B. wenn Sie nach Ihrer Aktivität bei Google suchen (z.B. "Vegan Restaurant Leipzig").
-                        Internetnutzer, die nach Einrichtungen wie Ihrer suchen, besuchen nicht unbedingt Ihre Website und verwenden häufig Informationen, die von Websites Dritter wie Google,
-                        OpenStreetMap, Bing, Here, TomTom, Yelp, Foursquare veröffentlicht werden. Es ist daher unbedingt erforderlich, Sie auf diese Seiten zu verweisen!
+                        {t("home.reasonText")}
                     </Typography>
 
                 </div>
@@ -51,4 +52,4 @@ Reason.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Reason);
+export default withStyles(styles)(withTranslation("translations")(Reason));
