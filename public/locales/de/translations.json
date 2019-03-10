@@ -3,9 +3,9 @@
     "appbar": {
         "pricing": "Pricing",
         "myProfile": "Mein Profil",
-        "register": "Register",
+        "register": "Registrieren",
         "logout": "Logout",
-        "signIn": "Sign In"
+        "signIn": "Anmelden"
     },
     "home": {
         "starter": "Gewinnen Sie neue Kunden, indem Sie Ihr Unternehmen überall im Internet bewerben: Google, OpenStreetMap, Bing, Here, TomTom, Yelp und Foursquare.",
@@ -41,9 +41,9 @@
         "proText3": "Bevorzugter E-Mail-Support",
         "buttonGetStarted": "Get Started",
         "Enterprise": "Enterprise",
-        "Enterprise1": "Correct your online presence",
-        "Enterprise2": "Unlimited usage",
-        "Enterprise3": "Priority email support",
+        "Enterprise1": "Korrigieren Sie Ihre Online-Präsenz",
+        "Enterprise2": "Unbegrenzte Nutzung",
+        "Enterprise3": "Bevorzugter E-Mail-Support",
         "buttonContact": "Contact Us"
 
     }

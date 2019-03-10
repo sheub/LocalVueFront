@@ -2,22 +2,22 @@
     "title": "Local vue",
     "appbar": {
         "pricing": "Pricing",
-        "myProfile": "My Profil",
-        "register": "Register",
-        "logout": "Logout",
-        "signIn": "Sign In"
+        "myProfile": "Mon profile",
+        "register": "S'inscrire",
+        "logout": "Déconnexion",
+        "signIn": "S'identifier"
     },
     "home": {
-        "starter": "Gewinnen Sie neue Kunden, indem Sie Ihr Unternehmen überall im Internet bewerben: Google, OpenStreetMap, Bing, Here, TomTom, Yelp und Foursquare.",
-        "ButtonCallToAction": "Analysieren Ihre Sichtbarkeit in 2 Minuten.",
-        "reasonTitle": "Warum sollten Sie Ihr Unternehmen lokal weiterempfehlen?",
-        "reasonText": "Heute ist jede dritte Internetsuche mit einer lokalen Aktivität verknüpft, z.B. wenn Sie nach Ihrer Aktivität bei Google suchen (z.B. `Vegan Restaurant Leipzig`). Internetnutzer, die nach Einrichtungen wie Ihrer suchen, besuchen nicht unbedingt Ihre Website und verwenden häufig Informationen, die von Websites Dritter wie Google, OpenStreetMap, Bing, Here, TomTom, Yelp, Foursquare veröffentlicht werden. Es ist daher unbedingt erforderlich, Sie auf diese Seiten zu verweisen!",
-        "analysisTitle": "Analysieren Sie die Sichtbarkeit Ihres Unternehmens in 2 Minuten.",
-        "inputName": "Name Ihres 'Unternahmens",
-        "inputAddress": "Ihres Unternehmens",
-        "city": "Stadt",
-        "postCode": "Postleitzahl",
-        "buttonStartAnalysysis": "Analyse Starten"
+        "starter": "Attirez de nouveaux clients en faisant la promotion de votre entreprise partout sur Internet : Google, OpenStreetMap, Bing, Here, TomTom, Yelp et Foursquare.",
+        "ButtonCallToAction": "Analysez votre visibilité en 2 minutes.",
+        "reasonTitle": "Pourquoi recommander votre entreprise localement?",
+        "reasonText": "Aujourd'hui, une recherche sur Internet sur trois est liée à une activité locale, par exemple si vous recherchez votre activité sur Google (par exemple Restaurant Vegan Leipzig). Les internautes à la recherche d'installations comme la vôtre ne visitent pas nécessairement votre site et utilisent souvent des informations publiées par des sites tiers tels que Google, OpenStreetMap, Bing, Here, TomTom, Yelp, Foursquare. Il est donc impératif de vous référer à ces sites !",
+        "analysisTitle": "Analysez la visibilité de votre entreprise en 2 minutes.",
+        "inputName": "Nom de votre entreprise",
+        "inputAddress": "Adresse de votre entreprise",
+        "city": "ville",
+        "postCode": "Code postal",
+        "buttonStartAnalysysis": "Démarrer l'analyse"
     },
     "Footer":{
         "zoestha": "ZOESTHA UG",
@@ -29,22 +29,22 @@
     },
     "Pricing":{
         "title": "Pricing",
-        "titleText": "Korrigieren Sie Ihre digitale Sichtbarkeit schnell mit LocalVue. Die zusätzlichen Links zu den Partnern ermöglichen es, neue Funktionen hinzuzufügen oder ihre Einträge zu korrigieren, wenn sie ungenau sind.",
-        "free": "Free",
-        "freeText1": "Überprüfen Sie Ihre Online-Präsenz",
-        "freeText2": "Begrenzte Anzahl von Suchanfragen",
-        "freeText3": "E-Mail-Support",
-        "buttonSignUp": "kostenlos registrieren",
-        "mostPopular": "Am beliebtesten",
-        "proText1": "Korrigieren Sie Ihre Online-Präsenz",
-        "proText2": "Zwei Wochen Unbegrenzte Nutzung",
-        "proText3": "Bevorzugter E-Mail-Support",
-        "buttonGetStarted": "Get Started",
+        "titleText": "Corrigez rapidement votre visibilité numérique avec LocalVue. Les liens supplémentaires vers les partenaires vous permettent d'ajouter de nouvelles informations ou de corriger leurs entrées si elles sont inexactes.",
+        "free": "Gratuit",
+        "freeText1": "Vérifiez votre présence en ligne",
+        "freeText2": "Nombre limité de requêtes de recherche",
+        "freeText3": "Support courriel",
+        "buttonSignUp": "inscrivez-vous gratuitement",
+        "mostPopular": "Le plus populaire",
+        "proText1": "Corrigez votre présence en ligne",
+        "proText2": "Deux semaines Utilisation illimitée",
+        "proText3": "Support par courriel prioritaire",
+        "buttonGetStarted": "Commencer",
         "Enterprise": "Enterprise",
-        "Enterprise1": "Correct your online presence",
-        "Enterprise2": "Unlimited usage",
-        "Enterprise3": "Priority email support",
-        "buttonContact": "Contact Us"
+        "Enterprise1": "Corrigez votre présence en ligne",
+        "Enterprise2": "Utilisation illimitée",
+        "Enterprise3": "Support par courriel prioritaire",
+        "buttonContact": "Nous Contacter"
 
     }
 
