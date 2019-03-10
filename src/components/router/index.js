@@ -9,6 +9,7 @@ import Profile from "../pages/Profile";
 import Pricing from "../pages/Pricing";
 import Checkout from "../pages/Checkout";
 import SignIn from "../pages/auth/SignIn";
+import Thankyou from "../pages/Thankyou";
 
 import GuestRoute from "./GuestRoute";
 import AuthRoute from "./AuthRoute";
@@ -72,7 +73,8 @@ const Loader = () => (
               <GuestRoute path="/signin" component={SignIn} />
 
               <AuthRoute path="/profile" component={Profile} />
-              <AuthRoute path="/checkout" component={Checkout} />              
+              <AuthRoute path="/checkout" component={Checkout} />
+              <AuthRoute path="/paypalreturn" component={Thankyou} /> 
             </Switch>
             
             <Route exact path="/" component={Album} />

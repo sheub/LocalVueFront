@@ -10,6 +10,8 @@ import Grid from "@material-ui/core/Grid";
 import StarIcon from "@material-ui/icons/StarBorder";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
+import { withTranslation } from "react-i18next";
+
 
 import { Link } from "react-router-dom";
 const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
@@ -93,7 +95,7 @@ const tiers = [
 ];
 
 function Pricing(props) {
-  const { classes } = props;
+  const { t, classes } = props;
 
   return (
     <React.Fragment>
@@ -102,11 +104,12 @@ function Pricing(props) {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-            Pricing
+          {t("pricing.title")}
           </Typography>
           <Typography variant="h6" align="center" color="textSecondary" component="p">
-            Quickly correct you Digital visibility with LocalVue.
-            The additional links to the partners allow to add new features or correct their entires if they are inexact.
+          {t("pricing.titleText")}
+          {/* Quickly correct you Digital visibility with LocalVue.
+            The additional links to the partners allow to add new features or correct their entires if they are inexact. */}
           </Typography>
         </div>
         {/* End hero unit */}
@@ -162,4 +165,4 @@ Pricing.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Pricing);
+export default withStyles(styles)(withTranslation()(Pricing));

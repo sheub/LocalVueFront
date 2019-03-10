@@ -4,10 +4,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
-import Button from "@material-ui/core/Button";
-
-
-
 
 const styles = (theme) => ({
     root: {
@@ -25,16 +21,12 @@ const styles = (theme) => ({
 
 });
 
-class Checkout extends Component {
-    constructor(props) {
-        super(props);
-        this._onClick = this._onClick.bind(this);
-    }
-
-    _onClick() {
+class Thankyou extends Component {
 
 
-        let url = "https://localvue.de/paypalredirect/";
+    onLoad() {
+
+        let url = `https://localvue.de/paypalstoreuser/${this.window.resultId}`;
 
         var query = encodeURI(url);
         axios.get(query, {
@@ -52,7 +44,8 @@ class Checkout extends Component {
     }
 
     render() {
-        const { classes } = this.props;
+        this.onLoad();
+        const { auth, classes } = this.props;
         return (
             <div className={classes.root}>
                 <Grid container spacing={24}>
@@ -60,16 +53,8 @@ class Checkout extends Component {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <div className="container p-2 mx-auto flex flex-col">
-                            <h1>This is checkout page</h1>
-                            {/* <h2>Welcome {auth.user.name}</h2> */}
-                            {/* <a href="{{ /paypalredirect }}" >Abonnement anlegen</a> */}
-                            <Grid container direction={"row"} justify={"space-between"} align={"flex-start"} spacing={32}>
-                                <Grid item>
-                                    <Button onClick={this._onClick} variant="contained" color="primary">
-                                        Pay with PayPal
-                                    </Button>
-                                </Grid>
-                            </Grid>
+                            <h1>This is Thank you page</h1>
+                            <h2>Merci {auth.user.name}</h2>
                         </div>
                     </Grid>
                 </Grid>
@@ -80,12 +65,10 @@ class Checkout extends Component {
 
 const propTypes = {
     auth: PropTypes.object.isRequired,
-    // resultData: PropTypes.array,
-    // placeInfo: PropTypes.object,
 };
 
 
-Checkout.propTypes = propTypes;
+Thankyou.propTypes = propTypes;
 
 
 var mapStateToProps = (state) => {
@@ -96,4 +79,4 @@ var mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps)(withStyles(styles)(Checkout));
+export default connect(mapStateToProps)(withStyles(styles)(Thankyou));

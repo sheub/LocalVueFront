@@ -178,7 +178,7 @@ class Analysis extends Component {
                             <Input
                                 id="name"
                                 fullWidth
-                                placeholder="Name Ihres Unternehmens"
+                                placeholder={t("home.inputName")}
                                 required
                                 className={classes.input}
                                 inputProps={{ "aria-label": "Name", }}
@@ -188,7 +188,7 @@ class Analysis extends Component {
                             <Input
                                 id="address"
                                 fullWidth
-                                placeholder="Addresse Ihres Unternehmens"
+                                placeholder={t("home.inputAddress")}
                                 required
                                 className={classes.input}
                                 inputProps={{ "aria-label": "Address", }}
@@ -198,7 +198,7 @@ class Analysis extends Component {
                             <Grid item xs={6}>
                                 <Input
                                     id="city"
-                                    placeholder="Stadt"
+                                    placeholder={t("home.city")}
                                     required
                                     className={classes.input}
                                     inputProps={{ "aria-label": "city", }}
@@ -209,7 +209,7 @@ class Analysis extends Component {
                             <Grid item xs={6}>
                                 <Input
                                     id="postcode"
-                                    placeholder="Postleitzahl"
+                                    placeholder={t("home.postcode")}
                                     className={classes.input}
                                     inputProps={{ "aria-label": "postcode", }}
                                     disableUnderline

@@ -14,7 +14,7 @@
         "reasonText": "Heute ist jede dritte Internetsuche mit einer lokalen Aktivität verknüpft, z.B. wenn Sie nach Ihrer Aktivität bei Google suchen (z.B. `Vegan Restaurant Leipzig`). Internetnutzer, die nach Einrichtungen wie Ihrer suchen, besuchen nicht unbedingt Ihre Website und verwenden häufig Informationen, die von Websites Dritter wie Google, OpenStreetMap, Bing, Here, TomTom, Yelp, Foursquare veröffentlicht werden. Es ist daher unbedingt erforderlich, Sie auf diese Seiten zu verweisen!",
         "analysisTitle": "Analysieren Sie die Sichtbarkeit Ihres Unternehmens in 2 Minuten.",
         "inputName": "Name Ihres Unternahmens",
-        "inputAddress": "Ihres Unternehmens",
+        "inputAddress": "Adresse Ihres Unternehmens",
         "city": "Stadt",
         "postCode": "Postleitzahl",
         "buttonStartAnalysysis": "Analyse Starten"
@@ -27,7 +27,7 @@
         "HRN": "Handelsregisternummer hrb 32943",
         "impressum": "impressum"
     },
-    "Pricing":{
+    "pricing":{
         "title": "Pricing",
         "titleText": "Korrigieren Sie Ihre digitale Sichtbarkeit schnell mit LocalVue. Die zusätzlichen Links zu den Partnern ermöglichen es, neue Funktionen hinzuzufügen oder ihre Einträge zu korrigieren, wenn sie ungenau sind.",
         "free": "Free",

@@ -20,7 +20,7 @@ export const setAuthenticated = authenticated => ({
 });
 
 export const signInUser = credentials => dispatch => {
-  return window.axios.post('/api/signin', credentials).then(({ data: { data, meta } }) => {
+  return window.axios.post('https://localvue.de/api/signin', credentials).then(({ data: { data, meta } }) => {
     setToken(meta.token);
     dispatch(setUserData(data));
     dispatch(setAuthenticated(true));
@@ -31,7 +31,7 @@ export const signInUser = credentials => dispatch => {
 };
 
 export const googleSignIn = credentials => dispatch => {
-  return window.axios.post('/api/google/signin', credentials).then(({ data: { data, meta } }) => {
+  return window.axios.post('https://localvue.de/api/google/signin', credentials).then(({ data: { data, meta } }) => {
     setToken(meta.token);
     dispatch(setUserData(data));
     dispatch(setAuthenticated(true));
@@ -42,7 +42,7 @@ export const googleSignIn = credentials => dispatch => {
 };
 
 export const registerUser = credentials => dispatch => {
-  return window.axios.post('/api/register', credentials
+  return window.axios.post('https://localvue.de/api/register', credentials
   ).then(({ data: { data, meta } }) => {
     setToken(meta.token);
     dispatch(setUserData(data));
@@ -60,7 +60,7 @@ export const clearAuth = () => dispatch => {
 };
 
 export const logoutUser = cb => dispatch => {
-  return window.axios.post('/api/logout')
+  return window.axios.post('https://localvue.de/api/logout')
     .then(response => {
       dispatch(clearAuth());
       cb();
