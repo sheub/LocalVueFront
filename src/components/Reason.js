@@ -36,7 +36,6 @@ function Reason(props) {
                 <div className={classes.containerLeft}>
                     <Typography component="h2" variant="h4" align="left" color="textPrimary" gutterBottom>
                         {t("home.reasonTitle")}
-
                     </Typography>
 
                     <Typography variant="body1" align="left" gutterBottom>
@@ -52,4 +51,4 @@ Reason.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(withTranslation("translations")(Reason));
+export default withStyles(styles)(withTranslation()(Reason));

@@ -48,12 +48,11 @@ class Album extends Component {
 
   render() {
         // loading component for suspence fallback
-const Loader = () => (
-  <div className="App">
-    {/* <img src={logo} className="App-logo" alt="logo" /> */}
-    <div>loading...</div>
-  </div>
-);
+    const Loader = () => (
+      <div className="App">
+        <div>loading...</div>
+      </div>
+    );
 
     const { t, classes } = this.props;
     return (

@@ -48,7 +48,6 @@ class App extends Component {
     // loading component for suspence fallback
 const Loader = () => (
   <div className="App">
-    {/* <img src={logo} className="App-logo" alt="logo" /> */}
     <div>loading...</div>
   </div>
 );

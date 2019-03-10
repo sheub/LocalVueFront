@@ -110,11 +110,11 @@ class Analysis extends Component {
         super(props);
         this.state = initialState;
         this.state.tableActive = false;
-        this._onClick = this._onClick.bind(this);
-        this._handleChange = this._handleChange.bind(this);
+        // this._onClick = this._onClick.bind(this);
+        // this._handleChange = this._handleChange.bind(this);
     }
 
-    _onClick() {
+    _onClick = (e) => {
 
         this.setState({ isLoading: true });
         this.props.setStateValue("placeInfo", this.state.place);
