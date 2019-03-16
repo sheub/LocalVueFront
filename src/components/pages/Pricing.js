@@ -15,7 +15,7 @@ import { withTranslation } from "react-i18next";
 
 import { Link } from "react-router-dom";
 const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
-const MyLinkToCheckout = (props) => <Link to="/checkout" {...props} />;
+// const MyLinkToCheckout = (props) => <Link to="/checkout" {...props} />;
 
 
 const styles = theme => ({
@@ -77,7 +77,7 @@ const tiers = [
       "Priority email support",
     ],
     buttonText: "Get started",
-    component: MyLinkToCheckout,
+    // component: (props) => <Link to="/checkout" {...props}  tier={tiers[1]}/>,
     buttonVariant: "contained",
   },
   {
@@ -104,10 +104,10 @@ function Pricing(props) {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          {t("pricing.title")}
+          {t("Pricing.title")}
           </Typography>
           <Typography variant="h6" align="center" color="textSecondary" component="p">
-          {t("pricing.titleText")}
+          {t("Pricing.titleText")}
           {/* Quickly correct you Digital visibility with LocalVue.
             The additional links to the partners allow to add new features or correct their entires if they are inexact. */}
           </Typography>
@@ -145,7 +145,7 @@ function Pricing(props) {
                   <Button 
                     fullWidth
                     variant={tier.buttonVariant}
-                    component={tier.component ? tier.component : null}
+                    component = { (props) => <Link to={{pathname: "/checkout", state: {tier: tiers[1]}}} {...props}/> }
                     color="primary"
                     >
                       {tier.buttonText}

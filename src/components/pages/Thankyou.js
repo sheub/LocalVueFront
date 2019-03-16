@@ -26,7 +26,7 @@ class Thankyou extends Component {
 
     onLoad() {
 
-        let url = `https://localvue.de/paypalstoreuser/${this.window.resultId}`;
+        let url = `https://localvue.de/paypalstoreuser/${window.resultid}`;
 
         var query = encodeURI(url);
         axios.get(query, {
@@ -34,7 +34,7 @@ class Thankyou extends Component {
         })
             .then((approvalUrl) => {
                 // similar behavior as an HTTP redirect
-                window.location.replace(approvalUrl.data);
+                // window.location.replace(approvalUrl);
                 // console.log(approvalUrl.data);
             })
             .catch((err) => {

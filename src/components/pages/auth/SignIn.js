@@ -122,7 +122,7 @@ class SignIn extends Component {
               id="email"
               type="email"
               name="email"
-              errorText = "Please Enter valid email"
+              errortext = "Please Enter valid email"
               required = {true}
               autoFocus
               margin="dense"
@@ -154,17 +154,7 @@ class SignIn extends Component {
           />
 
           <DialogActions>
-            <Button type = "submit"
-              variant = "contained"
-              color = "primary"
-              className = {classes.submit}
-            >
-              Sign In
-            </Button>
-          </DialogActions>
-
-          {/* Register */}
-          <DialogActions>
+            {/* Register */}
             <Button type = "submit"
               variant = "outlined"
               color = "primary"
@@ -172,6 +162,14 @@ class SignIn extends Component {
               component = {MyLinkToRegister}
             >
               Register
+            </Button>
+
+            <Button type = "submit"
+              variant = "contained"
+              color = "primary"
+              className = {classes.submit}
+            >
+              Sign In
             </Button>
           </DialogActions>
         </form>

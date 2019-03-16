@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import { getIntendedUrl } from "../../helpers/auth";
 
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -60,6 +61,8 @@ class Register extends Component {
 
   registerSuccess() {
     this.props.history.push("/");
+    getIntendedUrl().then(url => this.props.history.push(url));
+
   }
 
   handleSubmit(e) {
@@ -218,21 +221,21 @@ class Register extends Component {
                       value={this.state.password_confirmation}
                       onChange={e => this.handleInputChange(e)}
                       type="password"
-                      id="password-confirmation"
-                      name="password-confirmation"
+                      id="password_confirmation"
+                      name="password_confirmation"
                       required={true}
                       margin="dense"
-                      label="password-confirmation"
+                      label="password_confirmation"
                       minLength={6}
                       fullWidth
 
                     />
-                    {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password-confirmation"> Password confirmation </label>
+                    {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password_confirmation"> Password confirmation </label>
                 <input
                   value={this.state.password_confirmation}
                   onChange={e => this.handleInputChange(e)}
                   type="password"
-                  id="password-confirmation"
+                  id="password_confirmation"
                   name="password_confirmation"
                   className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, "password") ? "border-red" : ""}`}
                   required /> */}

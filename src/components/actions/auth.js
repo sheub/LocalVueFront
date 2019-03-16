@@ -60,16 +60,25 @@ export const clearAuth = () => dispatch => {
 };
 
 export const logoutUser = cb => dispatch => {
-  return window.axios.post('https://localvue.de/api/logout')
-    .then(response => {
-      dispatch(clearAuth());
-      cb();
-    })
-    .catch(anyError => {
-      dispatch(clearAuth());
-      cb();
-    });
+  const request =  window.axios.post('https://localvue.de/api/logout')
+
+  return request.then(
+    response => dispatch(clearAuth()), cb(),
+    err => dispatch(clearAuth()), cb()
+  );
+
+  // return window.axios.post('https://localvue.de/api/logout')
+  //   .then(response => {
+  //     dispatch(clearAuth());
+  //     cb();
+  //   })
+  //   .catch(anyError => {
+  //     dispatch(clearAuth());
+  //     cb();
+  //   });
 };
+
+
 
 export const initAuthFromExistingToken = (cb) => dispatch => {
   checkTokenExists().then(token => {
