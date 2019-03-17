@@ -17,7 +17,7 @@
         "inputName": "Name of your company",
         "inputAddress": "Address of your company",
         "city": "City",
-        "postCode": "postcode",
+        "postcode": "postcode",
         "buttonStartAnalysysis": "Start Analysis"
     },
     "Footer":{

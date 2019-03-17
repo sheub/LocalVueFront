@@ -24,8 +24,9 @@ import {  setStateValues } from "./actions/index";
 
 const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
 const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
-const MyLinkToUserPage = (props) => <Link to="/profile/${this.state.user.id" {...props} />;
-const MyLinkToLogout = (props) => <Link to="/logout" {...props} />;
+// const MyLinkToUserPage = (props) => <Link to="/profile/${this.state.user.id" {...props} />;
+const MyLinkToUserPage = (props) => <Link to="/profile/" {...props} />;
+const MyLinkToLogout = (props) => <Link to="/" {...props} />;
 const MyLinkToPricing = (props) => <Link to="/pricing" {...props} />;
 
 

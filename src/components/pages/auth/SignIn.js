@@ -15,8 +15,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+// import FormControlLabel from "@material-ui/core/FormControlLabel";
+// import Checkbox from "@material-ui/core/Checkbox";
 
 
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -64,7 +64,6 @@ class SignIn extends Component {
   handleClose = () => {
     this.props.handleClose();
   };
-
 
   signInSuccess() {
     getIntendedUrl().then(url => this.props.history.push(url));
@@ -148,10 +147,10 @@ class SignIn extends Component {
               fullWidth
             />
           </DialogContent>
-          <FormControlLabel className={classes.checkbox}
+          {/* <FormControlLabel className={classes.checkbox}
             control = {<Checkbox value = "remember" color = "primary" />}
             label = "Remember me"
-          />
+          /> */}
 
           <DialogActions>
             {/* Register */}
