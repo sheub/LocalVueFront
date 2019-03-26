@@ -61,11 +61,12 @@ const Loader = () => (
 
     return (
 
-      <Suspense fallback={<Loader />}>
+      
       <Router>
         <div className="App">
-            <MyAppBar />
-
+        <Suspense fallback={<Loader />}>
+        <MyAppBar />
+        
             <Switch>
               <GuestRoute path="/register" component={Register} />
               <GuestRoute path="/forgot-password" component={ForgotPassword} />
@@ -76,16 +77,18 @@ const Loader = () => (
               <AuthRoute path="/checkout" component={Checkout} />
               <AuthRoute path="/paypalreturn" component={Thankyou} /> 
             </Switch>
-            
+
             <Route exact path="/" component={Album} />
             <Route path="/pricing" component={Pricing} />
             <Route path="/impressum" component={Impressum} />
+            
 
             {/* <Slider /> */}
             <Footer />
+            </Suspense>
           </div>
       </Router>
-      </Suspense>
+
     );
   }
 }

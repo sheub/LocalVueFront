@@ -26,7 +26,7 @@ class Thankyou extends Component {
 
     onLoad() {
 
-        let url = `https://localvue.de/paypalstoreuser/${window.resultid}`;
+        let url = `/paypalstoreuser/${window.resultid}`;
 
         var query = encodeURI(url);
         axios.get(query, {

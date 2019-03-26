@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
@@ -47,16 +47,8 @@ class Album extends Component {
   };
 
   render() {
-        // loading component for suspence fallback
-    const Loader = () => (
-      <div className="App">
-        <div>loading...</div>
-      </div>
-    );
-
     const { t, classes } = this.props;
     return (
-      <Suspense fallback={<Loader />}>
       <React.Fragment>
         <div style={{ maxWidth: "1140px", margin: "auto" }}>
           <CssBaseline />
@@ -100,7 +92,7 @@ class Album extends Component {
                           Local Vue
                         </Typography>
                         <Typography variant="h6" align="left" paragraph>
-                        {t("home.starter")}
+                          {t("home.starter")}
                         </Typography>
                       </Grid>
                     </Grid>
@@ -131,7 +123,6 @@ class Album extends Component {
           </main>
         </div>
       </React.Fragment>
-      </Suspense>
     );
   }
 }

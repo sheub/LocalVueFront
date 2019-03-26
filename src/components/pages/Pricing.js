@@ -15,7 +15,8 @@ import { withTranslation } from "react-i18next";
 
 import { Link } from "react-router-dom";
 const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
-// const MyLinkToCheckout = (props) => <Link to="/checkout" {...props} />;
+const MyLinkToCheckout = (props) => <Link to={{pathname: "/checkout", state: {tier: tiers[1]}}} {...props}/>;
+
 
 
 const styles = theme => ({
@@ -145,7 +146,7 @@ function Pricing(props) {
                   <Button 
                     fullWidth
                     variant={tier.buttonVariant}
-                    component = { (props) => <Link to={{pathname: "/checkout", state: {tier: tiers[1]}}} {...props}/> }
+                    component = { tier.title === "Pro" ? MyLinkToCheckout : MyLinkToRegister }
                     color="primary"
                     >
                       {tier.buttonText}

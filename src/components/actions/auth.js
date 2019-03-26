@@ -4,7 +4,14 @@ export const SET_USER_DATA = 'SET_USER_DATA';
 export const SET_AUTHENTICATED = 'SET_AUTHENTICATED';
 
 const fetchUser = () => {
-  return window.axios.get('/api/me')
+  var url = "/api/me";
+  if (process.env.NODE_ENV === "production") {
+    url = "/api/me";
+  } else { // Dev server runs on port 3000
+    url = "http://localhost:5000/api/me";
+  }
+
+  return window.axios.get(url)
     .then(({ data: { data } }) => Promise.resolve(data))
     .catch(error => Promise.reject(error));
 };
@@ -20,7 +27,14 @@ export const setAuthenticated = authenticated => ({
 });
 
 export const signInUser = credentials => dispatch => {
-  return window.axios.post('https://localvue.de/api/signin', credentials).then(({ data: { data, meta } }) => {
+  var url = "/api/signin";
+  if (process.env.NODE_ENV === "production") {
+    url = "/api/signin";
+  } else { // Dev server runs on port 3000
+    url = "http://localhost:5000/api/signin";
+  }
+
+  return window.axios.post(url, credentials).then(({ data: { data, meta } }) => {
     setToken(meta.token);
     dispatch(setUserData(data));
     dispatch(setAuthenticated(true));
@@ -31,7 +45,13 @@ export const signInUser = credentials => dispatch => {
 };
 
 export const googleSignIn = credentials => dispatch => {
-  return window.axios.post('https://localvue.de/api/google/signin', credentials).then(({ data: { data, meta } }) => {
+  var url =  "/api/google/signin";
+  if (process.env.NODE_ENV === "production") {
+    url = "/api/google/signin";
+  } else { // Dev server runs on port 5000
+    url = "http://localhost:5000/api/google/signin";
+  }
+  return window.axios.post(url, credentials).then(({ data: { data, meta } }) => {
     setToken(meta.token);
     dispatch(setUserData(data));
     dispatch(setAuthenticated(true));
@@ -42,7 +62,14 @@ export const googleSignIn = credentials => dispatch => {
 };
 
 export const registerUser = credentials => dispatch => {
-  return window.axios.post('https://localvue.de/api/register', credentials
+  var url = "/api/register";
+  if (process.env.NODE_ENV === "production") {
+    url = "/api/register";
+  } else { // Dev server runs on port 3000
+    url = "http://localhost:5000/api/register";
+  }
+
+  return window.axios.post(url, credentials
   ).then(({ data: { data, meta } }) => {
     setToken(meta.token);
     dispatch(setUserData(data));
@@ -60,7 +87,13 @@ export const clearAuth = () => dispatch => {
 };
 
 export const logoutUser = cb => dispatch => {
-  const request =  window.axios.post('https://localvue.de/api/logout')
+  var url = "/api/logout";
+  if (process.env.NODE_ENV === "production") {
+    url = "/api/logout";
+  } else { // Dev server runs on port 5000
+    url = "http://localhost:5000/api/logout";
+  }
+  const request =  window.axios.post(url)
 
   return request.then(
     response => dispatch(clearAuth()), cb(),

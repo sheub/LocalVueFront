@@ -120,7 +120,12 @@ class Analysis extends Component {
         this.props.setStateValue("placeInfo", this.state.place);
         
         let url = "";
-        url = `https://localvue.de/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
+        if (process.env.NODE_ENV === "production") {
+            url = `/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
+          } else { // Dev server runs on port 3000
+            url = `http://localhost:5000/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
+          }
+        
 
         var query = encodeURI(url);
         axios.get(query, {

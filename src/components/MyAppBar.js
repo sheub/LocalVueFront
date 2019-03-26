@@ -21,6 +21,11 @@ import LanguageIcon from "@material-ui/icons/Language";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { logoutUser } from "./actions/auth";
 import {  setStateValues } from "./actions/index";
+import MenuList from '@material-ui/core/MenuList';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
 
 const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
 const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
@@ -85,9 +90,9 @@ class MyAppBar extends Component {
             SignInFormVisible: false,
             // user: this.props.auth.user,
         };
-        this.handleMenuClose = this.handleMenuClose.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-        this.handleLogout = this.handleLogout.bind(this);
+        // this.handleMenuClose = this.handleMenuClose.bind(this);
+        // this.handleClose = this.handleClose.bind(this);
+        // this.handleLogout = this.handleLogout.bind(this);
     }
 
     // OpenClose Menu
@@ -236,7 +241,12 @@ class MyAppBar extends Component {
                             </div>
                             <div>
                             <IconButton
-                                aria-owns={open ? "menu-appbar" : null}
+                            buttonRef={node => {
+                                this.anchorEl = node;
+                              }}
+                              aria-owns={open ? 'menu-list-grow' : undefined}
+                              
+                                // aria-owns={open ? "menu-appbar" : null}
                                 aria-haspopup="true"
                                 onClick={this.handleMenuLanguage}
                                 color="inherit"
@@ -244,7 +254,7 @@ class MyAppBar extends Component {
                             >
                                 <LanguageIcon />
                             </IconButton>
-                            <Menu
+                            {/* <Menu
                                 id="menu-appbar"
                                 anchorEl={anchorElanguage}
                                 anchorOrigin={{
@@ -257,11 +267,27 @@ class MyAppBar extends Component {
                                 }}
                                 open={openMenuLanguage}
                                 onClose={this.handleCloseLanguage}
-                            >
-                                <MenuItem onClick={() => changeLanguage("en")}>en</MenuItem>
-                                <MenuItem onClick={() => changeLanguage("de")}>de</MenuItem>
-                                <MenuItem onClick={() => changeLanguage("fr")}>fr</MenuItem>
-                            </Menu>
+                            > */}
+                                <Popper open={openMenuLanguage} anchorEl={this.anchorEl} transition disablePortal>
+                                    {({ TransitionProps, placement }) => (
+                                        <Grow
+                                            {...TransitionProps}
+                                            id="menu-list-grow"
+                                            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                                        >
+                                            <Paper>
+                                                <ClickAwayListener onClickAway={this.handleCloseLanguage}>
+                                                    <MenuList>
+                                                        <MenuItem onClick={() => changeLanguage("en")}>en</MenuItem>
+                                                        <MenuItem onClick={() => changeLanguage("de")}>de</MenuItem>
+                                                        <MenuItem onClick={() => changeLanguage("fr")}>fr</MenuItem>
+                                                    </MenuList>
+                                                </ClickAwayListener>
+                                            </Paper>
+                                        </Grow>
+                                    )}
+                                </Popper>
+                            {/* </Menu> */}
                         </div>
                             <div className={classes.sectionMobile}>
                                 <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
