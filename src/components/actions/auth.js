@@ -1,10 +1,10 @@
-import { checkTokenExists, setToken } from '../helpers/auth';
+import { checkTokenExists, setToken } from "../helpers/auth";
 
-export const SET_USER_DATA = 'SET_USER_DATA';
-export const SET_AUTHENTICATED = 'SET_AUTHENTICATED';
+export const SET_USER_DATA = "SET_USER_DATA";
+export const SET_AUTHENTICATED = "SET_AUTHENTICATED";
 
 const fetchUser = () => {
-  var url = "/api/me";
+  let url = "/api/me";
   if (process.env.NODE_ENV === "production") {
     url = "/api/me";
   } else { // Dev server runs on port 3000
@@ -18,12 +18,12 @@ const fetchUser = () => {
 
 export const setUserData = user => ({
   type: SET_USER_DATA,
-  user
+  user,
 });
 
 export const setAuthenticated = authenticated => ({
   type: SET_AUTHENTICATED,
-  authenticated
+  authenticated,
 });
 
 export const signInUser = credentials => dispatch => {
@@ -100,7 +100,7 @@ export const logoutUser = cb => dispatch => {
     err => dispatch(clearAuth()), cb()
   );
 
-  // return window.axios.post('https://localvue.de/api/logout')
+  // return window.axios.post("https://localvue.de/api/logout")
   //   .then(response => {
   //     dispatch(clearAuth());
   //     cb();
