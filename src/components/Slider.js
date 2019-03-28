@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import "./../slick.min.css";
-import "./../slick-theme.min.css";
+import "../slick.min.css";
+import "../slick-theme.min.css";
 import Typography from "@material-ui/core/Typography";
 import google from "./../assets/brands/google.svg";
 import here from "./../assets/brands/here.svg";

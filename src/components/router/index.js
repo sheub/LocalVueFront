@@ -40,8 +40,8 @@ class App extends Component {
   componentDidMount() {
     this.props.initAuthFromExistingToken(() => this.props.setLoading(false));
     window.App = {
-      "name": "LocalVue",
-      "google_client_id": "abcd"
+      name: "LocalVue",
+      google_client_id: "abcd"
     }; // process.env.REACT_APP_GOOGLE_CLIENT_ID};
   }
 

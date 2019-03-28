@@ -1,15 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import * as serviceWorker from "./serviceWorker";
 import "./index.css";
-
-import './i18n';
-
+import "./i18n";
 import "./components/bootstrap";
-import store from "./components/store";
+import * as serviceWorker from "./serviceWorker";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+
 import App from "./components/router";
 import { Provider } from "react-redux";
+import React from "react";
+import ReactDOM from "react-dom";
+import store from "./components/store";
+
+
 
 
 const theme = createMuiTheme({
@@ -32,10 +33,10 @@ const theme = createMuiTheme({
         "-apple-system",
         "BlinkMacSystemFont",
         '"Segoe UI"',
-        'Roboto',
+        "Roboto",
         '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
+        "Arial",
+        "sans-serif",
         '"Apple Color Emoji"',
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',

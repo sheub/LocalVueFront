@@ -1,0 +1,17 @@
+{
+    "extends": ["react-app", "airbnb-base"],
+    "parser": "babel-eslint",
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "use": ["babel-loader"],
+        "no-undef": [1],
+        "semi": ["error", "always"],
+        "semi-spacing": "warn",
+        "quote-props": ["error", "as-needed"],
+        "quotes": [2, "double", { "avoidEscape": true }],
+        "max-len": [1, 120, 2, {"ignoreComments": true}],
+        "prop-types": [2]
+        }
+}
