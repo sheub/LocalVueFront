@@ -101,12 +101,12 @@ class Checkout extends Component {
             if (response.status === 200) {
                 return response;
             } else {
-                console.log('Something went wrong');
+                console.log("Something went wrong");
             }
         })
-        .catch((err) => {
-            console.log(err);
-        });
+            .catch((err) => {
+                console.log(err);
+            });
 
     }
 
@@ -137,12 +137,12 @@ class Checkout extends Component {
 
     returnLanguage(currentLanguage) {
         switch (currentLanguage) {
-            case 'de':
-                return 'de-DE';
-            case 'fr':
-                return 'fr-FR';
-            default:
-                return 'en_GB';
+        case "de":
+            return "de-DE";
+        case "fr":
+            return "fr-FR";
+        default:
+            return "en_GB";
         }
     }
 
@@ -164,7 +164,7 @@ class Checkout extends Component {
                                 <DropIn
                                     options={{
                                         authorization: this.state.clientToken,
-                                        paypal: { flow: 'vault' },
+                                        paypal: { flow: "vault" },
                                         local: this.returnLanguage(i18n.language)
                                     }}
                                     onInstance={instance => (this.instance = instance)}
@@ -192,7 +192,7 @@ class Checkout extends Component {
                                                 <div className={classes.cardPricing}>
                                                     <Typography component="h2" variant="h3" color="textPrimary">
                                                         {tier.price}€
-                                        </Typography>
+                                                    </Typography>
                                                     <Typography variant="h6" color="textSecondary">
                                                         {tier.title === "Pro" ? "for 2 Weeks" : "/mo"}
                                                     </Typography>
@@ -211,14 +211,14 @@ class Checkout extends Component {
                                     <Grid item xs={6} sm={3}>
                                         <Button onClick={this._onClick} variant="contained" color="primary">
                                             Pay with PayPal
-                                    </Button>
+                                        </Button>
                                     </Grid>
                                     {this.state.isLoading ?
                                         <Grid item xs={12} sm={6}>
                                             <Grid item xs={12} sm={6}>
                                                 <Typography>
                                                     Please be patient, you will be redirected to Paypal.
-                                        </Typography>
+                                                </Typography>
                                             </Grid>
                                             <Grid item xs={12} sm={6}>
                                                 <div className="sweet-loading" style={{ verticalAlign: "bottom" }}>
@@ -257,7 +257,7 @@ var mapStateToProps = (state) => {
     return {
         auth: state.auth,
         // resultData: state.appReducer.resultData,
-    }
+    };
 };
 
 

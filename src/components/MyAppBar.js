@@ -21,11 +21,11 @@ import LanguageIcon from "@material-ui/icons/Language";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { logoutUser } from "./actions/auth";
 import {  setStateValues } from "./actions/index";
-import MenuList from '@material-ui/core/MenuList';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
+import MenuList from "@material-ui/core/MenuList";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
+import Popper from "@material-ui/core/Popper";
 
 const SignIn = React.lazy(() => import("./pages/auth/SignIn"));
 const MyLinkToRegister = (props) => <Link to="/register" {...props} />;
@@ -85,7 +85,7 @@ class MyAppBar extends Component {
         this.state = {
             anchorEl: null,
             anchorElanguage: null,
-            languageSet: 'en',
+            languageSet: "en",
             mobileMoreAnchorEl: null,
             SignInFormVisible: false,
             // user: this.props.auth.user,
@@ -158,21 +158,21 @@ class MyAppBar extends Component {
                 onClose={this.handleMenuClose}
             >
                 {auth.authenticated ?
-                        <div>
-                            <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
-                                My Profile
-                            </MenuItem>
-                            <MenuItem className="menuButton" component={MyLinkToLogout} onClick={this.handleLogout}>
-                                Logout
-                            </MenuItem>
-                        </div>
+                    <div>
+                        <MenuItem className="menuButton" component={MyLinkToUserPage} onClick={this.handleMenuClose}>
+                            My Profile
+                        </MenuItem>
+                        <MenuItem className="menuButton" component={MyLinkToLogout} onClick={this.handleLogout}>
+                            Logout
+                        </MenuItem>
+                    </div>
                     : <div >
                         <MenuItem className="menuButton" onClick={this.openSignIn}>Sign In</MenuItem>
 
                         {/* <Link to="/signin" onClick={this.handleMenuClose}>Sign In</Link> */}
                         {/* <Link to="/register" onClick={this.handleMenuClose}>Register</Link> */}
                         <MenuItem className="menuButton" component={MyLinkToRegister} onClick={this.handleMenuClose}>
-                        {t("appbar.register")}
+                            {t("appbar.register")}
                         </MenuItem>
                     </div>
                 }
@@ -240,21 +240,21 @@ class MyAppBar extends Component {
                                 </IconButton>
                             </div>
                             <div>
-                            <IconButton
-                            buttonRef={node => {
-                                this.anchorEl = node;
-                              }}
-                              aria-owns={open ? 'menu-list-grow' : undefined}
-                              
-                                // aria-owns={open ? "menu-appbar" : null}
-                                aria-haspopup="true"
-                                onClick={this.handleMenuLanguage}
-                                color="inherit"
-                                aria-label="Select Language"
-                            >
-                                <LanguageIcon />
-                            </IconButton>
-                            {/* <Menu
+                                <IconButton
+                                    buttonRef={node => {
+                                        this.anchorEl = node;
+                                    }}
+                                    aria-owns={open ? "menu-list-grow" : undefined}
+                                
+                                    // aria-owns={open ? "menu-appbar" : null}
+                                    aria-haspopup="true"
+                                    onClick={this.handleMenuLanguage}
+                                    color="inherit"
+                                    aria-label="Select Language"
+                                >
+                                    <LanguageIcon />
+                                </IconButton>
+                                {/* <Menu
                                 id="menu-appbar"
                                 anchorEl={anchorElanguage}
                                 anchorOrigin={{
@@ -273,7 +273,7 @@ class MyAppBar extends Component {
                                         <Grow
                                             {...TransitionProps}
                                             id="menu-list-grow"
-                                            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                                            style={{ transformOrigin: placement === "bottom" ? "center top" : "center bottom" }}
                                         >
                                             <Paper>
                                                 <ClickAwayListener onClickAway={this.handleCloseLanguage}>
@@ -287,8 +287,8 @@ class MyAppBar extends Component {
                                         </Grow>
                                     )}
                                 </Popper>
-                            {/* </Menu> */}
-                        </div>
+                                {/* </Menu> */}
+                            </div>
                             <div className={classes.sectionMobile}>
                                 <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
                                     <MoreIcon />
@@ -318,7 +318,7 @@ const propTypes = {
     languageSet: PropTypes.string,
     setStateValues: PropTypes.func,
 
-  };
+};
   
 MyAppBar.propTypes = propTypes;
 

@@ -4,30 +4,30 @@ import { Route, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const propTypes = {
-  component: PropTypes.func.isRequired,
-  rest: PropTypes.object,
-  location: PropTypes.object
+    component: PropTypes.func.isRequired,
+    rest: PropTypes.object,
+    location: PropTypes.object
 };
 
 const GuestRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props => {
-      const { auth: { authenticated } } = store.getState();
+    <Route
+        {...rest}
+        render={props => {
+            const { auth: { authenticated } } = store.getState();
 
-      return !authenticated ? (
-        <Component {...props} />
-      ) : (
-          <Redirect
-            to={{
-              pathname: "/",
-              state: { from: props.location }
-            }}
-          />
-        );
-    }
-    }
-  />
+            return !authenticated ? (
+                <Component {...props} />
+            ) : (
+                <Redirect
+                    to={{
+                        pathname: "/",
+                        state: { from: props.location }
+                    }}
+                />
+            );
+        }
+        }
+    />
 );
 
 GuestRoute.propTypes = propTypes;

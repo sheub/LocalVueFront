@@ -17,39 +17,39 @@ const theme = createMuiTheme({
 
     palette:
     {
-      primary: {
-        main: "#0047ab",
-      },
-      secondary: {
-        main: "#9CB2C0",
-      }
+        primary: {
+            main: "#0047ab",
+        },
+        secondary: {
+            main: "#9CB2C0",
+        }
     },
 
     typography: {
-      useNextVariants: true,
+        useNextVariants: true,
 
-      // Use the system font instead of the default Roboto font.
-      fontFamily: [
-        "-apple-system",
-        "BlinkMacSystemFont",
-        '"Segoe UI"',
-        "Roboto",
-        '"Helvetica Neue"',
-        "Arial",
-        "sans-serif",
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(","),
+        // Use the system font instead of the default Roboto font.
+        fontFamily: [
+            "-apple-system",
+            "BlinkMacSystemFont",
+            '"Segoe UI"',
+            "Roboto",
+            '"Helvetica Neue"',
+            "Arial",
+            "sans-serif",
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(","),
     },
-  });
+});
 
 ReactDOM.render(
-  <Provider store={store}>
-    <MuiThemeProvider theme={theme}>
-      <App />
-    </MuiThemeProvider>
-  </Provider>, document.getElementById("root")
+    <Provider store={store}>
+        <MuiThemeProvider theme={theme}>
+            <App />
+        </MuiThemeProvider>
+    </Provider>, document.getElementById("root")
 );
 
 

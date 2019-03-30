@@ -1,5 +1,5 @@
 {
-    "extends": ["react-app", "airbnb-base"],
+    "extends": ["react-app"],
     "parser": "babel-eslint",
     "plugins": [
         "react"
@@ -12,6 +12,6 @@
         "quote-props": ["error", "as-needed"],
         "quotes": [2, "double", { "avoidEscape": true }],
         "max-len": [1, 120, 2, {"ignoreComments": true}],
-        "prop-types": [2]
+        "indent": 2
         }
 }

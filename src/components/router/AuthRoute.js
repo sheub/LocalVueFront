@@ -6,34 +6,34 @@ import { setIntendedUrl } from "../helpers/auth";
 import PropTypes from "prop-types";
 
 const propTypes = {
-  component: PropTypes.func.isRequired,
-  rest: PropTypes.object,
-  location: PropTypes.object
+    component: PropTypes.func.isRequired,
+    rest: PropTypes.object,
+    location: PropTypes.object
 };
 
 const AuthRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props => {
-      const { auth: { authenticated } } = store.getState();
+    <Route
+        {...rest}
+        render={props => {
+            const { auth: { authenticated } } = store.getState();
 
-      if (!authenticated) {
-        setIntendedUrl(props.location.pathname);
-      }
+            if (!authenticated) {
+                setIntendedUrl(props.location.pathname);
+            }
 
-      return authenticated ? (
-        <AppLayoutRoute component={Component} {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/signin",
-            state: { from: props.location }
-          }}
-        />
-      );
-    }
-    }
-  />
+            return authenticated ? (
+                <AppLayoutRoute component={Component} {...props} />
+            ) : (
+                <Redirect
+                    to={{
+                        pathname: "/signin",
+                        state: { from: props.location }
+                    }}
+                />
+            );
+        }
+        }
+    />
 );
 
 AuthRoute.propTypes = propTypes;

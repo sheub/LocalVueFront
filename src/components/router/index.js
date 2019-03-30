@@ -30,74 +30,74 @@ import "../../App.css";
 
 
 const propTypes = {
-  setLoading: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  initAuthFromExistingToken: PropTypes.func.isRequired
+    setLoading: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    initAuthFromExistingToken: PropTypes.func.isRequired
 };
 class App extends Component {
 
   
-  componentDidMount() {
-    this.props.initAuthFromExistingToken(() => this.props.setLoading(false));
-    window.App = {
-      name: "LocalVue",
-      google_client_id: "abcd"
-    }; // process.env.REACT_APP_GOOGLE_CLIENT_ID};
-  }
-
-  render() {
-    // loading component for suspence fallback
-const Loader = () => (
-  <div className="App">
-    <div>loading...</div>
-  </div>
-);
-
-    if (this.props.loading) {
-      return (
-        <Loader />
-      );
+    componentDidMount() {
+        this.props.initAuthFromExistingToken(() => this.props.setLoading(false));
+        window.App = {
+            name: "LocalVue",
+            google_client_id: "abcd"
+        }; // process.env.REACT_APP_GOOGLE_CLIENT_ID};
     }
 
-    return (
+    render() {
+    // loading component for suspence fallback
+        const Loader = () => (
+            <div className="App">
+                <div>loading...</div>
+            </div>
+        );
+
+        if (this.props.loading) {
+            return (
+                <Loader />
+            );
+        }
+
+        return (
 
       
-      <Router>
-        <div className="App">
-        <Suspense fallback={<Loader />}>
-        <MyAppBar />
+            <Router>
+                <div className="App">
+                    <Suspense fallback={<Loader />}>
+                        <MyAppBar />
         
-            <Switch>
-              <GuestRoute path="/register" component={Register} />
-              <GuestRoute path="/forgot-password" component={ForgotPassword} />
-              <GuestRoute path="/password/reset/:token" component={ResetPassword} />
-              <GuestRoute path="/signin" component={SignIn} />
+                        <Switch>
+                            <GuestRoute path="/register" component={Register} />
+                            <GuestRoute path="/forgot-password" component={ForgotPassword} />
+                            <GuestRoute path="/password/reset/:token" component={ResetPassword} />
+                            <GuestRoute path="/signin" component={SignIn} />
 
-              <AuthRoute path="/profile" component={Profile} />
-              <AuthRoute path="/checkout" component={Checkout} />
-              <AuthRoute path="/paypalreturn" component={Thankyou} /> 
-            </Switch>
+                            <AuthRoute path="/profile" component={Profile} />
+                            <AuthRoute path="/checkout" component={Checkout} />
+                            <AuthRoute path="/paypalreturn" component={Thankyou} /> 
+                        </Switch>
 
-            <Route exact path="/" component={Album} />
-            <Route path="/pricing" component={Pricing} />
-            <Route path="/impressum" component={Impressum} />
+                        <Route exact path="/" component={Album} />
+                        <Route path="/pricing" component={Pricing} />
+                        <Route path="/impressum" component={Impressum} />
             
 
-            {/* <Slider /> */}
-            <Footer />
-            </Suspense>
-          </div>
-      </Router>
+                        {/* <Slider /> */}
+                        <Footer />
+                    </Suspense>
+                </div>
+            </Router>
 
-    );
-  }
+        );
+    }
 }
 
 App.propTypes = propTypes;
 
 const mapDispatchToProps = {
-  setLoading,
-  initAuthFromExistingToken
+    setLoading,
+    initAuthFromExistingToken
 };
 
 const mapStateToProps = ({ loading }) => ({ loading });

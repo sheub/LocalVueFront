@@ -122,9 +122,9 @@ class Analysis extends Component {
         let url = "";
         if (process.env.NODE_ENV === "production") {
             url = `/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
-          } else { // Dev server runs on port 3000
+        } else { // Dev server runs on port 3000
             url = `http://localhost:5000/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
-          }
+        }
         
 
         var query = encodeURI(url);
@@ -176,8 +176,8 @@ class Analysis extends Component {
                         <MuiThemeProvider theme={materialTheme}>
                             <div style={{ marginBottom: "24px" }}>
                                 <Typography component="h2" variant="h6" align="center" color="secondary" gutterBottom>
-                                {t("home.analysisTitle")}
-                            </Typography>
+                                    {t("home.analysisTitle")}
+                                </Typography>
                             </div>
 
                             <Input
@@ -226,7 +226,7 @@ class Analysis extends Component {
                             <Grid container direction={"row"} justify={"space-between"} align={"flex-start"} spacing={32}>
                                 <Grid item>
                                     <Button onClick={this._onClick} disabled={this.state.isLoading} variant="contained" color="primary">
-                                    {t("home.buttonStartAnalysysis")}
+                                        {t("home.buttonStartAnalysysis")}
                                     </Button>
                                 </Grid>
                                 <div className="sweet-loading" style={{ verticalAlign: "bottom" }}>
@@ -266,16 +266,16 @@ Analysis.propTypes = {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      setStateValue: (key, value) => dispatch(setStateValue(key, value)),
+        setStateValue: (key, value) => dispatch(setStateValue(key, value)),
     };
-  };
+};
 
 var mapStateToProps = (state) => {
     return {
         placeInfo: state.appReducer.placeInfo,
         resultData: state.appReducer.resultData,
     };
-  };
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withTranslation()(Analysis)));

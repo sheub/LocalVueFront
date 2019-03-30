@@ -75,7 +75,7 @@ var mapStateToProps = (state) => {
     return {
         auth: state.auth,
         // resultData: state.appReducer.resultData,
-    }
+    };
 };
 
 

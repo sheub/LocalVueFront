@@ -1,5 +1,5 @@
-import React, { Component } from "react";
 import PropTypes from "prop-types";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
@@ -103,8 +103,8 @@ class CustomizedTable extends Component {
                                         {isNotLink ? (
                                             <CustomTableCell> {row[1].link} </CustomTableCell>
                                         ) : (
-                                                <CustomTableCell ><a href={row[1].link} target="_blank" rel="noopener noreferrer">Link</a> </CustomTableCell>
-                                            )}
+                                            <CustomTableCell ><a href={row[1].link} target="_blank" rel="noopener noreferrer">Link</a> </CustomTableCell>
+                                        )}
                                         {/* dangerouslySetInnerHTML={{ __html: row[1].link }} */}
                                     </TableRow>
                                 );
