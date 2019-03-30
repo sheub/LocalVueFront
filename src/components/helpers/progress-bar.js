@@ -1,36 +1,36 @@
-import NProgress from 'nprogress';
+import NProgress from "nprogress";
 
 export default (instance) => {
-  let requestsCounter = 0;
+    let requestsCounter = 0;
 
-  const setupStartProgress = () => {
-    instance.interceptors.request.use(config => {
-      if (config.method === 'get') {
-        requestsCounter++;
-        NProgress.start();
-      }
-      return config;
-    });
-  };
-
-  const setupStopProgress = () => {
-    const responseFunc = response => {
-      if ((--requestsCounter) === 0) {
-        NProgress.done();
-      }
-      return response;
+    const setupStartProgress = () => {
+        instance.interceptors.request.use(config => {
+            if (config.method === "get") {
+                requestsCounter++;
+                NProgress.start();
+            }
+            return config;
+        });
     };
 
-    const errorFunc = error => {
-      if ((--requestsCounter) === 0) {
-        NProgress.done();
-      }
-      return Promise.reject(error);
+    const setupStopProgress = () => {
+        const responseFunc = response => {
+            if ((--requestsCounter) === 0) {
+                NProgress.done();
+            }
+            return response;
+        };
+
+        const errorFunc = error => {
+            if ((--requestsCounter) === 0) {
+                NProgress.done();
+            }
+            return Promise.reject(error);
+        };
+
+        instance.interceptors.response.use(responseFunc, errorFunc);
     };
 
-    instance.interceptors.response.use(responseFunc, errorFunc);
-  };
-
-  setupStartProgress();
-  setupStopProgress();
+    setupStartProgress();
+    setupStopProgress();
 };

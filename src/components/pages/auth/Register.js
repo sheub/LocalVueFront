@@ -16,110 +16,110 @@ import Button from "@material-ui/core/Button";
 // import GoogleSignIn from "../../GoogleSignIn";
 
 const propTypes = {
-  registerUser: PropTypes.func.isRequired,
-  googleSignIn: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+    registerUser: PropTypes.func.isRequired,
+    googleSignIn: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
 };
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  firstContainer: {
-    marginTop: 48,
-    marginBottom: 54,
-  },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    margin: "auto",
-    maxWidth: 500,
-  },
-  button: {
+    root: {
+        flexGrow: 1,
+    },
+    firstContainer: {
+        marginTop: 48,
+        marginBottom: 54,
+    },
+    paper: {
+        padding: theme.spacing.unit * 2,
+        margin: "auto",
+        maxWidth: 500,
+    },
+    button: {
     // margin: theme.spacing.unit,
-    marginTop: theme.spacing.unit * 3,
-    float: "right"
-  },
-  signin: {
-    margin: theme.spacing.unit,
-    float: "left"
-  }
+        marginTop: theme.spacing.unit * 3,
+        float: "right"
+    },
+    signin: {
+        margin: theme.spacing.unit,
+        float: "left"
+    }
 });
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      email: "",
-      password: "",
-      password_confirmation: "",
-      errors: "",
-      SignInFormVisible: false,
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "",
+            email: "",
+            password: "",
+            password_confirmation: "",
+            errors: "",
+            SignInFormVisible: false,
 
-    };
-  }
+        };
+    }
 
-  registerSuccess() {
-    this.props.history.push("/");
-    getIntendedUrl().then(url => this.props.history.push(url));
+    registerSuccess() {
+        this.props.history.push("/");
+        getIntendedUrl().then(url => this.props.history.push(url));
 
-  }
+    }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.registerUser(this.state)
-      .then(response => this.registerSuccess())
-      .catch(error => this.setState({ errors: destructServerErrors(error) }));
-  }
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.registerUser(this.state)
+            .then(response => this.registerSuccess())
+            .catch(error => this.setState({ errors: destructServerErrors(error) }));
+    }
 
-  handleInputChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value,
-      errors: {
-        ...this.state.errors,
-        ...{ [e.target.name]: "" }
-      }
-    });
-  }
+    handleInputChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value,
+            errors: {
+                ...this.state.errors,
+                ...{ [e.target.name]: "" }
+            }
+        });
+    }
 
   openSignIn = () => {
-    this.setState({ anchorEl: null, SignInFormVisible: true });
-    this.handleMobileMenuClose();
+      this.setState({ anchorEl: null, SignInFormVisible: true });
+      this.handleMobileMenuClose();
   };
 
   handleClose = () => {
-    this.setState({
-      SignInFormVisible: false
-    });
+      this.setState({
+          SignInFormVisible: false
+      });
   }
 
   handleGoogleSignInSuccess(credentials) {
-    this.props.googleSignIn(credentials)
-      .then(response => this.registerSuccess())
-      .catch(error => this.setState({ errors: destructServerErrors(error) }));
+      this.props.googleSignIn(credentials)
+          .then(response => this.registerSuccess())
+          .catch(error => this.setState({ errors: destructServerErrors(error) }));
   }
 
   render() {
-    const { classes } = this.props;
+      const { classes } = this.props;
 
-    return (
-      <DocumentTitle title={`Register `} >
-        <div className={classes.firstContainer}>
-          <Paper className={classes.paper}>
+      return (
+          <DocumentTitle title={"Register "} >
+              <div className={classes.firstContainer}>
+                  <Paper className={classes.paper}>
 
-            <Grid container className={classes.root}
-              direction="row"
-              justify="center"
-              alignItems="center"
-              spacing={16}
-            >
-              <Grid item xs={12}>
-                <form onSubmit={e => this.handleSubmit(e)} method="POST" >
+                      <Grid container className={classes.root}
+                          direction="row"
+                          justify="center"
+                          alignItems="center"
+                          spacing={16}
+                      >
+                          <Grid item xs={12}>
+                              <form onSubmit={e => this.handleSubmit(e)} method="POST" >
 
 
-                  <h2 className="text-center mt-4 mb-6 text-grey-darker">Register</h2>
-                  <div className="mb-4">
-                    {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="username">
+                                  <h2 className="text-center mt-4 mb-6 text-grey-darker">Register</h2>
+                                  <div className="mb-4">
+                                      {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="username">
                   Username
                 </label>
                 
@@ -139,39 +139,39 @@ class Register extends Component {
                 {hasError(this.state.errors, "name") &&
                   <p className="text-red text-xs pt-2">{getError(this.state.errors, "name")}</p>
                 } */}
-                    <TextField
-                      value={this.state.name}
-                      onChange={e => this.handleInputChange(e)}
-                      id="username"
-                      name="name"
-                      type="text"
-                      margin="dense"
-                      label="name"
-                      required
-                      autoFocus
-                      fullWidth
+                                      <TextField
+                                          value={this.state.name}
+                                          onChange={e => this.handleInputChange(e)}
+                                          id="username"
+                                          name="name"
+                                          type="text"
+                                          margin="dense"
+                                          label="name"
+                                          required
+                                          autoFocus
+                                          fullWidth
 
-                    />
-                  </div>
+                                      />
+                                  </div>
 
-                  <div className="mb-4">
-                    {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="email">
+                                  <div className="mb-4">
+                                      {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="email">
                   Email address
                 </label> */}
-                    <TextField
-                      value={this.state.email}
-                      onChange={e => this.handleInputChange(e)}
-                      id="email"
-                      name="email"
-                      type="email"
-                      // errorText = "Please Enter valid email"
-                      required
-                      margin="dense"
-                      label="Email Address"
-                      fullWidth
+                                      <TextField
+                                          value={this.state.email}
+                                          onChange={e => this.handleInputChange(e)}
+                                          id="email"
+                                          name="email"
+                                          type="email"
+                                          // errorText = "Please Enter valid email"
+                                          required
+                                          margin="dense"
+                                          label="Email Address"
+                                          fullWidth
 
-                    />
-                    {/* <input
+                                      />
+                                      {/* <input
                   value={this.state.email}
                   onChange={e => this.handleInputChange(e)}
                   id="email"
@@ -181,14 +181,14 @@ class Register extends Component {
                   placeholder="jane@example.com"
                   required /> */}
 
-                    {/* {hasError(this.state.errors, "email") &&
+                                      {/* {hasError(this.state.errors, "email") &&
                   <p className="text-red text-xs pt-2">{getError(this.state.errors, "email")}</p>
                 } */}
-                  </div>
+                                  </div>
 
-                  <div className="mb-4">
-                    {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password"> Password </label> */}
-                    {/* <input
+                                  <div className="mb-4">
+                                      {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password"> Password </label> */}
+                                      {/* <input
                   value={this.state.password}
                   onChange={e => this.handleInputChange(e)}
                   type="password"
@@ -197,40 +197,40 @@ class Register extends Component {
                   className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, "password") ? "border-red" : ""}`}
                   minLength={6}
                   required /> */}
-                    <TextField
-                      value={this.state.password}
-                      onChange={e => this.handleInputChange(e)}
-                      type="password"
-                      id="password"
-                      name="password"
-                      required={true}
-                      margin="dense"
-                      label="Password"
-                      minLength={6}
-                      fullWidth
+                                      <TextField
+                                          value={this.state.password}
+                                          onChange={e => this.handleInputChange(e)}
+                                          type="password"
+                                          id="password"
+                                          name="password"
+                                          required={true}
+                                          margin="dense"
+                                          label="Password"
+                                          minLength={6}
+                                          fullWidth
 
-                    />
+                                      />
 
-                    {/* {hasError(this.state.errors, "password") &&
+                                      {/* {hasError(this.state.errors, "password") &&
                   <p className="text-red text-xs pt-2">{getError(this.state.errors, "password")}</p>
                 } */}
-                  </div>
+                                  </div>
 
-                  <div className="mb-4">
-                    <TextField
-                      value={this.state.password_confirmation}
-                      onChange={e => this.handleInputChange(e)}
-                      type="password"
-                      id="password_confirmation"
-                      name="password_confirmation"
-                      required={true}
-                      margin="dense"
-                      label="password_confirmation"
-                      minLength={6}
-                      fullWidth
+                                  <div className="mb-4">
+                                      <TextField
+                                          value={this.state.password_confirmation}
+                                          onChange={e => this.handleInputChange(e)}
+                                          type="password"
+                                          id="password_confirmation"
+                                          name="password_confirmation"
+                                          required={true}
+                                          margin="dense"
+                                          label="password_confirmation"
+                                          minLength={6}
+                                          fullWidth
 
-                    />
-                    {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password_confirmation"> Password confirmation </label>
+                                      />
+                                      {/* <label className="block text-grey-darkest text-sm font-bold mb-2" htmlFor="password_confirmation"> Password confirmation </label>
                 <input
                   value={this.state.password_confirmation}
                   onChange={e => this.handleInputChange(e)}
@@ -240,16 +240,16 @@ class Register extends Component {
                   className={`appearance-none border rounded w-full py-2 px-3 text-grey-darker  ${hasError(this.state.errors, "password") ? "border-red" : ""}`}
                   required /> */}
 
-                  </div>
-                  <Button type="submit" variant="contained" color="primary" className={classes.button}>
+                                  </div>
+                                  <Button type="submit" variant="contained" color="primary" className={classes.button}>
                     Register
-                  </Button>
-                  {/* <div className="mb-2">
+                                  </Button>
+                                  {/* <div className="mb-2">
                 <button className="border rounded-full p-3 text-white bg-indigo w-full font-bold hover:bg-indigo-dark">Register</button>
               </div> */}
-                </form>
-              </Grid>
-              {/* <div className={classes.signin}>
+                              </form>
+                          </Grid>
+                          {/* <div className={classes.signin}>
                 <div>Already have an account?
                   <Button onClick={this.openSignIn} variant="contained" color="primary" className={classes.button}>
                     Sign In
@@ -259,11 +259,11 @@ class Register extends Component {
               <div className="border rounded bg-white border-grey-light w-3/4 sm:w-1/2 lg:w-2/5 xl:w-1/4 px-8 py-4">
                 <GoogleSignIn googleSignInSuccess={(credentials) => this.handleGoogleSignInSuccess(credentials)} />
               </div> */}
-            </Grid>
-          </Paper>
-        </div>
-      </DocumentTitle>
-    );
+                      </Grid>
+                  </Paper>
+              </div>
+          </DocumentTitle>
+      );
   }
 }
 

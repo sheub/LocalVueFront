@@ -1,10 +1,10 @@
 import { SET_LOADING } from "../actions/loading";
 
 export default (state = true, action) => {
-  switch (action.type) {
+    switch (action.type) {
     case SET_LOADING:
-      return action.status;
+        return action.status;
     default:
-      return state;
-  }
+        return state;
+    }
 };

@@ -126,7 +126,7 @@ CustomizedTable.propTypes = {
 var mapStateToProps = (state) => {
     return {
         resultData: state.appReducer.resultData,
-    }
+    };
 };
 
 

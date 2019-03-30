@@ -4,13 +4,13 @@ import auth from "./auth";
 import loading from "./loading";
 
 const defaultState = {
-  app: defaultAppState
+    app: defaultAppState
 };
 
 export default combineReducers({
-  auth,
-  loading,
-  appReducer
+    auth,
+    loading,
+    appReducer
 });
 
 export {defaultState};

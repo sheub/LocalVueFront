@@ -93,7 +93,7 @@ export const logoutUser = cb => dispatch => {
     } else { // Dev server runs on port 5000
         url = "http://localhost:5000/api/logout";
     }
-    const request =  window.axios.post(url)
+    const request =  window.axios.post(url);
 
     return request.then(
         response => dispatch(clearAuth()), cb(),

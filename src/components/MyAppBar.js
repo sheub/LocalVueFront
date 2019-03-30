@@ -212,7 +212,7 @@ class MyAppBar extends Component {
                 languageSet: lng
             });
             i18n.changeLanguage(lng);
-        }
+        };
 
         return (
             <React.Fragment>
