@@ -36,7 +36,7 @@
     "react-spinners": "^0.4.8",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "sw-precache-cra": "^1.0.0-alpha.2"
+    "sw-precache-cra": "^1.0.0"
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
