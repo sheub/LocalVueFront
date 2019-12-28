@@ -70,8 +70,9 @@ class Checkout extends Component {
         var url = "/payment/getClientToken";
         if (process.env.NODE_ENV === "production") {
             url = "/payment/getClientToken";
-        } else { // Dev server runs on port 5000
-            url = "http://localhost:5000/payment/getClientToken";
+        } else {
+            // Dev server runs on port 8000
+            url = "http://localhost:8000/payment/getClientToken";
         }
 
         const response = await fetch(url);
@@ -91,8 +92,9 @@ class Checkout extends Component {
         var url = `/payment/process/${nonce}`;
         if (process.env.NODE_ENV === "production") {
             url`/payment/process/${nonce}`;
-        } else { // Dev server runs on port 5000
-            url = `http://localhost:5000/payment/subscribe/${nonce}`;
+        } else {
+            // Dev server runs on port 8000
+            url = `http://localhost:8000/payment/subscribe/${nonce}`;
         }
         var query = encodeURI(url);
         axios.get(query, {
@@ -116,8 +118,9 @@ class Checkout extends Component {
         var url = "/paypalredirect/";
         if (process.env.NODE_ENV === "production") {
             url = "/paypalredirect/";
-        } else { // Dev server runs on port 5000
-            url = "http://localhost:5000/paypalredirect/";
+        } else {
+            // Dev server runs on port 8000
+            url = "http://localhost:8000/paypalredirect/";
         }
 
         var query = encodeURI(url);

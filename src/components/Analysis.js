@@ -7,7 +7,7 @@ import { Input, Grid, Typography, Button } from "@material-ui/core";
 import BackgroundImage from "./../assets/SEO_Background_petit.jpg";
 
 import axios from "axios";
-import { setStateValue } from "./actions/index";  
+import { setStateValue } from "./actions/index";
 import { css } from "react-emotion";
 import { ClipLoader } from "react-spinners";
 import { withTranslation } from "react-i18next";
@@ -118,14 +118,15 @@ class Analysis extends Component {
 
         this.setState({ isLoading: true });
         this.props.setStateValue("placeInfo", this.state.place);
-        
+
         let url = "";
         if (process.env.NODE_ENV === "production") {
             url = `/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
-        } else { // Dev server runs on port 3000
-            url = `http://localhost:5000/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
+        } else {
+            // Dev server runs on port 8000
+            url = `http://localhost:8000/analysedata/${this.state.place["name"]}/address/${this.state.place["city"]} + " " + ${this.state.place["postcode"]}`;
         }
-        
+
 
         var query = encodeURI(url);
         axios.get(query, {

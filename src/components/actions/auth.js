@@ -7,8 +7,9 @@ const fetchUser = () => {
     let url = "/api/me";
     if (process.env.NODE_ENV === "production") {
         url = "/api/me";
-    } else { // Dev server runs on port 3000
-        url = "http://localhost:5000/api/me";
+    } else {
+        // Dev server runs on port 8000
+        url = "http://localhost:8000/api/me";
     }
 
     return window.axios.get(url)
@@ -31,7 +32,8 @@ export const signInUser = credentials => dispatch => {
     if (process.env.NODE_ENV === "production") {
         url = "/api/signin";
     } else { // Dev server runs on port 3000
-        url = "http://localhost:5000/api/signin";
+        url = "http://localhost:8000/api/signin";
+        // url = "http://localhost:8080/login";
     }
 
     return window.axios.post(url, credentials).then(({ data: { data, meta } }) => {
@@ -42,14 +44,61 @@ export const signInUser = credentials => dispatch => {
     }).catch(error => {
         return Promise.reject(error);
     });
+
+    // var postData = {
+    //     "email": "test4@mail.com",
+    //     "password": "test4"
+    //   };
+
+    //   let axiosConfig = {
+    //     headers: {
+    //         'Content-Type': 'application/json;charset=UTF-8',
+    //         "Access-Control-Allow-Origin": "*"
+    //     }
+    //   };
+
+    //   window.axios.post('http://localhost:8080/login', postData, axiosConfig)
+    //   .then((res) => {
+    //     console.log("RESPONSE RECEIVED: ", res);
+    //   })
+    //   .catch((err) => {
+    //     console.log("AXIOS ERROR: ", err);
+    //   })
+
+
+    // return window.axios(
+    //     {
+    //         method: 'post',
+    //         url: url,
+    //         headers: {
+    //             'Content-Type': 'application/json;charset=UTF-8',
+    //           },
+    //         data:{
+    //             email:credentials.email,
+    //             password:credentials.password,
+    //             withCredentials: true,
+    //             crossdomain: true
+    //         }
+    //     }
+    //     ).then((data) => {
+    //     setToken(data.token);
+    //     dispatch(setUserData(data));
+    //     dispatch(setAuthenticated(true));
+    //     return Promise.resolve(data);
+    // }).catch(error => {
+    //     console.log(error); //<--- Go down one more stream
+    //     return Promise.reject(error);
+
+    // });
 };
 
 export const googleSignIn = credentials => dispatch => {
     var url =  "/api/google/signin";
     if (process.env.NODE_ENV === "production") {
         url = "/api/google/signin";
-    } else { // Dev server runs on port 5000
-        url = "http://localhost:5000/api/google/signin";
+    } else {
+        // Dev server runs on port 5000
+        url = "http://localhost:8000/api/google/signin";
     }
     return window.axios.post(url, credentials).then(({ data: { data, meta } }) => {
         setToken(meta.token);
@@ -65,8 +114,10 @@ export const registerUser = credentials => dispatch => {
     var url = "/api/register";
     if (process.env.NODE_ENV === "production") {
         url = "/api/register";
-    } else { // Dev server runs on port 3000
-        url = "http://localhost:5000/api/register";
+    } else {
+        // Dev server runs on port 8000
+        url = "http://localhost:8000/api/register";
+        // url = "http://localhost:8080/register?email=" + credentials.email + "&password=" + credentials.password;
     }
 
     return window.axios.post(url, credentials
@@ -76,6 +127,7 @@ export const registerUser = credentials => dispatch => {
         dispatch(setAuthenticated(true));
         return Promise.resolve({ data, meta });
     }).catch(error => {
+        console.log(error); //<--- Go down one more stream
         return Promise.reject(error);
     });
 };
@@ -90,8 +142,9 @@ export const logoutUser = cb => dispatch => {
     var url = "/api/logout";
     if (process.env.NODE_ENV === "production") {
         url = "/api/logout";
-    } else { // Dev server runs on port 5000
-        url = "http://localhost:5000/api/logout";
+    } else {
+        // Dev server runs on port 8000
+        url = "http://localhost:8000/api/logout";
     }
     const request =  window.axios.post(url);
 
