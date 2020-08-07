@@ -58,6 +58,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "lodash": "^4.17.13"
+    "lodash": "^4.17.19"
   }
 }
