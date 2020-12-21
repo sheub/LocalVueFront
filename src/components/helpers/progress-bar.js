@@ -15,14 +15,16 @@ export default (instance) => {
 
     const setupStopProgress = () => {
         const responseFunc = response => {
-            if ((--requestsCounter) === 0) {
+            --requestsCounter;
+            if (requestsCounter === 0) {
                 NProgress.done();
             }
             return response;
         };
 
         const errorFunc = error => {
-            if ((--requestsCounter) === 0) {
+            --requestsCounter;
+            if (requestsCounter === 0) {
                 NProgress.done();
             }
             return Promise.reject(error);
