@@ -5,7 +5,6 @@ import { withStyles } from "@material-ui/core";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 
-import { css } from "react-emotion";
 import { ClipLoader } from "react-spinners";
 
 
@@ -18,12 +17,6 @@ import Typography from "@material-ui/core/Typography";
 import DropIn from "braintree-web-drop-in-react";
 import { withTranslation } from "react-i18next";
 
-
-const override = css`
-    display: block;
-    margin: 0 auto;
-    border-color: red;
-`;
 
 const initialState = {
     isLoading: false,
@@ -44,7 +37,6 @@ const styles = (theme) => ({
         margin: "48px",
     },
 
-
     cardHeader: {
         backgroundColor: theme.palette.grey[200],
     },
@@ -53,6 +45,12 @@ const styles = (theme) => ({
         justifyContent: "center",
         alignItems: "baseline",
         marginBottom: theme.spacing.unit * 2,
+    },
+
+    override: {
+        display: "block",
+        margin: "0 auto",
+        borderColor: "red",
     },
 
 });
@@ -226,7 +224,7 @@ class Checkout extends Component {
                                             <Grid item xs={12} sm={6}>
                                                 <div className="sweet-loading" style={{ verticalAlign: "bottom" }}>
                                                     <ClipLoader
-                                                        className={override}
+                                                        className={classes.override}
                                                         sizeUnit={"px"}
                                                         size={24}
                                                         color={"#123abc"}

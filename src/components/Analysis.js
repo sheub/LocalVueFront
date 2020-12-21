@@ -8,18 +8,11 @@ import BackgroundImage from "./../assets/SEO_Background_petit.jpg";
 
 import axios from "axios";
 import { setStateValue } from "./actions/index";
-import { css } from "react-emotion";
 import { ClipLoader } from "react-spinners";
 import { withTranslation } from "react-i18next";
 
 const CustomizedTable = React.lazy(() => import("./Table"));
 
-
-const override = css`
-    display: block;
-    margin: 0 auto;
-    border-color: red;
-`;
 
 const initialState = {
     place: {
@@ -58,10 +51,14 @@ const styles = (theme) => ({
     button: {
         marginTop: "48px"
     },
-
     input: {
         margin: theme.spacing.unit,
         color: "white",
+    },
+    override: {
+        display: "block",
+        margin: "0 auto",
+        borderColor: "red",
     },
 });
 
@@ -232,7 +229,7 @@ class Analysis extends Component {
                                 </Grid>
                                 <div className="sweet-loading" style={{ verticalAlign: "bottom" }}>
                                     <ClipLoader
-                                        className={override}
+                                        className={classes.override}
                                         sizeUnit={"px"}
                                         size={32}
                                         color={"#123abc"}
